@@ -1,0 +1,1403 @@
+/* =============================================
+   GARDEN WEDDING — Envelope → Phone Video
+   ============================================= */
+:root {
+  --green:       #4a7c59;
+  --green-light: #7aaa8a;
+  --green-pale:  #dceee2;
+  --pink:        #d4788a;
+  --pink-light:  #f0b0bc;
+  --pink-pale:   #fce8ec;
+  --gold:        #b8942a;
+  --gold-light:  #d4b050;
+  --ivory:       #faf7f2;
+  --dark:        #1e2e22;
+  --mid:         #5a6e5e;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+html, body { min-height: 100%; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  overflow-x: hidden;
+  /* Locked while #screenEnv (position:fixed, covers the viewport) is showing, so the
+     intro section below can't be scrolled to behind it. Lifted by revealDesign() once
+     the design video takes over — see the 'scroll-unlocked' class toggle in the script. */
+  overflow-y: hidden;
+}
+
+body.scroll-unlocked {
+  overflow-y: auto;
+}
+
+.hidden { display: none !important; }
+
+/* =============================================
+   SCREENS
+   ============================================= */
+.screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.screen.screen-enter {
+  animation: screenIn 0.8s cubic-bezier(0.34,1.1,0.64,1) forwards;
+}
+
+@keyframes screenIn {
+  from { opacity:0; transform: scale(0.94); }
+  to   { opacity:1; transform: scale(1); }
+}
+
+/* =============================================
+   SCREEN 1 — ENVELOPE
+   ============================================= */
+#screenEnv {
+  /* Explicit (was z-index:auto) so it's unambiguous, on paper and in the cascade,
+     that the envelope screen always wins over #screenVideo/.intro-section while
+     it's active — instead of relying on the implicit "positioned beats static"
+     rule that a future z-index anywhere else could silently break again. */
+  z-index: 100;
+  background: linear-gradient(150deg, #dceee2 0%, #faf7f2 50%, #fce4ec 100%);
+}
+
+/* Background petals */
+.bg-petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-petals span {
+  position: absolute;
+  top: -8%;
+  animation: petalFall linear infinite;
+}
+
+@keyframes petalFall {
+  0%   { top: -8%;  transform: rotate(0)   translateX(0);   opacity: 0; }
+  8%   { opacity: 0.25; }
+  92%  { opacity: 0.15; }
+  100% { top: 108%; transform: rotate(380deg) translateX(20px); opacity: 0; }
+}
+
+.env-scene {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.env-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--mid);
+  letter-spacing: 2px;
+  animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,100% { opacity: 0.5; transform: translateY(0); }
+  50%      { opacity: 1;   transform: translateY(-3px); }
+}
+
+/* ===== ENVELOPE VIDEO (constrained to native 9:16, never upscaled beyond it) ===== */
+/* #screenEnv keeps its own gradient background (line ~59) — it shows through as the
+   pillarbox/letterbox bars, so no extra color is needed here to match the theme. */
+.env-video-wrap {
+  position: relative;
+  /* vh fallback first, dvh overrides it where supported (avoids mobile address-bar jumps) */
+  width: min(100vw, calc(100vh * 9 / 16));
+  height: min(100vh, calc(100vw * 16 / 9));
+  width: min(100vw, calc(100dvh * 9 / 16));
+  height: min(100dvh, calc(100vw * 16 / 9));
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.env-video-wrap.playing {
+  cursor: default;
+}
+
+.envelope-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #eef3e8;
+}
+
+.env-tap-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.env-tap-hint.hidden {
+  opacity: 0;
+}
+
+.tap-ring {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.85);
+  animation: tapRingPulse 2s ease-out infinite;
+}
+
+.tap-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 12px rgba(255,255,255,0.9);
+}
+
+@keyframes tapRingPulse {
+  0%   { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* ===== FLASH TRANSITION ===== */
+.flash-overlay {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+  transition: opacity 0.35s ease;
+}
+
+.flash-overlay.flash-active {
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+
+/* ===== ENVELOPE (legacy, unused) ===== */
+.env-wrap {
+  position: relative;
+  width: 320px;
+  height: 230px;
+  filter: drop-shadow(0 20px 50px rgba(74,124,89,0.22));
+  transition: transform 0.3s ease;
+  animation: envFloat 3s ease-in-out infinite;
+}
+
+@keyframes envFloat {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+.env-wrap.env-exit {
+  animation: envExit 0.7s ease forwards !important;
+}
+
+@keyframes envExit {
+  to { transform: scale(0.4) translateY(60px); opacity: 0; filter: blur(10px); }
+}
+
+/* Body */
+.env-body {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 196px;
+  background: linear-gradient(155deg, #e4f2e8, #d0e8d8);
+  border: 1.5px solid rgba(122,170,138,0.45);
+  border-radius: 4px 4px 16px 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.env-diag-l {
+  position: absolute; bottom:0; left:0;
+  border-style: solid;
+  border-width: 0 0 196px 160px;
+  border-color: transparent transparent rgba(122,170,138,0.12) transparent;
+}
+
+.env-diag-r {
+  position: absolute; bottom:0; right:0;
+  border-style: solid;
+  border-width: 0 160px 196px 0;
+  border-color: transparent rgba(212,120,138,0.09) transparent transparent;
+}
+
+/* Wax seal */
+.env-seal {
+  position: relative;
+  z-index: 4;
+  width: 68px; height: 68px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #f5e090, #c9a030, #7a5810);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(184,148,42,0.55), inset 0 2px 5px rgba(255,255,255,0.25);
+  transition: transform 0.45s ease, opacity 0.45s ease;
+  animation: sealPulse 2.5s ease-in-out infinite;
+  cursor: pointer;
+}
+
+@keyframes sealPulse {
+  0%,100% { box-shadow: 0 4px 24px rgba(184,148,42,0.5), 0 0 0 0 rgba(184,148,42,0.3); }
+  50%      { box-shadow: 0 4px 24px rgba(184,148,42,0.5), 0 0 0 14px rgba(184,148,42,0); }
+}
+
+.seal-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(212,176,80,0.4);
+  animation: sealRingPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes sealRingPulse {
+  0%,100% { transform: scale(1); opacity: 0.6; }
+  50%      { transform: scale(1.2); opacity: 0; }
+}
+
+.seal-icon {
+  font-size: 1.9rem;
+  animation: sealSpin 10s linear infinite;
+  display: inline-block;
+}
+
+@keyframes sealSpin { to { transform: rotate(360deg); } }
+
+.env-seal.seal-gone {
+  transform: scale(0) rotate(200deg) !important;
+  opacity: 0 !important;
+  animation: none !important;
+}
+
+/* Letter peek */
+.letter-peek {
+  position: absolute;
+  bottom: 46%;
+  left: 50%;
+  transform: translateX(-50%) translateY(70px);
+  z-index: 3;
+  background: white;
+  border: 1px solid rgba(184,148,42,0.3);
+  border-radius: 6px;
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.34,1.56,0.64,1), opacity 0.5s ease;
+  box-shadow: 0 -6px 24px rgba(0,0,0,0.1);
+}
+
+.letter-peek.risen {
+  transform: translateX(-50%) translateY(-14px);
+  opacity: 1;
+}
+
+.lp-name {
+  font-family: 'Italiana', serif;
+  font-size: 1.5rem;
+  color: var(--green);
+}
+
+.lp-amp {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--gold);
+}
+
+/* Flap */
+.env-flap {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  transform-origin: top center;
+  transition: transform 0.85s cubic-bezier(0.4,0,0.2,1);
+  z-index: 10;
+}
+
+.flap-tri {
+  width: 0; height: 0;
+  border-left:  160px solid transparent;
+  border-right: 160px solid transparent;
+  border-top:   115px solid #b8dfc4;
+  filter: drop-shadow(0 5px 8px rgba(74,124,89,0.18));
+}
+
+.flap-deco {
+  position: absolute;
+  top: 22px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  letter-spacing: 5px;
+  white-space: nowrap;
+  opacity: 0.65;
+}
+
+.env-flap.open {
+  transform: rotateX(-210deg);
+}
+
+/* Side & bottom flaps */
+.env-bot-l {
+  position: absolute; bottom:0; left:0;
+  border-style: solid;
+  border-width: 0 0 98px 160px;
+  border-color: transparent transparent #cce4d4 transparent;
+}
+
+.env-bot-r {
+  position: absolute; bottom:0; right:0;
+  border-style: solid;
+  border-width: 0 160px 98px 0;
+  border-color: transparent #f0dae0 transparent transparent;
+}
+
+/* Open button */
+.open-btn {
+  background: linear-gradient(135deg, var(--green), #6aa07a);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 38px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 0 10px 34px rgba(74,124,89,0.42);
+  transition: all 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  animation: btnFloat 2.5s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+
+.open-btn:hover {
+  box-shadow: 0 16px 44px rgba(74,124,89,0.55);
+  background: linear-gradient(135deg, #5a9068, var(--green));
+}
+
+.open-btn:disabled { pointer-events: none; }
+
+@keyframes btnFloat {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+
+/* =============================================
+   SCREEN 2 — DESIGN VIDEO (full screen)
+   ============================================= */
+#screenVideo {
+  /* Overrides .screen's position:fixed: this screen must take real space in the
+     document flow (min-height:100dvh) so the intro section below it is reachable
+     by scrolling, instead of staying pinned over everything forever.
+     Explicit z-index (well below #screenEnv's 100) for the same reason as above:
+     readable intent instead of relying on default flow order to keep it under
+     the envelope screen while both could theoretically be visible. */
+  position: relative;
+  inset: auto;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--dark); /* deep green instead of raw black, on-theme for the letterbox bars */
+}
+
+/* ===== SCROLL CUE (bottom of the design video screen) ===== */
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  z-index: 6;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+  animation: scrollCueBounce 2s ease-in-out infinite;
+}
+
+.scroll-chevron {
+  width: 14px;
+  height: 14px;
+  border-right: 2px solid var(--gold-light);
+  border-bottom: 2px solid var(--gold-light);
+  transform: rotate(45deg);
+}
+
+@keyframes scrollCueBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0);   opacity: 0.55; }
+  50%      { transform: translateX(-50%) translateY(8px); opacity: 1; }
+}
+
+/* Same constrained-ratio technique as .env-video-wrap, so the video is never upscaled
+   past its native 9:16 and stays centered with pillarbox/letterbox bars in --dark. */
+.design-video-wrap {
+  position: relative;
+  width: min(100vw, calc(100vh * 9 / 16));
+  height: min(100vh, calc(100vw * 16 / 9));
+  width: min(100vw, calc(100dvh * 9 / 16));
+  height: min(100dvh, calc(100vw * 16 / 9));
+  overflow: hidden;
+}
+
+.design-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Unmute button */
+.unmute-btn {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  padding: 7px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 10;
+  display: none; /* revealed by JS (.has-audio) only if the loaded video actually has an audio track */
+}
+
+.unmute-btn.has-audio {
+  display: block;
+}
+
+.unmute-btn:hover {
+  background: rgba(74,124,89,0.7);
+  border-color: rgba(122,170,138,0.5);
+}
+
+/* =============================================
+   INTRO SECTION (below the design video, reached by scrolling)
+   ============================================= */
+.intro-section {
+  /* Defense in depth on top of the .cal-day fix above: isolation:isolate forces a
+     stacking context on the whole section without needing position/z-index, so no
+     z-index added anywhere inside it in the future can ever leak out and compete
+     with #screenEnv / #screenVideo again. */
+  isolation: isolate;
+  background-color: var(--ivory);
+  /* No paper texture asset was provided — this is a cheap CSS-only stand-in (two
+     tiny dot patterns at very low opacity). Swap for a real texture image if you
+     have one; just drop the background-image/-size/-position rules below. */
+  background-image:
+    radial-gradient(rgba(30,46,34,0.035) 1px, transparent 1px),
+    radial-gradient(rgba(30,46,34,0.025) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 2px 3px;
+  padding: 64px 24px 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.intro-inner {
+  /* Same 9:16 width formula as the video above, so this section's content column
+     lines up with it instead of stretching full-width on wide/landscape screens. */
+  width: 100%;
+  max-width: min(100vw, calc(100vh * 9 / 16));
+  max-width: min(100vw, calc(100dvh * 9 / 16));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.intro-birds {
+  width: min(78%, 340px);
+  height: auto;
+  /* Source image has an opaque white background (no alpha channel) — multiply
+     blends it into --ivory so it reads as if it were cut out. Swap for a real
+     transparent PNG later and this rule becomes a no-op. */
+  mix-blend-mode: multiply;
+}
+
+.intro-ornament {
+  width: min(70%, 220px);
+  height: auto;
+  margin: 20px 0 8px;
+}
+
+.intro-script {
+  font-family: 'Great Vibes', cursive;
+  /* Fallback for browsers without background-clip:text support (applied first,
+     overridden below where supported — never left unstyled). */
+  color: var(--gold);
+  line-height: 1.2;
+  margin: 4px 0 22px;
+}
+
+.intro-script-line {
+  display: block;
+  /* "qui nous sont chers" is noticeably longer than the previous line, so the
+     ceiling is lower than before (was 2.8rem) to keep it on one line down to
+     ~340px-wide screens instead of wrapping mid-phrase. */
+  font-size: clamp(1.5rem, 7vw, 2.4rem);
+  /* Real hex values sampled directly from assets/oiseaux.png (see chat for the
+     exact pixels/coordinates) — warm gold fading into an olive-gold green,
+     matching the illustration rather than an invented palette. */
+  background: linear-gradient(135deg, #C8A851 0%, #BEA84A 55%, #9D903E 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Slight opposite tilts so the two lines read like real handwriting, not a
+   perfectly typeset block. */
+.intro-script-line-1 {
+  transform: rotate(-2.5deg) translateX(-6px);
+}
+
+.intro-script-line-2 {
+  transform: rotate(1.5deg) translateX(10px);
+}
+
+.intro-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.05rem, 4vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--dark);
+  max-width: 34ch;
+  margin: 0 0 40px;
+}
+
+.intro-calendar {
+  width: 100%;
+  max-width: 340px;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(184,148,42,0.35);
+  border-radius: 14px;
+  padding: 20px 14px 24px;
+}
+
+.calendar-month {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px 2px;
+}
+
+.cal-head {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 1px;
+  color: var(--gold);
+  padding-bottom: 8px;
+}
+
+.cal-empty,
+.cal-day {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.95rem, 4vw, 1.05rem);
+  color: var(--dark);
+  /* position:relative alone does NOT create a stacking context (z-index:auto here).
+     Adding z-index:0 does — this contains .cal-day-number's z-index:1 locally
+     instead of letting it leak all the way up to compete with #screenEnv/#screenVideo
+     at the <body> level. This was the actual cause of the calendar showing through
+     the envelope screen before it was opened. */
+  position: relative;
+  z-index: 0;
+}
+
+.cal-day--marked {
+  color: var(--gold);
+  font-weight: 600;
+  /* Single value to tweak the heart image's size — bump it up/down and nothing
+     else needs to change. 100% = exactly fills the cell; current value makes it
+     spill into the neighboring cells on purpose. */
+  --cal-heart-size: 210%;
+}
+
+/* .cal-heart is position:absolute, which by default paints above normal in-flow
+   content regardless of DOM order — so the digit also needs to be positioned
+   (z-index:auto isn't enough) for its later DOM position to win and stay on top. */
+.cal-day-number {
+  position: relative;
+  z-index: 1;
+}
+
+.cal-heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--cal-heart-size);
+  height: var(--cal-heart-size);
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* =============================================
+   FRAMED MESSAGE (between .intro-section and .program-section)
+   ============================================= */
+.message-section {
+  isolation: isolate;
+  background-color: var(--ivory);
+  background-image:
+    radial-gradient(rgba(30,46,34,0.035) 1px, transparent 1px),
+    radial-gradient(rgba(30,46,34,0.025) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 2px 3px;
+  padding: 48px 24px 56px;
+  display: flex;
+  justify-content: center;
+}
+
+.message-inner {
+  width: 100%;
+  max-width: min(100vw, calc(100vh * 9 / 16));
+  max-width: min(100vw, calc(100dvh * 9 / 16));
+}
+
+/* 9-slice frame: border-image-slice measured from the source PNG's alpha channel
+   (see chat) — the four ornamental corners stay at their native size, only the
+   straight edges between them stretch. Center is transparent in the source file,
+   so .message-section's own cream background shows through undisturbed. */
+.message-frame {
+  border-style: solid;
+  border-width: clamp(30px, 9vw, 48px) clamp(26px, 7.5vw, 42px);
+  border-image-source: url('../../assets/cadre.png');
+  border-image-slice: 19% 25% fill;
+  border-image-repeat: stretch;
+  padding: clamp(22px, 6vw, 34px) clamp(18px, 5vw, 28px);
+  text-align: center;
+}
+
+.message-script {
+  display: block;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.8rem, 7vw, 2.3rem);
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #C8A851 0%, #BEA84A 55%, #9D903E 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.message-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.05rem, 4vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--dark);
+}
+
+/* =============================================
+   PROGRAM SECTION (schedule of the day, below .intro-section)
+   ============================================= */
+.program-section {
+  /* Same isolation reflex as .intro-section, after the z-index leak we fixed there —
+     no z-index added anywhere inside this section can ever escape to body level. */
+  isolation: isolate;
+  background-color: var(--ivory);
+  background-image:
+    radial-gradient(rgba(30,46,34,0.035) 1px, transparent 1px),
+    radial-gradient(rgba(30,46,34,0.025) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 2px 3px;
+  padding: 56px 24px 88px;
+  display: flex;
+  justify-content: center;
+}
+
+.program-inner {
+  position: relative;
+  width: 100%;
+  max-width: min(100vw, calc(100vh * 9 / 16));
+  max-width: min(100vw, calc(100dvh * 9 / 16));
+}
+
+.program-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.program-month {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2rem, 8vw, 2.6rem);
+  line-height: 1;
+  background: linear-gradient(135deg, #C8A851 0%, #BEA84A 55%, #9D903E 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.program-butterfly {
+  width: min(20%, 74px);
+  height: auto;
+  transform: translateY(-4px);
+}
+
+/* =============================================
+   TIMELINE — 3-column grid + plant-vine, copied from
+   templates/whiteElegante/ (.schedule-list / .schedule-row / .plant-vine).
+   Structure and animation logic are unchanged; only class names were kept as
+   gardenwed's own (.program-step, .program-icon, .program-time/.program-label)
+   since those already existed here, and only the vine's color changes (via
+   var(--green), which happens to be the same variable name in both templates).
+   ============================================= */
+.program-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 82px minmax(0, 1fr);
+  row-gap: 34px;
+  padding: 12px 0 8px;
+}
+
+/* ----- .plant-vine / .vine-stem / .leaf — copied verbatim from whiteElegante ----- */
+.program-timeline.is-visible .vine-stem {
+  animation: growVine 2.4s ease forwards;
+}
+
+.program-timeline.is-visible .leaf {
+  animation: leafBloom 0.55s ease forwards;
+}
+
+.program-timeline.is-visible .plant-vine::after {
+  animation: vineBud 2.4s ease forwards;
+}
+
+.plant-vine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 78px;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.plant-vine::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--green);
+  opacity: 0;
+  transform: translate(-50%, 0) rotate(-45deg);
+  box-shadow: 0 0 0 4px rgba(234,245,251,0.72);
+}
+
+.vine-stem {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 38px;
+  height: 100%;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;
+  border-left: 3px solid var(--green);
+  border-radius: 50%;
+  filter: drop-shadow(0 2px 0 rgba(255,255,255,0.55));
+}
+
+.vine-stem::before,
+.vine-stem::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  width: 38px;
+  height: 48%;
+  border-right: 2px solid rgba(63,87,56,0.86);
+  border-radius: 50%;
+}
+
+.vine-stem::before {
+  top: 5%;
+}
+
+.vine-stem::after {
+  bottom: 3%;
+  transform: scaleX(-1);
+}
+
+.leaf {
+  position: absolute;
+  width: 32px;
+  height: 16px;
+  opacity: 0;
+  transform: scale(0.2) rotate(var(--leaf-rotate));
+  transform-origin: center left;
+}
+
+.leaf::before,
+.leaf::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 8px;
+  border: 1.6px solid var(--green);
+  border-left: 0;
+  border-bottom: 0;
+  border-radius: 100% 0;
+}
+
+.leaf::before {
+  left: 0;
+  top: 0;
+  transform: rotate(26deg);
+}
+
+.leaf::after {
+  left: 12px;
+  top: 5px;
+  transform: rotate(-22deg);
+}
+
+.leaf-1 { --leaf-rotate: -8deg; top: 8%; left: 41px; animation-delay: 0.38s !important; }
+.leaf-2 { --leaf-rotate: 188deg; top: 27%; left: 5px; animation-delay: 0.82s !important; }
+.leaf-3 { --leaf-rotate: -12deg; top: 43%; left: 42px; animation-delay: 1.18s !important; }
+.leaf-4 { --leaf-rotate: 190deg; top: 59%; left: 4px; animation-delay: 1.48s !important; }
+.leaf-5 { --leaf-rotate: -8deg; top: 75%; left: 42px; animation-delay: 1.82s !important; }
+.leaf-6 { --leaf-rotate: 190deg; top: 90%; left: 6px; animation-delay: 2.12s !important; }
+
+@keyframes growVine {
+  0% { transform: translateX(-50%) scaleY(0); }
+  100% { transform: translateX(-50%) scaleY(1); }
+}
+
+@keyframes leafBloom {
+  0% { opacity: 0; transform: scale(0.2) rotate(var(--leaf-rotate)); }
+  100% { opacity: 1; transform: scale(1) rotate(var(--leaf-rotate)); }
+}
+
+@keyframes vineBud {
+  0% { opacity: 1; transform: translate(-50%, 0) rotate(-45deg) scale(0.7); }
+  88% { opacity: 1; transform: translate(-50%, calc(100% - 12px)) rotate(-45deg) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, calc(100% - 12px)) rotate(-45deg) scale(0.7); }
+}
+
+/* ----- Steps: same 3-column grid-per-row + left/right alternation principle as
+   whiteElegante's .schedule-row / .art-left / .art-right / .row-kicker. ----- */
+.program-step {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / -1;
+  min-height: 96px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 82px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 0;
+}
+
+.program-step.right {
+  text-align: left;
+}
+
+.program-step.left {
+  text-align: left;
+}
+
+.program-step.right .program-step-text {
+  grid-column: 3;
+  justify-self: start;
+}
+
+.program-step.left .program-step-text {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.program-icon {
+  width: min(100%, 84px);
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.program-icon.art-left {
+  grid-column: 1;
+  justify-self: center;
+}
+
+.program-icon.art-right {
+  grid-column: 3;
+  justify-self: center;
+}
+
+.program-time {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(1.3rem, 5vw, 1.6rem);
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.program-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+
+/* Hidden-then-reveal state only exists once JS confirms it's running (see the
+   'js-timeline-ready' class toggle in the script). Default (no class): fully
+   visible, no transform — safe if JS fails or never loads. */
+.js-timeline-ready .reveal-step {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.js-timeline-ready .reveal-step.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vine-stem,
+  .leaf,
+  .plant-vine::after {
+    animation: none !important;
+  }
+
+  .vine-stem {
+    transform: translateX(-50%) scaleY(1) !important;
+  }
+
+  .leaf {
+    opacity: 1 !important;
+    transform: scale(1) rotate(var(--leaf-rotate)) !important;
+  }
+
+  .reveal-step {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* =============================================
+   DRESS CODE (structure copied from templates/whiteElegante/'s .dress-panel —
+   see chat for the original HTML/CSS. Colors adapted: whiteElegante's wine/
+   burgundy accents become gardenwed's gold; .dress-blueflowers becomes our
+   bas.png bleed border instead of a CSS background-image on a plain div.)
+   ============================================= */
+.dresscode-section {
+  isolation: isolate;
+  background-color: var(--ivory);
+  background-image:
+    radial-gradient(rgba(30,46,34,0.035) 1px, transparent 1px),
+    radial-gradient(rgba(30,46,34,0.025) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 2px 3px;
+  /* No top padding: .dresscode-floral is anchored to .dresscode-inner's own
+     top edge (position:absolute, top:0) and needs to actually touch the
+     section's top boundary to read as "overlaid on top of the section", not
+     floating in a gap of plain cream background above it. */
+  padding: 0 0 56px;
+  display: flex;
+  justify-content: center;
+}
+
+.dresscode-inner {
+  /* Containing block for .dresscode-floral (position:absolute), so the image
+     spans exactly the 9:16 card's width, not the full section. */
+  position: relative;
+  width: 100%;
+  max-width: min(100vw, calc(100vh * 9 / 16));
+  max-width: min(100vw, calc(100dvh * 9 / 16));
+  padding: 0 24px;
+  text-align: center;
+}
+
+/* Full, uncropped image overlaid on top of the card. aspect-ratio (not a fixed
+   height) derives the box's height from bas.png's real proportions
+   (1024x643 -> 643/1024 = 0.6279) at whatever width the card actually renders,
+   so it's exact at every screen size instead of a single guessed px value. */
+.dresscode-floral {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0; /* above .dresscode-section's own background, below .dresscode-content */
+  aspect-ratio: 1024 / 643;
+  background-color: transparent;
+  background-image: url('../../assets/bas.png');
+  background-position: top center;
+  background-size: 100% auto; /* full image, no crop */
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* Sits above .dresscode-floral (z-index:0) despite coming first in visual
+   stacking terms — without this, the plain in-flow text would actually paint
+   BELOW the absolutely-positioned floral div by default CSS stacking rules
+   (positioned elements beat non-positioned ones regardless of z-index:auto),
+   the same trap that caused the calendar-over-envelope bug earlier in this
+   project. Explicit position+z-index here avoids it for good. */
+.dresscode-content {
+  position: relative;
+  z-index: 1;
+  /* Estimated to clear the bulk of the flower motif (concentrated in the
+     source image's own top ~35% — measured on its alpha channel) before the
+     title starts, while still letting the very top of the petals bleed over
+     the section's top edge. Needs visual confirmation, not derived from a
+     hard measurement like the aspect-ratio above. */
+  padding-top: clamp(190px, 48vw, 280px);
+}
+
+.dresscode-section .section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  color: var(--gold);
+}
+
+.dresscode-section .section-heading span {
+  width: 56px;
+  height: 1px;
+  background: rgba(184,148,42,0.35); /* whiteElegante used rgba(124,48,56,.26) (wine) — gold equivalent here */
+}
+
+.dresscode-section .section-heading p {
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  font-family: 'Jost', sans-serif;
+}
+
+.dresscode-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 9vw, 3.2rem);
+  line-height: 1;
+  color: var(--gold); /* whiteElegante: var(--wine) */
+}
+
+.dresscode-subtitle {
+  margin-top: 14px;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.6rem, 6vw, 2rem);
+  color: var(--gold); /* whiteElegante: var(--wine) */
+}
+
+.dresscode-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 28px 0 24px;
+}
+
+.dresscode-grid div {
+  padding: 22px 14px;
+  /* whiteElegante's card border was already gold-toned (rgba(147,109,40,.18)),
+     not wine — kept the same idea, derived from gardenwed's own --gold instead. */
+  border: 1px solid rgba(184,148,42,0.3);
+  background: rgba(255,255,255,0.5);
+  text-align: center;
+}
+
+.dresscode-grid h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+
+.dresscode-grid p {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  color: var(--mid);
+}
+
+.dresscode-section .small-caps {
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  font-family: 'Jost', sans-serif;
+  color: var(--mid);
+}
+
+.dresscode-section .swatches {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.dresscode-section .swatches span {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid rgba(68,44,45,0.12);
+}
+
+@media (max-width: 420px) {
+  .dresscode-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================
+   VENUE (structure copied from templates/whiteElegante/'s .venue-panel — see
+   chat for the original .map-preview/.text-link/.venue-tabs. Tabs dropped
+   (single venue), fake CSS map + dead href="#" replaced with a real embed +
+   real search link. Colors: whiteElegante's wine/burgundy -> gardenwed's gold.)
+   ============================================= */
+.venue-section {
+  isolation: isolate;
+  background-color: var(--ivory);
+  background-image:
+    radial-gradient(rgba(30,46,34,0.035) 1px, transparent 1px),
+    radial-gradient(rgba(30,46,34,0.025) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 2px 3px;
+  padding: 48px 24px 56px;
+  display: flex;
+  justify-content: center;
+}
+
+.venue-inner {
+  width: 100%;
+  max-width: min(100vw, calc(100vh * 9 / 16));
+  max-width: min(100vw, calc(100dvh * 9 / 16));
+  text-align: center;
+}
+
+.venue-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 9vw, 3.2rem);
+  line-height: 1;
+  color: var(--gold); /* whiteElegante: var(--wine) */
+  margin-bottom: 28px;
+}
+
+.venue-card {
+  padding: 22px 18px;
+  border: 1px solid rgba(184,148,42,0.3); /* same gold-toned border as .dresscode-grid div */
+  background: rgba(255,255,255,0.5);
+  text-align: center;
+}
+
+.venue-map {
+  height: 220px;
+  margin: -4px 0 20px;
+  overflow: hidden;
+  border: 1px solid rgba(184,148,42,0.25);
+}
+
+.venue-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.venue-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--dark);
+}
+
+.venue-card p {
+  margin-top: 8px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.9rem;
+  color: var(--mid);
+  line-height: 1.5;
+}
+
+.venue-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--gold); /* whiteElegante: var(--wine) */
+  text-decoration: none;
+  border-bottom: 1px solid rgba(184,148,42,0.4);
+}
+
+@media (max-width: 420px) {
+  .venue-map {
+    height: 190px;
+  }
+}
+
+/* =============================================
+   CLOSING (last section — illustration, calligraphy message, ornament)
+   ============================================= */
+.closing-section {
+  isolation: isolate;
+  background-color: var(--ivory);
+  background-image:
+    radial-gradient(rgba(30,46,34,0.035) 1px, transparent 1px),
+    radial-gradient(rgba(30,46,34,0.025) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 2px 3px;
+  /* Generous bottom padding: this is the last section, needs breathing room
+     before the actual end of the page rather than ending flush at the edge. */
+  padding: 48px 24px 96px;
+  display: flex;
+  justify-content: center;
+}
+
+.closing-inner {
+  width: 100%;
+  max-width: min(100vw, calc(100vh * 9 / 16));
+  max-width: min(100vw, calc(100dvh * 9 / 16));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Overlay container: illustration + text share this box so the text can be
+   positioned absolutely over the empty zone of the artwork. Sized here (not on
+   the <img> alone) so .closing-script's percentage-based position/width below
+   are relative to the same box as the image. */
+.closing-composition {
+  position: relative;
+  width: min(70%, 320px);
+  margin: 0 auto 20px;
+}
+
+.closing-illustration {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* finn1.png's real dimensions: 1024x1146. */
+  aspect-ratio: 1024 / 1146;
+  object-fit: contain;
+  /* finn1.png has a real alpha channel (confirmed) — no blend trick needed. */
+}
+
+/* Default (narrow screens): normal flow below the image — below 480px the
+   illustration itself is under ~320px wide, too narrow for the overlay box
+   to comfortably fit two readable lines, so text falls back to plain stacked
+   layout here. .closing-script-anchor has no positioning of its own in this
+   mode (static, in-flow), it only becomes the centering box above 480px. */
+.closing-script {
+  font-family: 'Great Vibes', cursive;
+  color: var(--gold);
+  line-height: 1.25;
+  margin: 16px 0 0;
+  text-align: center;
+}
+
+/* Above 480px: centered overlay on the empty zone measured on finn1.png's
+   alpha channel (see chat) — y 570-678 of 1146 is clear across the full
+   width, vertical center at 624/1146 = 54.5%. This positioning lives on
+   .closing-script-anchor, NOT on .closing-script itself, specifically so it
+   never has to share the `transform` property with .reveal-step's fade
+   animation on the same element (see the HTML comment for why that broke
+   centering before: higher-specificity .reveal-step rules were silently
+   discarding this translate(-50%,-50%)). */
+@media (min-width: 480px) {
+  .closing-script-anchor {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 72%;
+    transform: translate(-50%, -50%);
+  }
+
+  .closing-script {
+    margin: 0;
+  }
+}
+
+.closing-script-line {
+  display: block;
+  /* Smaller and lighter than the other titles on the page, for a more
+     delicate, pen-drawn feel as requested. Note: Great Vibes is loaded as a
+     single static weight — font-weight has no real thinning effect on it, so
+     "graisse" is reduced here purely through size, not a lighter weight. */
+  font-size: clamp(1.2rem, 4.6vw, 1.6rem);
+  background: linear-gradient(135deg, #C8A851 0%, #BEA84A 55%, #9D903E 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Same slight opposite-tilt technique as .intro-script-line-1/-2 in the
+   calendar section, for a consistent handwritten feel between the two. */
+.closing-script-line-1 {
+  transform: rotate(-2.5deg) translateX(-6px);
+}
+
+.closing-script-line-2 {
+  transform: rotate(1.5deg) translateX(10px);
+}
+
+/* Ornamental border image, full width of the 9:16 card, closing the section.
+   Replaces the SVG .closing-ornament entirely. */
+.closing-border {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1024 / 322;
+  object-fit: contain;
+  margin-top: 8px;
+}

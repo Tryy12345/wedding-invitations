@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitation au Mariage | Natasha & Alexei</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="video-wrap">
+      <video id="heroVideo" autoplay muted playsinline>
+        <source src="../../assets/blackwidow.mp4" type="video/mp4" />
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+    <div class="names-block" id="namesBlock">
+      <div class="names-inner">
+        <span class="name-top">Natasha</span>
+        <div class="ampersand-wrap">
+          <span class="ampersand">&amp;</span>
+          <div class="divider-line"></div>
+        </div>
+        <span class="name-bottom">Alexei</span>
+      </div>
+      <p class="tagline">Nous vous invitons à célébrer notre union</p>
+    </div>
+    <div class="scroll-hint" id="scrollHint">
+      <span>Découvrir</span>
+      <div class="scroll-arrow">
+        <svg viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="12" y1="0" x2="12" y2="30" stroke="currentColor" stroke-width="1"/>
+          <polyline points="6,24 12,32 18,24" stroke="currentColor" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION DATE -->
+  <section class="info-section date-section reveal">
+    <div class="web-left"></div>
+    <div class="content-block">
+      <p class="label-small">La cérémonie</p>
+      <h2 class="info-date">
+        <span class="day">Samedi</span>
+        <span class="number">14</span>
+        <span class="month">Juin 2025</span>
+      </h2>
+      <div class="gold-rule"></div>
+      <p class="info-time">à 17 h 00</p>
+    </div>
+    <div class="web-right"></div>
+  </section>
+
+  <!-- SECTION LIEU -->
+  <section class="info-section venue-section reveal">
+    <div class="deco-circle"></div>
+    <div class="deco-spider"></div>
+    <div class="content-block centered">
+      <p class="label-small">Le lieu</p>
+      <h2 class="venue-name">La Maison Rouge</h2>
+      <p class="venue-address">Avenue Habib Bourguiba, Tunis</p>
+      <div class="gold-rule short"></div>
+      <p class="venue-note">Réception & dîner de gala sur place</p>
+    </div>
+  </section>
+
+  <!-- GALERIE D'IMAGES AVEC CADRES & ANIMATION -->
+  <section class="gallery-section" id="gallery">
+    <div class="content-block centered" style="max-width:800px; margin:0 auto 3rem auto;">
+      <p class="label-small">Souvenirs précieux</p>
+      <div class="gold-rule short" style="margin: 1rem auto;"></div>
+      <p style="font-style:italic; font-family:var(--font-body); color:var(--text-light);">Quelques instants volés à l'éternité</p>
+    </div>
+    <div class="gallery-container">
+      <!-- Image 1 -->
+      <div class="framed-image" data-animate="tilt">
+        <div class="photo-frame">
+          <div class="inner-frame">
+            <img src="https://picsum.photos/id/152/600/450" alt="Les fiancés souriants" loading="lazy">
+          </div>
+        </div>
+        <div class="caption-wrapper"><div class="image-caption">Amour & lumière</div></div>
+      </div>
+      <!-- Image 2 -->
+      <div class="framed-image" data-animate="tilt">
+        <div class="photo-frame">
+          <div class="inner-frame">
+            <img src="https://picsum.photos/id/134/600/450" alt="Bouquet de mariée" loading="lazy">
+          </div>
+        </div>
+        <div class="caption-wrapper"><div class="image-caption">Fleurs d'antan</div></div>
+      </div>
+      <!-- Image 3 -->
+      <div class="framed-image" data-animate="tilt">
+        <div class="photo-frame">
+          <div class="inner-frame">
+            <img src="https://picsum.photos/id/153/600/450" alt="Coucher de soleil méditerranéen" loading="lazy">
+          </div>
+        </div>
+        <div class="caption-wrapper"><div class="image-caption">Douceur du soir</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MESSAGE SOMBRE / BLACK WIDOW THEME -->
+  <section class="info-section quote-section reveal">
+    <div class="quote-wrap">
+      <div class="quote-mark open">❧</div>
+      <p class="quote-text">
+        Dans l'ombre comme dans la lumière,<br />
+        nos âmes se sont trouvées —<br />
+        et rien ne pourra jamais les séparer.
+      </p>
+      <div class="quote-mark close">☙</div>
+      <p class="quote-attr">— Natasha & Alexei</p>
+    </div>
+  </section>
+
+  <!-- DRESS CODE -->
+  <section class="info-section dress-section reveal">
+    <div class="content-block centered">
+      <p class="label-small">Code vestimentaire</p>
+      <div class="dress-chips">
+        <span class="chip">Tenue de soirée</span>
+        <span class="chip">Noir & Rouge</span>
+        <span class="chip">Élégance fatale</span>
+      </div>
+      <div class="gold-rule short"></div>
+      <p class="dress-note">Une touche de rouge sera particulièrement appréciée</p>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="info-section rsvp-section reveal">
+    <div class="rsvp-inner">
+      <p class="label-small">Confirmer votre présence</p>
+      <h2 class="rsvp-title">RSVP</h2>
+      <p class="rsvp-deadline">avant le <strong>1er Juin 2025</strong></p>
+      <div class="gold-rule short"></div>
+      <a href="tel:+21612345678" class="rsvp-btn">
+        <span>Confirmer</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-monogram">N &amp; A</div>
+    <p class="footer-note">Avec tout notre amour — Natasha &amp; Alexei</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

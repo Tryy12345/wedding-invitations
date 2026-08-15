@@ -1,0 +1,125 @@
+s<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yasmine — Hammam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500&family=Playfair+Display:ital,wght@0,600;1,600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="hammam">
+
+  <div class="hm-intro" id="hmIntro" role="button" tabindex="0" aria-label="Appuyez pour ouvrir">
+    <div class="hm-curtain left"><img class="hm-handle" src="assets/handle.webp" alt="" aria-hidden="true" /></div>
+    <div class="hm-curtain right"><img class="hm-handle flip" src="assets/handle.webp" alt="" aria-hidden="true" /></div>
+    <div class="hm-intro-title"><span class="hm-intro-hint">Appuyez pour ouvrir</span></div>
+  </div>
+
+  <div class="hm-stage">
+
+    <header class="hm-hero">
+      <video class="hm-hero-video" src="assets/hero.mp4" autoplay muted loop playsinline></video>
+      <div class="hm-hero-overlay">
+        <span class="hm-hero-kicker">Hammam</span>
+        <h1 class="hm-hero-names">Yasmine</h1>
+      </div>
+      <div class="hm-hero-cue" aria-hidden="true"><span class="hm-chev"></span></div>
+    </header>
+
+    <section class="hm-panel hm-reveal" data-reveal>
+      <span class="hm-eyebrow" data-reveal>Vous êtes invité(e)</span>
+      <div class="hm-celebrate" id="hmCelebrate">
+        <div class="hm-under">
+          <span class="hm-u-label">Ambiance hammam uniquement</span>
+          <span class="hm-u-big">22 Août 2026</span>
+          <span class="hm-u-mini">17:00</span>
+          <span class="hm-u-tag">Détente • Éclat • Répète</span>
+        </div>
+        <button type="button" class="hm-foil" id="hmFoil" aria-label="Appuyez pour célébrer et révéler la date">
+          <span class="hm-foil-ico" aria-hidden="true">✦</span>
+          <span class="hm-foil-cap">Appuyez pour célébrer</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="hm-count" data-reveal>
+      <img class="hm-count-bg" src="assets/countdown.svg" alt="" aria-hidden="true" />
+      <div class="hm-count-inner">
+        <div class="hm-count-grid">
+          <div class="hm-count-cell"><span class="hm-count-num" id="cdDays">00</span><span class="hm-count-lbl">Jours</span></div>
+          <div class="hm-count-cell"><span class="hm-count-num" id="cdHours">00</span><span class="hm-count-lbl">Heures</span></div>
+          <div class="hm-count-cell"><span class="hm-count-num" id="cdMinutes">00</span><span class="hm-count-lbl">Minutes</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hm-art">
+      <img class="hm-art-img" src="assets/block.webp" alt="" aria-hidden="true" />
+    </section>
+
+    <section class="hm-panel hm-timeline" data-reveal>
+      <span class="hm-eyebrow" data-reveal>Déroulement de la soirée</span>
+      <h2 class="hm-script" data-reveal>Programme</h2>
+      <ol class="hm-tl-list" data-reveal>
+        <li class="hm-tl-row"><span class="hm-tl-time">17:00</span><span class="hm-tl-dot" aria-hidden="true"></span><span class="hm-tl-title">Bienvenue au hammam</span></li>
+        <li class="hm-tl-row"><span class="hm-tl-time">18:00</span><span class="hm-tl-dot" aria-hidden="true"></span><span class="hm-tl-title">Rituel &amp; henné</span></li>
+        <li class="hm-tl-row"><span class="hm-tl-time">19:30</span><span class="hm-tl-dot" aria-hidden="true"></span><span class="hm-tl-title">Dîner</span></li>
+        <li class="hm-tl-row"><span class="hm-tl-time">21:00</span><span class="hm-tl-dot" aria-hidden="true"></span><span class="hm-tl-title">Musique &amp; danse</span></li>
+        <li class="hm-tl-row"><span class="hm-tl-time">23:00</span><span class="hm-tl-dot" aria-hidden="true"></span><span class="hm-tl-title">Clôture de la soirée</span></li>
+      </ol>
+    </section>
+
+    <section class="hm-panel hm-venue" data-reveal>
+      <span class="hm-eyebrow" data-reveal>Le lieu</span>
+      <h2 class="hm-venue-name hm-script" data-reveal>Hammam El Bey</h2>
+      <p class="hm-venue-addr" data-reveal>Hammam El Bey, Tunis, Tunisie</p>
+      <div class="hm-map" data-reveal>
+        <div class="hm-map-frame">
+          <iframe title="Map to Hammam El Bey, Tunis, Tunisie" src="https://maps.google.com/maps?q=Hammam%20El%20Bey%2C%20Tunis%2C%20Tunisie&output=embed" width="100%" height="320" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p class="hm-map-caption">Hammam El Bey, Tunis, Tunisie</p>
+      </div>
+    </section>
+
+    <section class="hm-panel hm-rsvp" data-reveal>
+      <span class="hm-eyebrow" data-reveal>Serez-vous des nôtres&#160;?</span>
+      <h2 class="hm-script" data-reveal>Merci de répondre</h2>
+      <div class="hm-rsvp-wrap" data-reveal>
+        <form class="hm-rsvp-form" novalidate>
+          <p class="hm-field-label">Serez-vous présent(e)&#160;? <span class="req">*</span></p>
+          <div class="hm-choice-row">
+            <button type="button" class="hm-choice" data-choice="yes"><span class="dot"></span><span>Oui, avec plaisir</span></button>
+            <button type="button" class="hm-choice" data-choice="no"><span class="dot"></span><span>Désolé(e), je ne peux pas</span></button>
+          </div>
+          <label class="hm-field-label" for="rsvp-name">Nom complet <span class="req">*</span></label>
+          <input id="rsvp-name" type="text" placeholder="Votre nom complet" required />
+          <button type="submit" class="hm-submit">Confirmer</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="hm-closing">
+      <img class="hm-closing-bg" src="assets/closing.webp" alt="" aria-hidden="true" />
+      <div class="hm-closing-inner">
+        <span class="hm-closing-kicker">Hammam</span>
+        <div class="hm-closing-couple hm-script">Yasmine</div>
+        <div class="hm-closing-date">22 Août 2026</div>
+      </div>
+    </section>
+
+  </div>
+
+  <canvas class="hm-burst" id="hmBurst" aria-hidden="true"></canvas>
+  <audio id="hmAudio" src="assets/music.mp3" loop preload="auto"></audio>
+  <button type="button" class="hm-music" id="hmMusic" aria-pressed="false" aria-label="Jouer la musique">
+    <span class="ring"></span>
+    <span aria-hidden="true">►</span>
+  </button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

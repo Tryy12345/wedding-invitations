@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ahmed &amp; Sarra — Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="iv">
+
+  <div class="iv-intro" id="ivIntro" role="button" tabindex="0" aria-label="Appuyez pour ouvrir">
+    <img class="iv-intro-bg" src="assets/envelope.jpeg" alt="" aria-hidden="true" />
+    <div class="iv-topbar">
+      <button type="button" class="iv-pill iv-sound-pill" id="ivSoundToggle" aria-label="Son">🔊</button>
+    </div>
+    <div class="iv-intro-hint">Appuyez pour ouvrir</div>
+    <button type="button" class="iv-skip" id="ivSkip">Passer</button>
+  </div>
+
+  <div class="iv-doc" id="ivDoc">
+
+    <header class="iv-hero">
+      <video class="iv-hero-video" src="assets/hero.mp4" autoplay muted loop playsinline></video>
+      <div class="iv-hero-scrim"></div>
+      <div class="iv-topbar">
+        <button type="button" class="iv-pill iv-sound-pill" id="ivSoundToggle2" aria-label="Son">🔊</button>
+      </div>
+      <div class="iv-hero-content">
+        <h1 class="iv-hero-names">
+          <span class="nm">Ahmed</span>
+          <span class="amp">&amp;</span>
+          <span class="nm">Sarra</span>
+        </h1>
+        <div class="iv-hero-date">27 Juillet 2027</div>
+      </div>
+      <div class="iv-cue" aria-hidden="true"><span class="iv-chev"></span></div>
+    </header>
+
+    <section class="iv-sec" data-reveal>
+      <h2 class="iv-script">Votre présence</h2>
+      <p class="iv-verse" dir="rtl">﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً﴾</p>
+      <div class="iv-photo-frame">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Ahmed et Sarra" />
+      </div>
+    </section>
+
+    <section class="iv-sec" data-reveal>
+      <h2 class="iv-script sm">Compte à rebours</h2>
+      <p class="iv-accent-label">Jusqu'à notre mariage</p>
+      <div class="iv-countdown">
+        <div class="iv-cd-cell"><span class="v" id="cdDays">00</span><span class="l">Jours</span></div>
+        <div class="iv-cd-cell"><span class="v" id="cdHours">00</span><span class="l">Heures</span></div>
+        <div class="iv-cd-cell"><span class="v" id="cdMinutes">00</span><span class="l">Minutes</span></div>
+        <div class="iv-cd-cell"><span class="v" id="cdSeconds">00</span><span class="l">Secondes</span></div>
+      </div>
+    </section>
+
+    <section class="iv-sec" data-reveal>
+      <h2 class="iv-script sm">Séance photo</h2>
+      <p class="iv-accent-label">Avant que le plus bel voyage ne commence</p>
+      <div class="iv-gallery">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80" alt="" />
+        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="" />
+        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" alt="" />
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="" />
+      </div>
+    </section>
+
+    <section class="iv-sec" data-reveal>
+      <h2 class="iv-script sm">Événements</h2>
+      <div class="iv-events">
+        <div class="iv-event-card">
+          <span class="d">14 Juillet</span>
+          <h3>Fiançailles</h3>
+          <p>Chez les parents de la mariée, à partir de 18h00</p>
+        </div>
+        <div class="iv-event-card">
+          <span class="d">26 Juillet</span>
+          <h3>Henné</h3>
+          <p>Soirée traditionnelle, à partir de 20h00</p>
+        </div>
+        <div class="iv-event-card">
+          <span class="d">27 Juillet</span>
+          <h3>Cérémonie de mariage</h3>
+          <p>La Corniche, Bizerte, à partir de 19h00</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="iv-sec" data-reveal>
+      <div class="iv-venue-card">
+        <h2 class="iv-script sm">Le lieu</h2>
+        <div class="iv-venue-rule"></div>
+        <div class="iv-venue-name">Salle Les Oliviers</div>
+        <div class="iv-venue-addr">Route de la Corniche, Bizerte, Tunisie</div>
+        <a class="iv-btn-outline" href="https://maps.google.com/?q=La%20Corniche%2C%20Bizerte%2C%20Tunisie" target="_blank" rel="noopener noreferrer">Voir l'itinéraire</a>
+      </div>
+    </section>
+
+    <section class="iv-sec iv-sec-dark" data-reveal>
+      <h2 class="iv-script sm light">Programme du jour</h2>
+      <ol class="iv-timeline">
+        <li><span class="t">18:00</span><span class="ttl">Arrivée des invités</span></li>
+        <li><span class="t">19:00</span><span class="ttl">Cérémonie</span></li>
+        <li><span class="t">20:30</span><span class="ttl">Dîner</span></li>
+        <li><span class="t">22:00</span><span class="ttl">Pièce montée &amp; toasts</span></li>
+        <li><span class="t">23:00</span><span class="ttl">Danse &amp; célébration</span></li>
+      </ol>
+    </section>
+
+    <section class="iv-sec" data-reveal>
+      <h2 class="iv-script sm">À propos de la célébration</h2>
+      <div class="iv-faq">
+        <details class="iv-faq-item" open>
+          <summary>Dois-je confirmer ma présence&#160;?</summary>
+          <p>Oui, merci de répondre avant le 10 juillet 2027 via le formulaire ci-dessous.</p>
+        </details>
+        <details class="iv-faq-item">
+          <summary>Puis-je venir accompagné&#160;?</summary>
+          <p>Merci de préciser le nombre de personnes lors de votre confirmation.</p>
+        </details>
+        <details class="iv-faq-item">
+          <summary>Y a-t-il un code vestimentaire&#160;?</summary>
+          <p>Tenue élégante souhaitée — voir la section « Code vestimentaire » plus bas.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="iv-sec" data-reveal>
+      <h2 class="iv-script sm">Confirmer ma présence</h2>
+      <p class="iv-accent-label">Merci de nous dire si vous serez des nôtres</p>
+      <div class="iv-rsvp-card">
+        <form class="iv-rsvp-form" novalidate>
+          <p class="iv-field-label">Serez-vous présent&#160;? <span class="req">*</span></p>
+          <div class="iv-choice-row">
+            <button type="button" class="iv-choice" data-choice="yes"><span class="dot"></span><span>Oui, avec plaisir</span></button>
+            <button type="button" class="iv-choice" data-choice="no"><span class="dot"></span><span>Désolé, je ne peux pas</span></button>
+          </div>
+          <label class="iv-field-label" for="rsvp-name">Nom complet <span class="req">*</span></label>
+          <input id="rsvp-name" type="text" placeholder="Votre nom complet" required />
+          <button type="submit" class="iv-submit">Confirmer</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="iv-sec" data-reveal>
+      <h2 class="iv-script sm">Transport &amp; parking</h2>
+      <p class="iv-accent-label">Comment venir</p>
+      <p class="iv-body-text">Un parking gratuit est disponible sur place. Une navette partira de l'hôtel Jalta à 18h30.</p>
+    </section>
+
+    <section class="iv-sec iv-sec-dark" data-reveal>
+      <div class="iv-dark-card">
+        <h2 class="iv-script sm light">Activités</h2>
+        <div class="iv-venue-rule light"></div>
+        <p>Piste de danse, photobooth et animation musicale toute la soirée.</p>
+      </div>
+    </section>
+
+    <section class="iv-sec" data-reveal>
+      <h2 class="iv-script sm">Hébergement</h2>
+      <p class="iv-accent-label">Où loger</p>
+      <p class="iv-body-text">Nous avons réservé un tarif préférentiel à l'Hôtel Jalta, Bizerte. Mentionnez le mariage Ahmed &amp; Sarra lors de votre réservation.</p>
+      <h2 class="iv-script sm" style="margin-top:40px">Code vestimentaire</h2>
+      <p class="iv-body-text">Tenue de soirée élégante. Couleurs suggérées : bordeaux, or, ivoire.</p>
+    </section>
+
+    <section class="iv-sec iv-sec-dark" data-reveal>
+      <div class="iv-dark-card">
+        <h2 class="iv-script sm light">Menu</h2>
+        <div class="iv-venue-rule light"></div>
+        <ul class="iv-menu-list">
+          <li><span class="course">Entrée</span>Salade méditerranéenne</li>
+          <li><span class="course">Plat</span>Méchoui d'agneau &amp; couscous royal</li>
+          <li><span class="course">Dessert</span>Pièce montée &amp; mignardises</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="iv-sec" data-reveal>
+      <h2 class="iv-script sm">Liste de mariage</h2>
+      <p class="iv-accent-label">Votre présence est notre plus beau cadeau</p>
+      <p class="iv-body-text">Pour ceux qui souhaitent nous offrir un présent, une cagnotte est disponible sur demande.</p>
+    </section>
+
+    <section class="iv-sec" data-reveal>
+      <h2 class="iv-script sm">Notes importantes</h2>
+      <ul class="iv-notes">
+        <li>Merci d'arriver 20 minutes en avance</li>
+        <li>Merci de garder votre confirmation à portée de main</li>
+        <li>Événement en extérieur — une tenue adaptée est recommandée</li>
+      </ul>
+    </section>
+
+    <section class="iv-closing" data-reveal>
+      <h2 class="iv-script">Merci</h2>
+      <p>Nous sommes tellement reconnaissants de partager ce jour avec vous.</p>
+      <div class="iv-closing-couple">Ahmed &amp; Sarra</div>
+      <div class="iv-closing-date">27 Juillet 2027</div>
+      <p class="iv-made">Fait avec amour</p>
+    </section>
+
+  </div>
+
+  <audio id="ivAudio" src="assets/music.mp3" loop preload="auto"></audio>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

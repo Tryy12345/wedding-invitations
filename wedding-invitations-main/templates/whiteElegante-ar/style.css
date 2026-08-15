@@ -1,0 +1,141 @@
+:root {
+  --script: 'Aref Ruqaa', 'Amiri', serif;
+  --serif: 'Amiri', Georgia, serif;
+  --body: 'Noto Naskh Arabic', Arial, sans-serif;
+}
+
+body.arabic-version {
+  direction: rtl;
+  font-family: var(--body);
+}
+
+.arabic-version .eyebrow,
+.arabic-version .small-caps,
+.arabic-version .section-heading p,
+.arabic-version .date,
+.arabic-version .wedding-label,
+.arabic-version .row-kicker,
+.arabic-version .countdown-grid span {
+  letter-spacing: 0;
+}
+
+.arabic-version .hero-names h1 {
+  font-family: var(--script);
+  font-size: clamp(2.85rem, 11vw, 4.15rem);
+}
+
+.arabic-version .hero-names h1 em {
+  color: var(--gold-deep);
+  font-family: var(--serif);
+}
+
+.arabic-version .date {
+  font-family: var(--body);
+  text-transform: none;
+}
+
+.arabic-version .wedding-label {
+  font-family: var(--serif);
+}
+
+.arabic-version .serif-title,
+.arabic-version .script-subtitle,
+.arabic-version .list-row h3,
+.arabic-version .list-row p,
+.arabic-version .dress-grid h3,
+.arabic-version .venue-card h3 {
+  font-family: var(--serif);
+}
+
+.arabic-invite-panel {
+  aspect-ratio: 913 / 1723;
+  display: block;
+  padding: 0;
+  background: url("../../assets/white-elegante-ar-invitation.jpg") center / cover no-repeat;
+}
+
+.arabic-invite-panel::before,
+.arabic-invite-panel::after {
+  display: none;
+}
+
+.arabic-name-fields {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  color: #5b2024;
+  pointer-events: none;
+}
+
+.groom-name,
+.bride-name {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  margin: 0;
+  font-family: var(--script);
+  font-size: clamp(2rem, 8vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.12;
+  color: var(--wine);
+  text-align: center;
+}
+
+.groom-name {
+  top: 48.5%;
+}
+
+.bride-name {
+  top: 61.2%;
+}
+
+.arabic-version .countdown-panel .serif-title {
+  font-family: var(--serif);
+  white-space: normal;
+}
+
+.arabic-version .countdown-grid {
+  direction: ltr;
+}
+
+.arabic-version .countdown-grid span {
+  direction: rtl;
+  font-family: var(--body);
+  text-transform: none;
+  font-size: 0.82rem;
+}
+
+.arabic-version .schedule-row.right,
+.arabic-version .schedule-row.left {
+  text-align: right;
+}
+
+.arabic-version .schedule-row.right .row-kicker,
+.arabic-version .schedule-row.right h3,
+.arabic-version .schedule-row.right p {
+  justify-self: start;
+  text-align: right;
+}
+
+.arabic-version .schedule-row.left .row-kicker,
+.arabic-version .schedule-row.left h3,
+.arabic-version .schedule-row.left p {
+  justify-self: end;
+  text-align: right;
+}
+
+.arabic-version .venue-tabs {
+  direction: rtl;
+}
+
+.arabic-party-panel {
+  aspect-ratio: 1448 / 1086;
+  background-image: url("../../assets/white-elegante-final-message-ar.png");
+}
+
+@media (max-width: 420px) {
+  .groom-name,
+  .bride-name {
+    font-size: 2.15rem;
+  }
+}

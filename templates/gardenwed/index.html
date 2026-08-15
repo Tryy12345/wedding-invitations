@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garden Wedding — Sophia & Liam</title>
+  <link rel="stylesheet" href="gardenwed-style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ========== SCREEN 1: ENVELOPE ========== -->
+  <div class="screen" id="screenEnv">
+
+    <div class="bg-petals" id="bgPetals"></div>
+
+    <div class="env-scene">
+
+      <p class="env-eyebrow">— Une invitation spéciale —</p>
+
+      <div class="env-wrap" id="envWrap">
+
+        <!-- Flap top -->
+        <div class="env-flap" id="envFlap">
+          <div class="flap-tri"></div>
+          <div class="flap-deco">🌸 🌿 🌺</div>
+        </div>
+
+        <!-- Body -->
+        <div class="env-body">
+          <div class="env-diag-l"></div>
+          <div class="env-diag-r"></div>
+
+          <!-- Wax seal -->
+          <div class="env-seal" id="envSeal">
+            <div class="seal-ring"></div>
+            <span class="seal-icon">🌸</span>
+          </div>
+
+          <!-- Letter peek -->
+          <div class="letter-peek" id="letterPeek">
+            <span class="lp-name">Sophia</span>
+            <span class="lp-amp">&</span>
+            <span class="lp-name">Liam</span>
+          </div>
+        </div>
+
+        <div class="env-bot-l"></div>
+        <div class="env-bot-r"></div>
+      </div>
+
+      <button class="open-btn" id="openBtn" onclick="openEnvelope()">
+        Ouvrir l'invitation &nbsp;🌸
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ========== SCREEN 2: VIDEO PHONE ========== -->
+  <div class="screen hidden" id="screenVideo">
+
+    <!-- Soft garden background -->
+    <div class="garden-bg"></div>
+
+    <!-- Floating petals -->
+    <div class="float-petals" id="floatPetals"></div>
+
+    <!-- Top text -->
+    <p class="vid-eyebrow" id="vidEyebrow">— Sophia &amp; Liam —</p>
+
+    <!-- Phone frame -->
+    <div class="phone-outer" id="phoneOuter">
+
+      <!-- Decorative corners -->
+      <div class="deco-corner dc-tl">🌸</div>
+      <div class="deco-corner dc-tr">🌸</div>
+      <div class="deco-corner dc-bl">🌿</div>
+      <div class="deco-corner dc-br">🌿</div>
+
+      <!-- Gold border ring -->
+      <div class="phone-ring"></div>
+
+      <!-- Phone body -->
+      <div class="phone-body">
+        <!-- Notch -->
+        <div class="phone-notch"></div>
+
+        <!-- VIDEO -->
+        <video
+          id="weddingVideo"
+          class="phone-video"
+          autoplay
+          muted
+          playsinline
+          preload="metadata"
+          poster="../../assets/gardenwedding-poster.jpg"
+        >
+          <source src="../../assets/gardenwedding.mp4" type="video/mp4">
+        </video>
+
+        <!-- Unmute button -->
+        <button class="unmute-btn" id="unmuteBtn" onclick="toggleSound()">
+          🔇 Son
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Bottom text -->
+    <p class="vid-footer" id="vidFooter">14 · 06 · 2025</p>
+
+  </div>
+
+  <script>
+    // ===== BACKGROUND PETALS (envelope screen) =====
+    const symbols = ['🌸','🌺','🍃','🌿'];
+    const bgP = document.getElementById('bgPetals');
+    for (let i = 0; i < 16; i++) {
+      const s = document.createElement('span');
+      s.textContent = symbols[i % symbols.length];
+      s.style.cssText = `
+        left:${Math.random()*100}%;
+        animation-duration:${6+Math.random()*8}s;
+        animation-delay:${Math.random()*7}s;
+        font-size:${0.7+Math.random()*1.2}rem;
+        opacity:${0.12+Math.random()*0.2};
+      `;
+      bgP.appendChild(s);
+    }
+
+    // ===== FLOATING PETALS (video screen) =====
+    const floatP = document.getElementById('floatPetals');
+    for (let i = 0; i < 14; i++) {
+      const s = document.createElement('span');
+      s.textContent = symbols[i % symbols.length];
+      s.style.cssText = `
+        left:${Math.random()*100}%;
+        animation-duration:${7+Math.random()*9}s;
+        animation-delay:${Math.random()*8}s;
+        font-size:${0.6+Math.random()*1.1}rem;
+        opacity:${0.1+Math.random()*0.2};
+      `;
+      floatP.appendChild(s);
+    }
+
+    // ===== ENVELOPE OPEN SEQUENCE =====
+    function openEnvelope() {
+      const btn      = document.getElementById('openBtn');
+      const seal     = document.getElementById('envSeal');
+      const flap     = document.getElementById('envFlap');
+      const letter   = document.getElementById('letterPeek');
+      const envWrap  = document.getElementById('envWrap');
+      const sEnv     = document.getElementById('screenEnv');
+      const sVid     = document.getElementById('screenVideo');
+      const video    = document.getElementById('weddingVideo');
+
+      btn.disabled = true;
+      btn.style.opacity = '0';
+      btn.style.transform = 'translateY(8px)';
+
+      // Step 1 — seal disappears
+      seal.classList.add('seal-gone');
+
+      // Step 2 — flap opens
+      setTimeout(() => flap.classList.add('open'), 400);
+
+      // Step 3 — letter rises
+      setTimeout(() => letter.classList.add('risen'), 950);
+
+      // Step 4 — envelope exits
+      setTimeout(() => envWrap.classList.add('env-exit'), 1600);
+      setTimeout(() => sEnv.classList.add('fade-out'), 1800);
+
+      // Step 5 — video screen enters
+      setTimeout(() => {
+        sEnv.classList.add('hidden');
+        sVid.classList.remove('hidden');
+        sVid.classList.add('screen-enter');
+
+        // play video
+        video.muted = true;
+        video.play().catch(() => {});
+
+        // animate elements in
+        setTimeout(() => document.getElementById('vidEyebrow').classList.add('visible'), 300);
+        setTimeout(() => document.getElementById('phoneOuter').classList.add('visible'), 500);
+        setTimeout(() => document.getElementById('vidFooter').classList.add('visible'),  900);
+
+      }, 2300);
+    }
+
+    // ===== AUDIO DETECTION (show unmute button only if the video actually has sound) =====
+    // #unmuteBtn is hidden by default (see .unmute-btn CSS). GardenWedding.mp4 currently
+    // has no audio track, but a sound version may replace it later — this detects that
+    // automatically so nobody has to touch this code when the file changes.
+    // There is no single cross-browser way to know if a <video> has an audio track, so
+    // we OR together the three known signals (Firefox / Chrome-Safari / W3C AudioTrackList).
+    // webkitAudioDecodedByteCount is still 0 right at 'loadedmetadata' (nothing decoded
+    // yet), so we re-check again on 'playing'. Once a check succeeds we reveal the button
+    // and stop — we never hide it back. If nothing is ever conclusive, it stays hidden:
+    // better no button than a dead one.
+    (function () {
+      const video = document.getElementById('weddingVideo');
+      const unmuteBtn = document.getElementById('unmuteBtn');
+      if (!video || !unmuteBtn) return;
+
+      function hasAudioTrack() {
+        const mozAudio = video.mozHasAudio === true;
+        const webkitAudio = typeof video.webkitAudioDecodedByteCount === 'number' && video.webkitAudioDecodedByteCount > 0;
+        const w3cAudio = !!(video.audioTracks && video.audioTracks.length > 0);
+        return mozAudio || webkitAudio || w3cAudio;
+      }
+
+      function revealButtonIfAudio() {
+        if (hasAudioTrack()) unmuteBtn.classList.add('has-audio');
+      }
+
+      video.addEventListener('loadedmetadata', revealButtonIfAudio);
+      video.addEventListener('playing', revealButtonIfAudio);
+    })();
+
+    // ===== SOUND TOGGLE =====
+    let muted = true;
+    function toggleSound() {
+      const video = document.getElementById('weddingVideo');
+      const btn   = document.getElementById('unmuteBtn');
+      muted = !muted;
+      video.muted = muted;
+      btn.textContent = muted ? '🔇 Son' : '🔊 Son';
+    }
+  </script>
+
+</body>
+</html>

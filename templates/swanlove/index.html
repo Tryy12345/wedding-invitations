@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swan Love — Save the Date</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@200;300;400&family=Great+Vibes&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="swanlove-style.css">
+  <!-- Same four families already loaded by templates/gardenwed — no new fonts added. -->
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@200;300;400&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Plumes qui tombent en continu sur toute la page -->
+  <div class="feather-fall" aria-hidden="true">
+    <img src="../../p1.png" class="feather feather-1">
+    <img src="../../p2.png" class="feather feather-2">
+    <img src="../../p3.png" class="feather feather-3">
+    <img src="../../p4.png" class="feather feather-4">
+    <img src="../../p2.png" class="feather feather-5">
+    <img src="../../p1.png" class="feather feather-6">
+  </div>
+
+  <div class="stage">
+
+    <!-- ========== SCREEN 1 — ACCUEIL ========== -->
+    <div class="screen" id="screenHome">
+
+      <div class="home-content" id="homeContent">
+
+        <p class="eyebrow">Nous vous invitons</p>
+
+        <div class="swans-row" id="swansRow" role="img" aria-label="Deux cygnes blancs affrontés dont les cous forment un cœur">
+          <img src="../../gauche.png" class="swan swan-left" id="swanLeft" alt="" loading="lazy" width="753" height="1024">
+          <img src="../../droite.png" class="swan swan-right" id="swanRight" alt="" loading="lazy" width="782" height="1024">
+        </div>
+
+        <p class="home-message">
+          Vous comptez énormément pour nous et, en ce jour,<br>
+          nous serions très heureux de vous compter parmi nous
+        </p>
+
+        <a href="#screenDate" class="open-btn" id="openBtn" onclick="openInvite(event)">
+          <span>Ouvrir</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ========== SCREEN 2 — SAVE THE DATE ========== -->
+    <div class="screen screen-date hidden" id="screenDate">
+
+      <!-- Same feather overlay as screen 1. -->
+      <img src="../../assets/plume-gauche.png" class="plume plume-left" alt="" aria-hidden="true" loading="lazy" width="657" height="1536">
+      <img src="../../assets/plume-droite.png" class="plume plume-right" alt="" aria-hidden="true" loading="lazy" width="970" height="1536">
+      <img class="plume plume-left-bottom" src="../../assets/plume-gauche.png" alt="" aria-hidden="true">
+      <img class="plume plume-right-bottom" src="../../assets/plume-droite.png" alt="" aria-hidden="true">
+
+      <div class="date-content">
+
+        <p class="eyebrow">Nous vous invitons</p>
+
+        <div class="date-stack">
+          <div class="date-numbers" aria-hidden="true">
+            <span>17</span>
+            <span>07</span>
+            <span>26</span>
+          </div>
+          <p class="date-script">
+            <span class="script-line script-save">Save the</span>
+            <span class="script-line script-date">Date</span>
+          </p>
+          <p class="sr-only">17 juillet 2026 — Save the Date</p>
+        </div>
+
+        <!-- PLACEHOLDER — remplacer par les vrais prénoms avant publication -->
+        <p class="names">Emna<br>Aziz</p>
+
+        <!-- PLACEHOLDER — monogramme à ajuster selon les initiales réelles -->
+        <p class="monogram" aria-hidden="true">E&amp;A</p>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========== SECTION: FAMILY (reached by scrolling past screen 2) ========== -->
+  <!-- Own copy of the plume.jpg texture as background (see CSS) rather than
+       continuing the plume-left/right feather overlay from the screens — see
+       chat for why. -->
+  <section class="family-section" id="familySection">
+    <div class="family-inner">
+
+      <div class="family-title-stack reveal-step">
+        <p class="family-title">Chers invités&nbsp;!</p>
+      </div>
+
+      <p class="family-text reveal-step">
+        Très bientôt aura lieu un événement qui compte énormément pour nous — nous allons devenir…
+      </p>
+
+      <p class="family-accent reveal-step">une Famille&nbsp;!</p>
+
+      <p class="family-text reveal-step">
+        Nous souhaitons vivre cette journée si particulière entourés des personnes qui nous sont les plus chères et les plus précieuses.
+      </p>
+
+      <p class="family-text reveal-step">
+        C'est avec une immense joie que nous vous invitons à notre mariage&nbsp;!
+      </p>
+
+    </div>
+  </section>
+
+ <!-- ========== SECTION: CALENDAR (mois de juillet, 17 mis en avant) ========== -->
+<!-- ========== SECTION: CALENDAR (mois de juillet, 17 mis en avant) ========== -->
+<section class="calendar-section" id="calendarSection">
+  <div class="calendar-inner">
+
+    <p class="calendar-month reveal-step">Juillet</p>
+
+    <div class="calendar-grid reveal-step">
+      <div class="calendar-days">
+        <span>Lun</span>
+        <span>Mar</span>
+        <span>Mer</span>
+        <span>Jeu</span>
+        <span>Ven</span>
+        <span>Sam</span>
+        <span>Dim</span>
+      </div>
+      <div class="calendar-dates">
+        <span class="date-cell">13</span>
+        <span class="date-cell">14</span>
+        <span class="date-cell">15</span>
+        <span class="date-cell">16</span>
+        <span class="date-cell date-cell--highlight">
+          <img src="../../cygne.png" alt="" class="date-swan" aria-hidden="true">
+          <span class="date-swan-number">17</span>
+        </span>
+        <span class="date-cell">18</span>
+        <span class="date-cell">19</span>
+      </div>
+    </div>
+
+    <img src="../../chateau.png" alt="Château du lieu de réception" class="calendar-venue reveal-step">
+
+  </div>
+</section>
+
+
+<!-- ========== SECTION: TIMING (programme du jour) ========== -->
+<section class="timing-section" id="timingSection">
+  <div class="timing-inner">
+
+    <div class="timing-title-stack reveal-step">
+      <p class="timing-title">Programme du jour</p>
+      <p class="timing-script" aria-hidden="true">Timing</p>
+    </div>
+
+    <div class="timing-event reveal-step">
+      <p class="timing-hour">14:05</p>
+      <p class="timing-label">Mairie</p>
+      <p class="timing-text">Vous serez témoins de la naissance d'une nouvelle famille — la nôtre.</p>
+    </div>
+
+    <div class="timing-event reveal-step">
+      <p class="timing-hour">16:00</p>
+      <p class="timing-label">Banquet</p>
+      <p class="timing-text">Place aux bons plats, à la danse et aux festivités.</p>
+    </div>
+
+    <div class="timing-event reveal-step">
+      <p class="timing-hour">21:00</p>
+      <p class="timing-label">Gâteau</p>
+      <p class="timing-text">Une douce tradition à laquelle on ne peut résister.</p>
+    </div>
+
+    <div class="timing-event reveal-step">
+      <p class="timing-hour">23:00</p>
+      <p class="timing-label timing-label--script">Fin de soirée</p>
+      <p class="timing-text">Hélas, même la plus belle des soirées doit se terminer.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ========== SECTION: LOCATION ========== -->
+<section class="location-section" id="locationSection">
+  <div class="location-inner">
+
+    <p class="location-script reveal-step" aria-hidden="true">Location</p>
+
+    <p class="location-venue reveal-step">« LE DOMAINE DES ROSE »</p>
+
+    <p class="location-address reveal-step">Route de Gammarth, La Marsa, Tunis</p>
+
+    <a href="https://maps.google.com/?q=Le+Domaine+des+Roses+La+Marsa+Tunis" target="_blank" rel="noopener" class="location-btn reveal-step">
+      <span>Voir sur la carte</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ========== SECTION: MOT AUX INVITÉS (cadre plumes) ========== -->
+<section class="envelope-section" id="envelopeSection">
+  <div class="envelope-frame">
+    <img src="../../env.png" alt="" class="envelope-bg" aria-hidden="true">
+    <div class="envelope-content reveal-step">
+      <p class="envelope-script" aria-hidden="true">With love</p>
+      <p class="envelope-text">
+        Le plus beau chapitre de notre histoire<br>
+         commence aujourd'hui.
+      </p>
+      <p class="envelope-text">
+       Merci de partager ce moment de bonheur avec nous<br>
+       
+      </p>
+      <p class="envelope-signature">Emna &amp; Aziz</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION: DRESS CODE ========== -->
+<section class="dresscode-section" id="dresscodeSection">
+  <div class="dresscode-inner">
+
+    <div class="dresscode-title-stack reveal-step">
+      <p class="dresscode-title">Tenue</p>
+      <p class="dresscode-script" aria-hidden="true">Dress code</p>
+    </div>
+
+    <p class="dresscode-text reveal-step">
+      Nous avons mis tout notre cœur à préparer une fête à notre image, et nous serions ravis que vous accordiez vos tenues à notre palette de couleurs.
+    </p>
+
+    <p class="dresscode-text reveal-step">
+      Chères invitées, nous vous demandons d'éviter le blanc — cette couleur est réservée à la mariée en ce jour.
+    </p>
+
+    <p class="dresscode-text reveal-step">
+      Messieurs, une chemise blanche est toujours la bienvenue.
+    </p>
+
+    <div class="dresscode-swatches reveal-step">
+      <span class="swatch swatch--olive"></span>
+      <span class="swatch swatch--mauve"></span>
+      <span class="swatch swatch--blush"></span>
+      <span class="swatch swatch--nude"></span>
+      <span class="swatch swatch--gold"></span>
+    </div>
+
+    <a href="#" class="dresscode-btn reveal-step">
+      <span>Voir les tenues</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ========== SECTION: COUNTDOWN (Nous dirons OUI dans...) ========== -->
+<section class="countdown-section" id="countdownSection">
+  <div class="countdown-inner">
+
+    <div class="countdown-title-stack reveal-step">
+      <p class="countdown-title">Nous dirons</p>
+      <p class="countdown-script" aria-hidden="true">Oui dans</p>
+    </div>
+
+    <div class="countdown-timer reveal-step" id="countdownTimer">
+      <div class="countdown-unit">
+        <span class="countdown-number" id="cdDays">00</span>
+        <span class="countdown-label">Jours</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="cdHours">00</span>
+        <span class="countdown-label">Heures</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="cdMinutes">00</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="cdSeconds">00</span>
+        <span class="countdown-label">Secondes</span>
+      </div>
+    </div>
+
+    <div class="countdown-swans reveal-step" role="img" aria-label="Deux cygnes blancs affrontés dont les cous forment un cœur">
+      <img src="../../gauche.png" class="countdown-swan countdown-swan-left" alt="" loading="lazy">
+      <img src="../../droite.png" class="countdown-swan countdown-swan-right" alt="" loading="lazy">
+    </div>
+
+  </div>
+</section>
+
+  <script>
+  // ===== OPEN ANIMATION: swans exit outward + fade, then screen 2 fades in =====
+  let inviteOpened = false;
+  function openInvite(event) {
+    event.preventDefault();
+    if (inviteOpened) return;
+    inviteOpened = true;
+
+    const screenHome = document.getElementById('screenHome');
+    const screenDate = document.getElementById('screenDate');
+
+    screenHome.classList.add('leaving');
+    screenDate.classList.remove('hidden');
+
+    document.body.classList.add('scroll-unlocked');
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => screenDate.classList.add('entering'));
+    });
+
+    setTimeout(() => screenHome.classList.add('hidden'), 1600);
+  }
+
+  // ===== FAMILY SECTION — fade-in on scroll =====
+  (function () {
+    const steps = document.querySelectorAll('.reveal-step');
+    if (!steps.length || !('IntersectionObserver' in window)) return;
+
+    document.body.classList.add('js-ready');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.18,
+      rootMargin: '0px 0px -48px 0px'
+    });
+
+    steps.forEach((el, i) => {
+      el.style.transitionDelay = `${Math.min(i * 90, 360)}ms`;
+      observer.observe(el);
+    });
+  })();
+
+  // ===== COUNTDOWN — Nous dirons Oui dans... (jusqu'au 17 juillet 2026, 14:05) =====
+  (function () {
+    const targetDate = new Date('2027-07-17T14:05:00');
+    const elDays = document.getElementById('cdDays');
+    const elHours = document.getElementById('cdHours');
+    const elMinutes = document.getElementById('cdMinutes');
+    const elSeconds = document.getElementById('cdSeconds');
+    if (!elDays || !elHours || !elMinutes || !elSeconds) return;
+    function updateCountdown() {
+      const now = new Date();
+      let diff = targetDate - now;
+      if (diff <= 0) {
+        elDays.textContent = '00';
+        elHours.textContent = '00';
+        elMinutes.textContent = '00';
+        elSeconds.textContent = '00';
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      elDays.textContent = String(days).padStart(2, '0');
+      elHours.textContent = String(hours).padStart(2, '0');
+      elMinutes.textContent = String(minutes).padStart(2, '0');
+      elSeconds.textContent = String(seconds).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  })();
+</script>
+
+</body>
+</html>

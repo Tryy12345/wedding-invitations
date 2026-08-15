@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garden Wedding — Sophia & Liam</title>
+  <link rel="stylesheet" href="gardenwed-style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@200;300;400&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ========== SCREEN 1: ENVELOPE ========== -->
+  <div class="screen" id="screenEnv">
+
+    <div class="bg-petals" id="bgPetals"></div>
+
+    <div class="env-scene">
+
+      <div class="env-video-wrap" id="envVideoWrap">
+        <video
+          id="envelopeVideo"
+          class="envelope-video"
+          playsinline
+          preload="auto"
+        >
+          <source src="../../assets/Garden%20Wedding.mp4" type="video/mp4">
+        </video>
+
+        <div class="env-tap-hint" id="envTapHint">
+          <span class="tap-ring"></span>
+          <span class="tap-dot"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== FLASH TRANSITION ========== -->
+  <div class="flash-overlay" id="flashOverlay"></div>
+
+  <!-- ========== SCREEN 2: DESIGN VIDEO (full screen) ========== -->
+  <div class="screen hidden" id="screenVideo">
+
+    <div class="design-video-wrap" id="designVideoWrap">
+      <video
+        id="designVideo"
+        class="design-video"
+        autoplay
+        muted
+        playsinline
+        preload="metadata"
+        poster="../../assets/gardenwedding-poster.jpg"
+      >
+        <source src="../../assets/gardenwedding.mp4" type="video/mp4">
+      </video>
+
+      <!-- Unmute button -->
+      <button class="unmute-btn" id="unmuteBtn" onclick="toggleSound()">
+        🔇 Son
+      </button>
+    </div>
+
+    <a class="scroll-cue" href="#invitationIntro" aria-label="Découvrir la suite">
+      <span class="scroll-chevron"></span>
+    </a>
+
+  </div>
+
+  <!-- ========== SECTION: INVITATION INTRO ========== -->
+  <section class="intro-section" id="invitationIntro">
+    <div class="intro-inner">
+
+      <img
+        src="../../assets/oiseaux.png"
+        alt="Illustration de deux oiseaux affrontés, symbole d'union et de fidélité"
+        class="intro-birds"
+        loading="lazy"
+        width="1586"
+        height="992"
+      >
+
+      <svg class="intro-ornament" viewBox="0 0 240 32" role="img" aria-hidden="true">
+        <g fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round">
+          <path d="M120 16 C 108 4, 90 4, 80 16 C 70 28, 52 28, 42 16" />
+          <path d="M42 16 C 34 16, 28 10, 20 10 C 12 10, 6 16, 2 16" />
+          <circle cx="120" cy="16" r="3" fill="var(--gold)" stroke="none" />
+          <g transform="translate(240,0) scale(-1,1)">
+            <path d="M120 16 C 108 4, 90 4, 80 16 C 70 28, 52 28, 42 16" />
+            <path d="M42 16 C 34 16, 28 10, 20 10 C 12 10, 6 16, 2 16" />
+          </g>
+        </g>
+      </svg>
+
+      <h2 class="intro-script">
+        <span class="intro-script-line intro-script-line-1">À tous ceux</span>
+        <span class="intro-script-line intro-script-line-2">qui nous sont chers</span>
+      </h2>
+
+      <p class="intro-text">
+        C'est avec une immense joie que nous vous invitons à partager l'un des plus beaux
+        jours de notre vie. Très bientôt, nous nous dirons «&nbsp;oui&nbsp;» et unirons nos
+        vies et nos cœurs. Votre présence rendra ce moment encore plus précieux.
+      </p>
+
+      <div class="intro-calendar">
+        <p class="calendar-month">Août 2026</p>
+
+        <div class="calendar-grid" role="table" aria-label="Calendrier du mois d'août 2026">
+          <span class="cal-head" role="columnheader">LUN</span>
+          <span class="cal-head" role="columnheader">MAR</span>
+          <span class="cal-head" role="columnheader">MER</span>
+          <span class="cal-head" role="columnheader">JEU</span>
+          <span class="cal-head" role="columnheader">VEN</span>
+          <span class="cal-head" role="columnheader">SAM</span>
+          <span class="cal-head" role="columnheader">DIM</span>
+
+          <span class="cal-empty" role="cell"></span>
+          <span class="cal-empty" role="cell"></span>
+          <span class="cal-empty" role="cell"></span>
+          <span class="cal-empty" role="cell"></span>
+          <span class="cal-empty" role="cell"></span>
+          <span class="cal-day" role="cell">1</span>
+          <span class="cal-day" role="cell">2</span>
+
+          <span class="cal-day" role="cell">3</span>
+          <span class="cal-day" role="cell">4</span>
+          <span class="cal-day" role="cell">5</span>
+          <span class="cal-day" role="cell">6</span>
+          <span class="cal-day" role="cell">7</span>
+          <span class="cal-day" role="cell">8</span>
+          <span class="cal-day" role="cell">9</span>
+
+          <span class="cal-day" role="cell">10</span>
+          <span class="cal-day" role="cell">11</span>
+          <span class="cal-day" role="cell">12</span>
+          <span class="cal-day" role="cell">13</span>
+          <span class="cal-day" role="cell">14</span>
+          <span class="cal-day cal-day--marked" role="cell">
+            <!-- Image placed before the digit in DOM/paint order on purpose, but that
+                 alone isn't enough to guarantee stacking (see .cal-day-number below) —
+                 kept for consistency/readability of the source. -->
+            <img src="../../assets/coeur.png" alt="" aria-hidden="true" class="cal-heart">
+            <span class="cal-day-number">15</span>
+          </span>
+          <span class="cal-day" role="cell">16</span>
+
+          <span class="cal-day" role="cell">17</span>
+          <span class="cal-day" role="cell">18</span>
+          <span class="cal-day" role="cell">19</span>
+          <span class="cal-day" role="cell">20</span>
+          <span class="cal-day" role="cell">21</span>
+          <span class="cal-day" role="cell">22</span>
+          <span class="cal-day" role="cell">23</span>
+
+          <span class="cal-day" role="cell">24</span>
+          <span class="cal-day" role="cell">25</span>
+          <span class="cal-day" role="cell">26</span>
+          <span class="cal-day" role="cell">27</span>
+          <span class="cal-day" role="cell">28</span>
+          <span class="cal-day" role="cell">29</span>
+          <span class="cal-day" role="cell">30</span>
+
+          <span class="cal-day" role="cell">31</span>
+          <span class="cal-empty" role="cell"></span>
+          <span class="cal-empty" role="cell"></span>
+          <span class="cal-empty" role="cell"></span>
+          <span class="cal-empty" role="cell"></span>
+          <span class="cal-empty" role="cell"></span>
+          <span class="cal-empty" role="cell"></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== SECTION: FRAMED MESSAGE ========== -->
+  <section class="message-section" id="messageSection">
+    <div class="message-inner">
+      <div class="message-frame">
+        <span class="message-script">Avec amour</span>
+        <p class="message-text">
+          Parce que les plus beaux instants de la vie se vivent avec ceux que l'on
+          aime, nous serions profondément touchés de vous compter parmi nous.
+          Ensemble, écrivons une nouvelle page de notre histoire et partageons une
+          journée remplie d'amour, de bonheur et d'instants précieux qui resteront
+          gravés dans nos cœurs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION: PROGRAM (schedule of the day) ========== -->
+  <section class="program-section" id="programSection">
+    <div class="program-inner" id="programInner">
+
+      <div class="program-header">
+        <span class="program-month">Août</span>
+        <img
+          src="../../assets/papillon.png"
+          alt="Illustration décorative d'un papillon"
+          class="program-butterfly"
+          id="programButterfly"
+          loading="lazy"
+          width="1024"
+          height="1024"
+        >
+      </div>
+
+      <div class="program-timeline" id="programTimeline">
+        <!-- Copied as-is from templates/whiteElegante/index.html (.plant-vine /
+             .vine-stem / .leaf-*), only the color (var(--green), already gardenwed's
+             own theme green) differs — see CSS. -->
+        <div class="plant-vine" aria-hidden="true">
+          <span class="vine-stem"></span>
+          <span class="leaf leaf-1"></span>
+          <span class="leaf leaf-2"></span>
+          <span class="leaf leaf-3"></span>
+          <span class="leaf leaf-4"></span>
+          <span class="leaf leaf-5"></span>
+          <span class="leaf leaf-6"></span>
+        </div>
+
+        <article class="program-step right reveal-step" data-step-index="0">
+          <img
+            src="../../assets/bague.png"
+            alt="Illustration d'une alliance"
+            class="program-icon art-left"
+            loading="lazy"
+            width="1024"
+            height="1024"
+          >
+          <div class="program-step-text">
+            <p class="program-time">14h30</p>
+            <p class="program-label">Cérémonie</p>
+          </div>
+        </article>
+
+        <article class="program-step left reveal-step" data-step-index="1">
+          <img
+            src="../../assets/verres.png"
+            alt="Illustration de deux coupes pour le cocktail"
+            class="program-icon art-right"
+            loading="lazy"
+            width="1536"
+            height="1024"
+          >
+          <div class="program-step-text">
+            <p class="program-time">16h00</p>
+            <p class="program-label">Cocktail</p>
+          </div>
+        </article>
+
+        <article class="program-step right reveal-step" data-step-index="2">
+          <img
+            src="../../assets/assiette.png"
+            alt="Illustration d'une assiette dressée pour le banquet"
+            class="program-icon art-left"
+            loading="lazy"
+            width="1536"
+            height="1024"
+          >
+          <div class="program-step-text">
+            <p class="program-time">17h00</p>
+            <p class="program-label">Banquet</p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== SECTION: DRESS CODE ========== -->
+  <!-- Structure copied from templates/whiteElegante/ (.dress-panel), see chat for
+       the exact original. .dress-blueflowers -> our bas.png bleed border;
+       colors adapted to gardenwed's gold/green palette instead of whiteElegante's
+       wine/burgundy. -->
+  <section class="dresscode-section" id="dresscodeSection">
+    <div class="dresscode-inner">
+      <!-- Full image, uncropped, overlaid on top of the card — height derives
+           from its real aspect ratio (1024x643) via aspect-ratio, not a fixed
+           px value, so it stays exact at any card width. Transparent/cut-out
+           source (confirmed), so no mask or fade needed: petals sit directly
+           on .dresscode-section's cream background. -->
+      <div class="dresscode-floral" aria-hidden="true"></div>
+
+      <div class="dresscode-content">
+        <div class="section-heading reveal-step">
+          <span></span>
+          <p>Code vestimentaire</p>
+          <span></span>
+        </div>
+
+        <h2 class="dresscode-title reveal-step">Code vestimentaire</h2>
+        <p class="dresscode-subtitle reveal-step">Semi-formel</p>
+
+        <div class="dresscode-grid reveal-step">
+          <div>
+            <h3>Femmes</h3>
+            <p>Robe cocktail</p>
+          </div>
+          <div>
+            <h3>Hommes</h3>
+            <p>Costume &amp; cravate</p>
+          </div>
+        </div>
+
+        <p class="small-caps reveal-step">Couleurs suggérées :</p>
+        <div class="swatches reveal-step" aria-hidden="true">
+          <span style="background:var(--ivory)"></span>
+          <span style="background:var(--green-light)"></span>
+          <span style="background:var(--pink-light)"></span>
+          <span style="background:var(--gold)"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION: VENUE ========== -->
+  <!-- Structure copied from templates/whiteElegante/'s .venue-panel (see chat for
+       the original) — tabs (Jour 1/Jour 2) dropped, single venue only. Map/link
+       replaced entirely: whiteElegante's .map-preview is a fake CSS drawing and
+       its link is href="#" (dead) — real Google Maps embed + real search link here.
+       PLACEHOLDER CONTENT: venue name/address below are invented, replace with
+       the real venue before publishing. -->
+  <section class="venue-section" id="venueSection">
+    <div class="venue-inner">
+      <div class="section-heading reveal-step">
+        <span></span>
+        <p>Lieu</p>
+        <span></span>
+      </div>
+      <h2 class="venue-title reveal-step">Lieu</h2>
+
+      <div class="venue-card reveal-step">
+        <div class="venue-map">
+          <iframe
+            src="https://maps.google.com/maps?q=Domaine+des+Oliviers%2C+Route+de+Sidi+Bou+Sa%C3%AFd%2C+2026+La+Marsa%2C+Tunisie&output=embed"
+            title="Carte de localisation — Domaine des Oliviers"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <h3>Domaine des Oliviers</h3>
+        <p>Route de Sidi Bou Saïd, 2026 La Marsa, Tunisie</p>
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Domaine+des+Oliviers%2C+Route+de+Sidi+Bou+Sa%C3%AFd%2C+2026+La+Marsa%2C+Tunisie"
+          class="venue-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Ouvrir dans Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION: CLOSING ========== -->
+  <!-- Rebuilt from two separate assets: finn1.png (couple illustration alone)
+       and finn2.png (ornamental border alone) — replaces the single fin.png +
+       hand-drawn SVG ornament used before. .closing-ornament (SVG) removed
+       entirely, along with whatever the earlier "thin wavy line" artifact was
+       (never identified in code — most likely was the SVG ornament itself,
+       mispositioned; it no longer exists either way). -->
+  <section class="closing-section" id="closingSection">
+    <div class="closing-inner">
+      <!-- .closing-composition: overlay container, illustration + text share
+           this box. Text centered over the empty zone measured on finn1.png's
+           alpha channel (see chat: y 570-678 of 1146, i.e. top:54.5%, is clear
+           across the full width). Below 480px the text drops back to normal
+           flow under the image — see the media query in the CSS. -->
+      <div class="closing-composition">
+        <img
+          src="../../assets/finn1.png"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          class="closing-illustration reveal-step"
+          width="1024"
+          height="1146"
+        >
+
+        <!-- Centering lives here (no .reveal-step) so it never competes with
+             the fade-in animation's own `transform` on .closing-script below —
+             two rules setting `transform` on the same element don't merge,
+             the higher-specificity one wins outright and silently discards
+             the other. Splitting them onto two elements avoids the conflict
+             entirely instead of trying to out-specificity it. -->
+        <div class="closing-script-anchor">
+          <h2 class="closing-script reveal-step">
+            <span class="closing-script-line closing-script-line-1">Avec tout notre amour</span>
+            <span class="closing-script-line closing-script-line-2">merci d'être des nôtres</span>
+          </h2>
+        </div>
+      </div>
+
+      <!-- Ornamental border, full width, last — replaces .closing-ornament (SVG). -->
+      <img
+        src="../../assets/finn2.png"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        class="closing-border reveal-step"
+        width="1024"
+        height="322"
+      >
+    </div>
+  </section>
+
+  <script>
+    // ===== BACKGROUND PETALS (envelope screen) =====
+    const symbols = ['🌸','🌺','🍃','🌿'];
+    const bgP = document.getElementById('bgPetals');
+    for (let i = 0; i < 16; i++) {
+      const s = document.createElement('span');
+      s.textContent = symbols[i % symbols.length];
+      s.style.cssText = `
+        left:${Math.random()*100}%;
+        animation-duration:${6+Math.random()*8}s;
+        animation-delay:${Math.random()*7}s;
+        font-size:${0.7+Math.random()*1.2}rem;
+        opacity:${0.12+Math.random()*0.2};
+      `;
+      bgP.appendChild(s);
+    }
+
+    // ===== ENVELOPE VIDEO + FLASH + DESIGN REVEAL =====
+    const envVideoWrap = document.getElementById('envVideoWrap');
+    const envelopeVideo = document.getElementById('envelopeVideo');
+    const envTapHint = document.getElementById('envTapHint');
+    let envelopeOpened = false;
+
+    function playEnvelopeVideo() {
+      if (envelopeOpened) return;
+      envelopeOpened = true;
+
+      envTapHint.classList.add('hidden');
+      envVideoWrap.classList.add('playing');
+
+      envelopeVideo.currentTime = 0;
+      envelopeVideo.play().catch(() => {});
+    }
+
+    envVideoWrap.addEventListener('click', playEnvelopeVideo);
+    envelopeVideo.addEventListener('ended', revealDesign);
+
+    function revealDesign() {
+      const flash = document.getElementById('flashOverlay');
+      const sEnv  = document.getElementById('screenEnv');
+      const sVid  = document.getElementById('screenVideo');
+      const video = document.getElementById('designVideo');
+
+      // Flash transition
+      flash.classList.add('flash-active');
+
+      setTimeout(() => {
+        sEnv.classList.add('hidden');
+        sVid.classList.remove('hidden');
+        sVid.classList.add('screen-enter');
+
+        // Scroll was locked (body overflow:hidden) while the envelope screen covered
+        // everything. Unlock it now so the intro section below becomes reachable.
+        document.body.classList.add('scroll-unlocked');
+
+        // play design video
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      }, 350);
+
+      setTimeout(() => flash.classList.remove('flash-active'), 700);
+    }
+
+    // ===== AUDIO DETECTION (show unmute button only if the video actually has sound) =====
+    // #unmuteBtn is hidden by default (see .unmute-btn CSS). No single cross-browser way to
+    // detect an audio track, so we OR the three known signals (Firefox / Chrome-Safari / W3C).
+    // webkitAudioDecodedByteCount is still 0 right at 'loadedmetadata', so we re-check on
+    // 'playing' too. Once true, we reveal the button and never hide it back — if nothing is
+    // ever conclusive it stays hidden: better no button than a dead one.
+    (function () {
+      const video = document.getElementById('designVideo');
+      const unmuteBtn = document.getElementById('unmuteBtn');
+      if (!video || !unmuteBtn) return;
+
+      function hasAudioTrack() {
+        const mozAudio = video.mozHasAudio === true;
+        const webkitAudio = typeof video.webkitAudioDecodedByteCount === 'number' && video.webkitAudioDecodedByteCount > 0;
+        const w3cAudio = !!(video.audioTracks && video.audioTracks.length > 0);
+        return mozAudio || webkitAudio || w3cAudio;
+      }
+
+      function revealButtonIfAudio() {
+        if (hasAudioTrack()) unmuteBtn.classList.add('has-audio');
+      }
+
+      video.addEventListener('loadedmetadata', revealButtonIfAudio);
+      video.addEventListener('playing', revealButtonIfAudio);
+    })();
+
+    // ===== SOUND TOGGLE =====
+    let muted = true;
+    function toggleSound() {
+      const video = document.getElementById('designVideo');
+      const btn   = document.getElementById('unmuteBtn');
+      muted = !muted;
+      video.muted = muted;
+      btn.textContent = muted ? '🔇 Son' : '🔊 Son';
+    }
+
+    // ===== PROGRAM TIMELINE — plant-vine + icon reveal, copied from whiteElegante =====
+    // Icons/text: safe-by-default like the rest of gardenwed (visible unless JS adds
+    // 'js-timeline-ready' — if this script never runs or throws, nothing is hidden).
+    // The vine itself (.plant-vine) intentionally keeps whiteElegante's own behavior
+    // as instructed — CSS-default scaleY(0), revealed only via .is-visible — same
+    // convention already used for it project-wide, not a new risk introduced here.
+    (function () {
+      const revealEls = document.querySelectorAll('.reveal-step');
+      const timeline = document.getElementById('programTimeline');
+
+      if (!revealEls.length && !timeline) return;
+
+      if (!('IntersectionObserver' in window)) {
+        revealEls.forEach((item) => item.classList.add('is-visible'));
+        if (timeline) timeline.classList.add('is-visible');
+        return;
+      }
+
+      document.body.classList.add('js-timeline-ready');
+
+      // ----- Icons/text: same IntersectionObserver + stagger pattern as whiteElegante's
+      // .reveal-on-scroll (threshold/rootMargin copied as-is). -----
+      if (revealEls.length) {
+        const stepObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            stepObserver.unobserve(entry.target);
+          });
+        }, {
+          threshold: 0.18,
+          rootMargin: '0px 0px -48px 0px'
+        });
+
+        revealEls.forEach((item, index) => {
+          item.style.transitionDelay = `${Math.min(index * 90, 360)}ms`;
+          stepObserver.observe(item);
+        });
+      }
+
+      // ----- Vine: copied verbatim from whiteElegante/script.js (plantObserver),
+      // same threshold/rootMargin, same .is-visible target on the timeline itself
+      // (triggers .vine-stem, .leaf-*, .plant-vine::after via the CSS copied below). -----
+      if (timeline) {
+        const plantObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            timeline.classList.add('is-visible');
+            plantObserver.unobserve(timeline);
+          });
+        }, {
+          threshold: 0.25,
+          rootMargin: '0px 0px -80px 0px'
+        });
+
+        plantObserver.observe(timeline);
+      }
+    })();
+  </script>
+
+</body>
+</html>

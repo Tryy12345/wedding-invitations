@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>دعوة زفاف | يوسف & أميرة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Scheherazade+New:wght@400;500;600;700&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet">  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════ -->
+  <!--  ENVELOPE SCREEN  -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="envelope-screen" id="envelopeScreen">
+    <div class="env-wrapper" id="envWrapper" onclick="openEnvelope()">
+      <div class="envelope" id="envelope">
+        <div class="env-back-left"></div>
+        <div class="env-back-right"></div>
+        <div class="env-back-bottom"></div>
+        <div class="env-flap" id="envFlap"></div>
+        <div class="wax-seal" id="waxSeal">
+          <div class="seal-ring"></div>
+          <div class="seal-inner"></div>
+        </div>
+        <div class="env-hint" id="envHint"><span>انقر لفتح الدعوة</span></div>
+      </div>
+      <div class="env-label"><span class="arabic-script">دعوة زفاف</span></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!--  MAIN INVITATION (hidden initially)   -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="invitation" id="invitation">
+
+    <!-- HERO – watercolor + new silhouette -->
+    <section class="hero-watercolor">
+      <div class="watercolor-bg"></div>
+      <div class="sky-wash"></div>
+      <div class="doves">
+        <div class="dove dove1">🕊</div>
+        <div class="dove dove2">🕊</div>
+      </div>
+      <div class="butterflies">
+        <div class="butterfly bf1">🦋</div>
+        <div class="butterfly bf2">🦋</div>
+        <div class="butterfly bf3">🦋</div>
+      </div>
+      <div class="floral-arch left">
+        <div class="branch-wrap">
+          <svg viewBox="0 0 200 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M180,500 Q160,400 140,320 Q120,240 100,180 Q80,120 40,40" stroke="#d4a0b0" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M150,420 Q130,380 110,350" stroke="#c8909a" stroke-width="2" fill="none"/>
+            <path d="M130,320 Q100,290 85,260" stroke="#c8909a" stroke-width="2" fill="none"/>
+            <path d="M110,220 Q90,195 75,170" stroke="#c8909a" stroke-width="2" fill="none"/>
+          </svg>
+          <div class="blooms">
+            <span class="bloom b1">🌸</span><span class="bloom b2">🌸</span><span class="bloom b3">🌺</span>
+            <span class="bloom b4">🌸</span><span class="bloom b5">🌸</span><span class="bloom b6">🌺</span>
+            <span class="bloom b7">🌸</span><span class="bloom b8">🌸</span><span class="bloom b9">🌸</span>
+          </div>
+        </div>
+      </div>
+      <div class="floral-arch right">
+        <div class="branch-wrap">
+          <svg viewBox="0 0 200 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M20,500 Q40,400 60,320 Q80,240 100,180 Q120,120 160,40" stroke="#d4a0b0" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M50,420 Q70,380 90,350" stroke="#c8909a" stroke-width="2" fill="none"/>
+            <path d="M70,320 Q100,290 115,260" stroke="#c8909a" stroke-width="2" fill="none"/>
+            <path d="M90,220 Q110,195 125,170" stroke="#c8909a" stroke-width="2" fill="none"/>
+          </svg>
+          <div class="blooms">
+            <span class="bloom b1">🌸</span><span class="bloom b2">🌸</span><span class="bloom b3">🌺</span>
+            <span class="bloom b4">🌸</span><span class="bloom b5">🌸</span><span class="bloom b6">🌺</span>
+            <span class="bloom b7">🌸</span><span class="bloom b8">🌸</span><span class="bloom b9">🌸</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Romantic Couple Silhouette Image (replaces previous balcony) -->
+      <div class="hero-couple-image" id="heroCoupleImage">
+        <img src="RomanticWeddingSilhouette.jpg" alt="يوسف وأميرة - صورة ظل رومانسية" loading="eager">
+      </div>
+
+      <div class="hero-text">
+        <p class="we-marry">نحن نتزوج</p>
+        <div class="gold-star">✦</div>
+        <h1 class="groom-name">يوسف</h1>
+        <div class="ampersand-wrap">
+          <span class="gold-star small">✦</span>
+          <span class="and-word">و</span>
+          <span class="gold-star small">✦</span>
+        </div>
+        <h1 class="bride-name">أميرة</h1>
+        <p class="invite-phrase">تشرّف بدعوتكم لحضور حفل زفافهما</p>
+      </div>
+    </section>
+<!-- ══════════════════════════════════════ -->
+<!--  ARABIC INVITATION CARD              -->
+<!-- ══════════════════════════════════════ -->
+<section class="invitation-card-section reveal">
+
+  <div class="invitation-card">
+
+    <div class="basmala-decoration">
+      بسم الله الرحمن الرحيم
+    </div>
+
+    <div class="card-line"></div>
+
+    <p class="invitation-text">
+      بالصلاة والسلام على أشرف المرسلين<br>
+      بعد أيامكم عاطر العيش، أزكى التحايا نتشرّف عائلتنا
+    </p>
+
+    <div class="couple-names">
+      <div class="parent-name">الأمير محمد بن علي</div>
+
+      <div class="and-symbol">و</div>
+
+      <div class="parent-name">الأميرة مريم بن عمر</div>
+    </div>
+
+    <div class="invite-box">
+      يدعوكم لتشريف حفل زفاف ابنهما
+    </div>
+
+    <div class="couple-large">
+      <span>يوسف</span>
+      <span class="gold-and">و</span>
+      <span>أميرة</span>
+    </div>
+
+  </div>
+
+</section>
+    <!-- SECTION DATE -->
+    <section class="info-section date-section reveal">
+      <div class="content-block centered">
+        <p class="label-small">حفل الزفاف</p>
+        <div class="date-divider"><span></span><span>أحيى على الفرح</span><span></span></div>
+        <h2 class="info-date"><span class="day">السبت</span><span class="number">14</span><span class="month">يونيو 2025</span></h2>
+        <div class="gold-rule"></div>
+        <p class="info-time">الساعة 17:00</p>
+        <p class="info-location">حفل ديني يعقبه حفل شاي الشرف</p>
+      </div>
+    </section>
+
+    <!-- SECTION VENUE -->
+    <section class="info-section venue-section reveal">
+      <div class="deco-circle"></div>
+      <div class="content-block centered">
+        <p class="label-small">المكان</p>
+        <div class="venue-icon">♡</div>
+        <h2 class="venue-name">قصر الأنوار</h2>
+        <p class="venue-address">طريق المرسى، تونس</p>
+        <div class="gold-rule short"></div>
+        <p class="venue-note">حفل استقبال وعشاء رسمي تحت النجوم</p>
+      </div>
+    </section>
+
+    <!-- SECTION MAP -->
+    <section class="info-section map-section reveal">
+      <div class="content-block centered">
+        <p class="label-small">كيف تجدنا</p>
+        <div class="flower-divider"><span>✿</span><span>❀</span><span>✿</span></div>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25555.075049508437!2d10.28037145!3d36.86650875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd2c5b9b7b7b7b%3A0x9b9b9b9b9b9b9b9b!2sLa%20Marsa%2C%20Tunis!5e0!3m2!1sfr!2stn!4v1700000000000!5m2!1sfr!2stn" width="100%" height="300" style="border:0;border-radius:20px;" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <p class="map-note">📍 قصر الأنوار - إطار ساحر لاتحادنا</p>
+        <a href="https://maps.google.com/?q=La+Marsa+Tunis" target="_blank" class="map-btn"><span>فتح في خرائط Google</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></a>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery-section">
+      <div class="content-block centered"><p class="label-small">قصتنا في صور</p><div class="flower-divider"><span>✿</span><span>❀</span><span>✿</span><span>❀</span><span>✿</span></div><p style="font-style:italic;color:var(--text-light);">لحظات من السعادة الخالصة</p></div>
+      <div class="gallery-container">
+        <div class="framed-image"><div class="photo-frame"><div class="inner-frame"><img src="https://picsum.photos/id/152/600/450" alt="العروسان" loading="lazy"></div></div><div class="image-caption">النظرة الأولى</div></div>
+        <div class="framed-image"><div class="photo-frame"><div class="inner-frame"><img src="https://picsum.photos/id/134/600/450" alt="باقة" loading="lazy"></div></div><div class="image-caption">زهور الحب</div></div>
+        <div class="framed-image"><div class="photo-frame"><div class="inner-frame"><img src="https://picsum.photos/id/153/600/450" alt="غروب" loading="lazy"></div></div><div class="image-caption">أبديّتنا</div></div>
+      </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="info-section quote-section reveal">
+      <div class="quote-wrap"><div class="petal-container"><span class="petal">🌸</span></div>
+      <p class="quote-text">الحب وردة رقيقة،<br/>لكنها تحتاج عمراً كاملاً لترى ازدهارها.<br/>ونحن في شوق لبدء هذا الأبد معكم.</p>
+      <p class="quote-attr">— يوسف & أميرة</p>
+      <div class="petal-container right"><span class="petal">🌷</span></div></div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="info-section dress-section reveal">
+      <div class="content-block centered"><p class="label-small">الزي المطلوب</p><div class="dress-chips"><span class="chip">زي سهرة</span><span class="chip">ألوان باستيل</span><span class="chip">الوردي المسحوق مرحّب</span></div><div class="gold-rule short"></div><p class="dress-note">الأناقة في النعومة — لمسة وردية ستكون رائعة</p></div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="info-section timeline-section reveal">
+      <div class="content-block centered"><p class="label-small">برنامج اليوم</p><div class="timeline"><div class="timeline-item"><div class="timeline-time">16:30</div><div class="timeline-event">استقبال الضيوف</div></div><div class="timeline-item"><div class="timeline-time">17:00</div><div class="timeline-event">حفل ديني</div></div><div class="timeline-item"><div class="timeline-time">18:30</div><div class="timeline-event">شاي الشرف</div></div><div class="timeline-item"><div class="timeline-time">20:30</div><div class="timeline-event">العشاء والحفل الراقص</div></div></div></div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="info-section rsvp-section reveal">
+      <div class="rsvp-inner"><p class="label-small">تأكيد الحضور</p><div class="heart-divider">❤︎</div><h2 class="rsvp-title">RSVP</h2><p class="rsvp-deadline">قبل <strong>1 يونيو 2025</strong></p><div class="gold-rule short"></div><a href="tel:+21612345678" class="rsvp-btn"><span>تأكيد الحضور</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><p class="rsvp-note">أو عبر الهاتف: +216 12 345 678</p></div>
+    </section>
+
+    <footer class="site-footer"><div class="footer-monogram">ي & أ</div><div class="footer-florals">✿ ❀ ✿</div><p class="footer-note">بكل محبتنا — يوسف & أميرة</p></footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

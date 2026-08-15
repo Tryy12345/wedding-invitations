@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Soumaya &amp; Marwen — Terracotta Rose</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Playfair+Display:ital,wght@0,500;1,500&family=Pinyon+Script&family=Jost:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="terracotta-rose">
+  <div class="tr-ambient"></div>
+
+  <div class="tr-intro" id="trIntro" role="button" tabindex="0" aria-label="Ouvrir l'invitation">
+    <div class="tr-leaf left"></div>
+    <div class="tr-leaf right"></div>
+    <img class="tr-tampon" src="assets/tampon.webp" alt="" aria-hidden="true" />
+    <div class="tr-intro-hint">Appuyez pour ouvrir</div>
+  </div>
+
+  <main class="tr-stage">
+
+    <section class="tr-title" data-observe="true">
+      <div class="tr-title-stage">
+        <video class="tr-title-art" src="assets/title.mp4" autoplay muted loop playsinline></video>
+        <div class="tr-title-names">
+          <span class="nm">Soumaya</span>
+          <span class="amp">&amp;</span>
+          <span class="nm">Marwen</span>
+        </div>
+      </div>
+      <div class="tr-title-fade"></div>
+      <div class="tr-title-cue"><span class="tr-chev"></span></div>
+    </section>
+
+    <section class="tr-date tr-grain" data-observe="true">
+      <div class="tr-sec-head">
+        <span class="tr-kicker" data-reveal>Réservez la date</span>
+        <h2 class="tr-script" data-reveal data-d="1">La Date</h2>
+      </div>
+      <p class="tr-scratch-note" data-reveal data-d="2">Grattez chaque carte pour révéler</p>
+      <div class="tr-date-cards" data-reveal data-d="2">
+        <div class="tr-dcard" data-scratch>
+          <div class="val">19</div>
+          <div class="lab">Jour</div>
+          <canvas></canvas>
+        </div>
+        <div class="tr-dcard" data-scratch>
+          <div class="val sm">Septembre</div>
+          <div class="lab">Mois</div>
+          <canvas></canvas>
+        </div>
+        <div class="tr-dcard" data-scratch>
+          <div class="val">2026</div>
+          <div class="lab">Année</div>
+          <canvas></canvas>
+        </div>
+      </div>
+      <div class="tr-date-foot">
+        <div class="tr-rule" style="margin-bottom:18px"></div>
+        <div class="tr-date-time">6:30 PM</div>
+        <div class="tr-fr tr-script">Vous êtes invité !</div>
+      </div>
+    </section>
+
+    <section class="tr-letter tr-grain" data-observe="true">
+      <div class="tr-letter-stage">
+        <div class="tr-lt-env">
+          <div class="tr-env-back"></div>
+          <div class="tr-env-flap"></div>
+          <div class="tr-lt-card">
+            <img class="tr-letter-emblem" src="assets/emblem.webp" alt="" aria-hidden="true" />
+            <div class="salut">Chers amis et famille,</div>
+            <p>Sous le soleil de fin d'été, nous unirons nos vies entourés de ceux que nous aimons. Votre présence rendrait ce jour plus lumineux encore.</p>
+            <div class="sig tr-script">Soumaya &amp; Marwen</div>
+          </div>
+          <div class="tr-env-pocket"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tr-sched tr-grain" data-observe="true">
+      <div class="tr-clouds" aria-hidden="true">
+        <div class="tr-cloud-l"></div>
+        <div class="tr-cloud-r"></div>
+      </div>
+      <div class="tr-sec-head">
+        <span class="tr-kicker sage" data-reveal>La soirée</span>
+        <h2 class="tr-script" data-reveal data-d="1">Programme de la soirée</h2>
+      </div>
+      <div class="tr-sched-body">
+        <div class="tr-timeline">
+          <div class="tr-tl-line"></div>
+          <div class="tr-tl-item"><span class="tr-tl-dot"></span><div class="t">19:00</div><div class="ttl">Accueil des invités</div></div>
+          <div class="tr-tl-item"><span class="tr-tl-dot"></span><div class="t">20:00</div><div class="ttl">Entrée des mariés</div></div>
+          <div class="tr-tl-item"><span class="tr-tl-dot"></span><div class="t">21:00</div><div class="ttl">Dîner</div></div>
+          <div class="tr-tl-item"><span class="tr-tl-dot"></span><div class="t">22:30</div><div class="ttl">Pièce montée &amp; toast</div></div>
+          <div class="tr-tl-item"><span class="tr-tl-dot"></span><div class="t">23:30</div><div class="ttl">Danse &amp; célébration</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tr-venue tr-grain" data-observe="true">
+      <div class="tr-sec-head">
+        <span class="tr-kicker" data-reveal>La célébration aura lieu à</span>
+      </div>
+      <div class="tr-venue-meta" data-reveal data-d="1">
+        <div class="name tr-script">Dar Zarrouk, Sidi Bou Saïd</div>
+        <div class="addr">Dar Zarrouk, Sidi Bou Saïd, Tunisie</div>
+        <a class="tr-btn-map" href="https://maps.google.com/?q=Dar%20Zarrouk%2C%20Sidi%20Bou%20Sa%C3%AFd%2C%20Tunisie" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.4"></circle></svg>
+          Voir l'itinéraire
+        </a>
+      </div>
+      <div class="tr-map">
+        <div class="tr-map-frame">
+          <iframe title="Map to Dar Zarrouk, Sidi Bou Saïd, Tunisie" src="https://maps.google.com/maps?q=Dar%20Zarrouk%2C%20Sidi%20Bou%20Sa%C3%AFd%2C%20Tunisie&output=embed" width="100%" height="320" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p class="tr-map-caption">Dar Zarrouk, Sidi Bou Saïd, Tunisie</p>
+      </div>
+    </section>
+
+    <section class="tr-attend tr-grain" data-observe="true">
+      <div class="tr-sec-head">
+        <span class="tr-kicker" data-reveal>Nous aimerions savoir</span>
+        <h2 class="tr-script" data-reveal data-d="1">Serez-vous des nôtres ?</h2>
+      </div>
+      <p class="tr-blessing" data-reveal data-d="2">Dites-nous si vous pourrez célébrer ce jour avec nous.</p>
+      <div class="tr-rsvp-card" data-reveal data-d="2">
+        <h3>Confirmer ma présence</h3>
+        <form class="tr-rsvp-form" novalidate>
+          <p class="tr-field-label">Serez-vous présent(e)&#160;? <span class="req">*</span></p>
+          <div class="tr-choice-row">
+            <button type="button" class="tr-choice" data-choice="yes"><span class="dot"></span><span>Oui, je serai présent(e)</span></button>
+            <button type="button" class="tr-choice" data-choice="no"><span class="dot"></span><span>Non, je ne pourrai pas venir</span></button>
+          </div>
+          <label class="tr-field-label" for="rsvp-name">Nom complet <span class="req">*</span></label>
+          <input id="rsvp-name" type="text" placeholder="Votre nom complet" required />
+          <button type="submit" class="tr-submit">Confirmer</button>
+        </form>
+      </div>
+      <div class="tr-rsvp-deadline" data-reveal data-d="3">Merci de répondre avant le 29 août 2026</div>
+    </section>
+
+    <section class="tr-closing" data-observe="true">
+      <span class="tr-kicker" data-reveal data-d="1">Avec tout notre amour</span>
+      <div class="tr-closing-blessing" data-reveal data-d="2">Votre présence est le plus beau des cadeaux.</div>
+      <div class="tr-closing-bye tr-script" data-reveal data-d="3">À très bientôt</div>
+      <div class="tr-closing-couple tr-script" data-reveal data-d="4">Soumaya &amp; Marwen</div>
+      <div class="tr-closing-date" data-reveal data-d="5">19 Septembre 2026</div>
+    </section>
+
+  </main>
+
+  <audio id="trAudio" src="assets/music.mp3" loop preload="auto"></audio>
+  <button type="button" class="tr-music" id="trMusic" aria-pressed="false" aria-label="Jouer la musique">
+    <span class="ring"></span>
+    <span aria-hidden="true">►</span>
+  </button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,914 @@
+/* ═══════════════════════════════════════════════════════
+   WHISPERING ROSES — Arabic Wedding Invitation
+   style.css (avec couche vidéo)
+═══════════════════════════════════════════════════════ */
+
+:root {
+  --cream:       #faf7f2;
+  --cream-warm:  #f5efe3;
+  --off-white:   #fdfcfa;
+  --gold:        #c9a86c;
+  --gold-light:  #e2c98a;
+  --gold-deep:   #a07840;
+  --rose:        #d4788a;
+  --text-dark:   #2c2118;
+  --text-mid:    #6b5c4a;
+  --text-light:  #a09080;
+  --charcoal:    #1a1410;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+html.video-locked {
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+  background: var(--cream);
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════
+   VIDEO LAYER (écran initial)
+═══════════════════════════════════════════════════════ */
+.video-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: #fdf8f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
+  opacity: 1;
+  visibility: visible;
+}
+
+.video-layer.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.video-layer.finished {
+  position: relative;
+  top: auto;
+  left: auto;
+  height: 100svh;
+  min-height: 600px;
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  scroll-snap-align: start;
+  transition: none;
+}
+
+.video-layer.finished .click-overlay {
+  display: none;
+}
+
+.video-layer.finished .video-names {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.video-layer.finished .video-instruction {
+  bottom: 3%;
+  color: rgba(255,255,255,0.9);
+  animation: finishedScrollHint 1.8s ease-in-out infinite;
+}
+
+.finished-scroll-arrow {
+  display: block;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+@keyframes finishedScrollHint {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.55; }
+  50%      { transform: translateX(-50%) translateY(7px); opacity: 1; }
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fdf8f9;
+}
+
+.video-container video {
+  width: 80%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+
+.click-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  background: rgba(0,0,0,0.3);
+  transition: opacity 0.5s ease;
+}
+
+.click-overlay.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.click-instruction {
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.5);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  backdrop-filter: blur(5px);
+}
+
+.click-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+}
+
+.click-instruction p {
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* Video names (appear after 2 seconds) */
+.video-names {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 15;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  background: rgba(0,0,0,0.4);
+  padding: 0.8rem 2rem;
+  border-radius: 60px;
+  backdrop-filter: blur(8px);
+  direction: rtl;
+}
+
+.video-names.show {
+  opacity: 1;
+}
+
+.video-groom, .video-bride {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  font-weight: 600;
+}
+
+.video-amp {
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  color: var(--gold-light);
+  margin: 0 0.5rem;
+}
+
+.video-instruction {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 15;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.7rem;
+  direction: rtl;
+}
+
+/* ═══════════════════════════════════════════════════════
+   MAIN WRAPPER (caché au début)
+═══════════════════════════════════════════════════════ */
+.main-wrapper {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.main-wrapper.visible {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════
+   SCREEN 1 — HERO / WATERCOLOR
+═══════════════════════════════════ */
+.screen-hero {
+  --hero-picture-width: min(80vw, calc(90vh * 0.56));
+  scroll-snap-align: start;
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  background: #fdf8f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--hero-picture-width);
+  aspect-ratio: 730 / 1304;
+  transform: translate(-50%, -50%);
+  background: url('image1.jpg') center center / cover no-repeat;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, transparent 62%, rgba(42,24,20,0.26) 100%);
+}
+
+.watercolor-scene {
+  display: none;
+}
+
+.scene-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+/* Birds */
+.birds {
+  display: none;
+}
+
+.bird {
+  position: absolute;
+  font-size: 1.2rem;
+  opacity: 0.7;
+  animation: fly 6s ease-in-out infinite;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+}
+.bird:nth-child(1) { top: 0;   left: 20%; animation-delay: 0s;   font-size: 0.9rem; }
+.bird:nth-child(2) { top: 15%; left: 55%; animation-delay: 1.5s; font-size: 1.1rem; }
+.bird:nth-child(3) { top: 5%;  left: 70%; animation-delay: 0.8s; font-size: 0.8rem; }
+.bird:nth-child(4) { top: 25%; left: 35%; animation-delay: 2s;   font-size: 0.7rem; }
+
+@keyframes fly {
+  0%, 100% { transform: translateY(0px)   rotate(-5deg); }
+  50%       { transform: translateY(-10px) rotate(5deg);  }
+}
+
+/* Names overlay */
+.hero-names {
+  position: absolute;
+  top: 50%;
+  right: auto;
+  left: 50%;
+  width: var(--hero-picture-width);
+  padding-left: 7%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  z-index: 10;
+  direction: rtl;
+}
+
+.groom-name-hero {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  color: #672d38;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.65);
+  line-height: 1.1;
+  font-weight: 700;
+  display: block;
+}
+
+.amp-hero {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  color: var(--rose);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.65);
+  display: block;
+  margin: 0.1rem 0;
+}
+
+.bride-name-hero {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  color: #672d38;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.65);
+  line-height: 1.1;
+  font-weight: 700;
+  display: block;
+}
+
+.hero-bottom-text {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+  width: 90%;
+}
+
+.hero-invite-line {
+  font-family: 'Cairo', sans-serif;
+  font-size: clamp(0.65rem, 2.5vw, 0.85rem);
+  color: #fffaf7;
+  text-shadow: 0 1px 7px rgba(35,15,14,0.7);
+  letter-spacing: 0.5px;
+  direction: rtl;
+}
+
+/* Scroll indicator */
+.scroll-down {
+  position: absolute;
+  bottom: 1.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.6;
+  animation: fadeInUp 1s 2s both;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 30px;
+  background: rgba(255,255,255,0.7);
+  animation: grow 1.5s ease-in-out infinite;
+}
+
+@keyframes grow {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to   { opacity: 0.6; transform: translateX(-50%) translateY(0); }
+}
+
+/* ═══════════════════════════════════
+   SCREEN 2 — NAMES / INVITATION
+═══════════════════════════════════ */
+.screen-names {
+  scroll-snap-align: start;
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.5rem 1.5rem 2rem;
+  overflow: hidden;
+}
+
+.screen-names::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%,   rgba(201,168,108,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(201,168,108,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.basmala {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  font-size: clamp(1.4rem, 5.5vw, 2rem);
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.blessing-text {
+  font-family: 'Cairo', sans-serif;
+  font-size: clamp(0.65rem, 2.5vw, 0.78rem);
+  color: var(--text-mid);
+  text-align: center;
+  line-height: 2;
+  max-width: 280px;
+  margin: 0 auto 1.5rem;
+}
+
+.thin-divider {
+  width: 60%;
+  max-width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  margin: 0.8rem auto;
+}
+
+.names-block {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.person-label {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+  color: var(--text-dark);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+}
+
+.wa-connector {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  color: var(--gold);
+  display: block;
+  margin: 0.3rem 0;
+}
+
+.invite-pill {
+  display: inline-block;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  padding: 0.4rem 1.5rem;
+  font-family: 'Cairo', sans-serif;
+  font-size: clamp(0.65rem, 2.5vw, 0.8rem);
+  color: var(--text-mid);
+  margin: 1rem auto;
+  background: transparent;
+}
+
+.big-names-bottom {
+  text-align: center;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.big-name-text {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  font-size: clamp(2.8rem, 11vw, 4.5rem);
+  color: var(--charcoal);
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.big-name-text .gold-w {
+  color: var(--gold);
+}
+
+.footer-small {
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.65rem;
+  color: var(--text-light);
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+}
+
+/* ═══════════════════════════════════
+   SCREEN 3 — DATE / TIME / COUNTDOWN
+═══════════════════════════════════ */
+.screen-date {
+  scroll-snap-align: start;
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  overflow: hidden;
+}
+
+.screen-date::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(201,168,108,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.date-block {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.date-tiny-label {
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.65rem;
+  color: var(--text-light);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.date-main {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  color: var(--charcoal);
+  font-weight: 600;
+}
+
+.date-separator-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--gold-light), transparent);
+  margin: 0 auto 2rem;
+}
+
+.time-block {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.time-tiny-label {
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.65rem;
+  color: var(--text-light);
+  letter-spacing: 2px;
+  margin-bottom: 0.3rem;
+}
+
+.time-main {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  color: var(--charcoal);
+  font-weight: 600;
+}
+
+/* "باقي على الفرح" separator */
+.countdown-label-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 320px;
+}
+
+.countdown-line-hr {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #ddd);
+}
+.countdown-line-hr.right {
+  background: linear-gradient(to left, transparent, #ddd);
+}
+
+.countdown-label-text {
+  font-family: 'Cairo', sans-serif;
+  font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+  color: var(--gold-deep);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* Arch countdown blocks */
+.countdown-arches {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  align-items: flex-end;
+  direction: ltr;
+}
+
+.arch-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.arch-shape {
+  position: relative;
+  width: clamp(70px, 22vw, 100px);
+  height: clamp(90px, 28vw, 130px);
+  background: var(--cream-warm);
+  border-radius: 50% 50% 12px 12px / 40% 40% 12px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 4px 15px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+  border: 1px solid rgba(201,168,108,0.15);
+}
+
+.arch-number {
+  font-family: 'Cairo', sans-serif;
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1;
+  direction: ltr;
+}
+
+.arch-unit {
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.65rem;
+  color: var(--text-light);
+  margin-top: 0.2rem;
+}
+
+/* ═══════════════════════════════════
+   SCREEN 4 — VENUE + MAP
+═══════════════════════════════════ */
+.screen-venue {
+  scroll-snap-align: start;
+  width: 100%;
+  min-height: 100svh;
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  gap: 1.5rem;
+}
+
+.section-ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--gold);
+  font-size: 0.9rem;
+  letter-spacing: 8px;
+}
+
+.venue-card {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  border: 1px solid rgba(201,168,108,0.25);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.6);
+  width: 100%;
+  max-width: 320px;
+}
+
+.venue-icon-wrap {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.venue-name-big {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  color: var(--rose);
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.venue-address-small {
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.map-iframe-wrap {
+  width: 100%;
+  max-width: 340px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.map-iframe-wrap iframe {
+  width: 100%;
+  height: 200px;
+  border: 0;
+  display: block;
+}
+
+.map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--gold);
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.map-btn:hover {
+  background: var(--gold-deep);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════
+   SCREEN 5 — BLESSING + RSVP
+═══════════════════════════════════ */
+.screen-blessing {
+  scroll-snap-align: start;
+  width: 100%;
+  min-height: 100svh;
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.big-quote {
+  font-family: 'Amiri', serif;
+  font-size: 3rem;
+  color: var(--gold-light);
+  line-height: 0.5;
+}
+
+.blessing-arab {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  font-size: clamp(0.95rem, 3.5vw, 1.15rem);
+  color: var(--text-dark);
+  line-height: 2;
+  max-width: 300px;
+}
+
+.closing-arab {
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-mid);
+}
+
+.roses-row {
+  font-size: 1.4rem;
+  letter-spacing: 0.5rem;
+}
+
+.rsvp-card {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(201,168,108,0.2);
+  border-radius: 20px;
+  padding: 1.2rem 1.5rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.rsvp-heading {
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.8rem;
+  color: var(--gold-deep);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.rsvp-btn-row {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+}
+
+.btn-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--gold);
+  color: #fff;
+  padding: 0.5rem 1.1rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #25D366;
+  color: #fff;
+  padding: 0.5rem 1.1rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-call:hover, .btn-wa:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.rsvp-deadline {
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.65rem;
+  color: var(--text-light);
+}
+
+.rsvp-deadline strong {
+  color: var(--rose);
+}
+
+/* Footer */
+.site-footer {
+  padding: 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(201,168,108,0.15);
+}
+
+.footer-flowers {
+  font-size: 0.7rem;
+  color: var(--rose);
+  letter-spacing: 4px;
+  margin-bottom: 0.4rem;
+}
+
+.footer-msg {
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.65rem;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+/* ═══════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.10s; }
+.reveal-delay-2 { transition-delay: 0.20s; }
+.reveal-delay-3 { transition-delay: 0.35s; }
+.reveal-delay-4 { transition-delay: 0.50s; }
+.reveal-delay-5 { transition-delay: 0.65s; }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+@media (max-width: 400px) {
+  .screen-hero {
+    --hero-picture-width: min(95vw, calc(90vh * 0.56));
+  }
+  .arch-shape {
+    width: 65px;
+    height: 85px;
+  }
+  .arch-number { font-size: 1.6rem; }
+  .big-name-text { font-size: 2.4rem; }
+  .video-container video {
+    width: 95%;
+  }
+}

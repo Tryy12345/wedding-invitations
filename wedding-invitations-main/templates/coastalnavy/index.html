@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maher &amp; Noor — Coastal Navy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Playfair+Display:ital,wght@0,500;1,500&family=Pinyon+Script&family=Jost:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="coastal-navy">
+  <div class="cn-ambient"></div>
+
+  <div class="cn-intro" id="cnIntro" role="button" tabindex="0" aria-label="Ouvrir l'invitation">
+    <div class="cn-leaf left"></div>
+    <div class="cn-leaf right"></div>
+    <img class="cn-tampon" src="assets/tampon.webp" alt="" aria-hidden="true" />
+    <div class="cn-intro-hint">Appuyez pour ouvrir</div>
+  </div>
+
+  <main class="cn-stage">
+
+    <section class="cn-title" data-observe="true">
+      <div class="cn-title-stage">
+        <img class="cn-title-art" src="assets/title.webp" alt="Vous êtes invité au mariage de Maher &amp; Noor" />
+        <div class="cn-title-names">
+          <span class="nm">Maher</span>
+          <span class="amp">AND</span>
+          <span class="nm">Noor</span>
+        </div>
+      </div>
+      <div class="cn-title-fade"></div>
+      <div class="cn-title-cue"><span class="cn-chev"></span></div>
+    </section>
+
+    <section class="cn-date cn-grain" data-observe="true">
+      <div class="cn-sec-head">
+        <span class="cn-kicker" data-reveal>Réservez la date</span>
+        <h2 class="cn-script" data-reveal data-d="1">La Date</h2>
+      </div>
+      <p class="cn-scratch-note" data-reveal data-d="2">Grattez chaque carte pour révéler</p>
+      <div class="cn-date-cards" data-reveal data-d="2">
+        <div class="cn-dcard" data-scratch>
+          <div class="val">11</div>
+          <div class="lab">Jour</div>
+          <canvas></canvas>
+        </div>
+        <div class="cn-dcard" data-scratch>
+          <div class="val sm">Juillet</div>
+          <div class="lab">Mois</div>
+          <canvas></canvas>
+        </div>
+        <div class="cn-dcard" data-scratch>
+          <div class="val">2026</div>
+          <div class="lab">Année</div>
+          <canvas></canvas>
+        </div>
+      </div>
+      <div class="cn-date-foot">
+        <div class="cn-rule" style="margin-bottom:18px"></div>
+        <div class="cn-date-time">7:00 PM</div>
+        <div class="cn-fr cn-script">Vous êtes invité !</div>
+      </div>
+    </section>
+
+    <section class="cn-letter cn-grain" data-observe="true">
+      <div class="cn-letter-stage">
+        <div class="cn-lt-env">
+          <div class="cn-env-back"></div>
+          <div class="cn-env-flap"></div>
+          <div class="cn-lt-card">
+            <img class="cn-letter-emblem" src="assets/emblem.webp" alt="" aria-hidden="true" />
+            <div class="salut">Chers amis et famille,</div>
+            <p>À l'approche de notre « oui », nous mesurons la chance d'être entourés de personnes si précieuses. Ce serait un honneur de vous avoir à nos côtés pour écrire ce nouveau chapitre.</p>
+            <div class="sig cn-script">Maher &amp; Noor</div>
+          </div>
+          <div class="cn-env-pocket"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cn-sched cn-grain" data-observe="true">
+      <div class="cn-clouds" aria-hidden="true">
+        <div class="cn-cloud-l"></div>
+        <div class="cn-cloud-r"></div>
+      </div>
+      <div class="cn-sec-head">
+        <span class="cn-kicker sage" data-reveal>La soirée</span>
+        <h2 class="cn-script" data-reveal data-d="1">Programme de la soirée</h2>
+      </div>
+      <div class="cn-sched-body">
+        <div class="cn-timeline">
+          <div class="cn-tl-line"></div>
+          <div class="cn-tl-item"><span class="cn-tl-dot"></span><div class="t">19:00</div><div class="ttl">Accueil des invités</div></div>
+          <div class="cn-tl-item"><span class="cn-tl-dot"></span><div class="t">20:00</div><div class="ttl">Entrée des mariés</div></div>
+          <div class="cn-tl-item"><span class="cn-tl-dot"></span><div class="t">21:00</div><div class="ttl">Dîner</div></div>
+          <div class="cn-tl-item"><span class="cn-tl-dot"></span><div class="t">22:30</div><div class="ttl">Pièce montée &amp; toast</div></div>
+          <div class="cn-tl-item"><span class="cn-tl-dot"></span><div class="t">23:30</div><div class="ttl">Danse &amp; célébration</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cn-venue cn-grain" data-observe="true">
+      <div class="cn-sec-head">
+        <span class="cn-kicker" data-reveal>La célébration aura lieu à</span>
+      </div>
+      <div class="cn-venue-meta" data-reveal data-d="1">
+        <div class="name cn-script">Jalta Hotel, Bizerte</div>
+        <div class="addr">Jalta Hotel, Bizerte, Tunisie</div>
+        <a class="cn-btn-map" href="https://maps.google.com/?q=Jalta%20Hotel%2C%20Bizerte%2C%20Tunisie" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.4"></circle></svg>
+          Voir l'itinéraire
+        </a>
+      </div>
+      <div class="cn-map">
+        <div class="cn-map-frame">
+          <iframe title="Map to Jalta Hotel, Bizerte, Tunisie" src="https://maps.google.com/maps?q=Jalta%20Hotel%2C%20Bizerte%2C%20Tunisie&output=embed" width="100%" height="320" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p class="cn-map-caption">Jalta Hotel, Bizerte, Tunisie</p>
+      </div>
+    </section>
+
+    <section class="cn-attend cn-grain" data-observe="true">
+      <div class="cn-sec-head">
+        <span class="cn-kicker" data-reveal>Nous aimerions savoir</span>
+        <h2 class="cn-script" data-reveal data-d="1">Serez-vous des nôtres ?</h2>
+      </div>
+      <p class="cn-blessing" data-reveal data-d="2">Dites-nous si vous pourrez célébrer ce jour avec nous.</p>
+      <div class="cn-rsvp-card" data-reveal data-d="2">
+        <h3>Confirmer ma présence</h3>
+        <form class="cn-rsvp-form" novalidate>
+          <p class="cn-field-label">Serez-vous présent&#160;? <span class="req">*</span></p>
+          <div class="cn-choice-row">
+            <button type="button" class="cn-choice" data-choice="yes"><span class="dot"></span><span>Oui, je serai là</span></button>
+            <button type="button" class="cn-choice" data-choice="no"><span class="dot"></span><span>Désolé, je ne pourrai pas</span></button>
+          </div>
+          <label class="cn-field-label" for="rsvp-name">Nom complet <span class="req">*</span></label>
+          <input id="rsvp-name" type="text" placeholder="Votre nom complet" required />
+          <button type="submit" class="cn-submit">Confirmer</button>
+        </form>
+      </div>
+      <div class="cn-rsvp-deadline" data-reveal data-d="3">Merci de répondre avant le 20 juin 2026</div>
+    </section>
+
+    <section class="cn-closing" data-observe="true">
+      <span class="cn-kicker" data-reveal data-d="1">Avec tout notre amour</span>
+      <div class="cn-closing-blessing" data-reveal data-d="2">Votre présence est le plus beau des cadeaux.</div>
+      <div class="cn-closing-bye cn-script" data-reveal data-d="3">À très bientôt</div>
+      <div class="cn-closing-couple cn-script" data-reveal data-d="4">Maher &amp; Noor</div>
+      <div class="cn-closing-date" data-reveal data-d="5">11 Juillet 2026</div>
+    </section>
+
+  </main>
+
+  <audio id="cnAudio" src="assets/music.mp3" loop preload="auto"></audio>
+  <button type="button" class="cn-music" id="cnMusic" aria-pressed="false" aria-label="Jouer la musique">
+    <span class="ring"></span>
+    <span aria-hidden="true">►</span>
+  </button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

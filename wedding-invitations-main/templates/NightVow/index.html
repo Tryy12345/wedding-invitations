@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NightVow — Emma & Lucas</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===================== SECTION 1: HERO ===================== -->
+  <section class="section hero-section">
+
+    <!-- Background photo -->
+    <div class="hero-bg">
+      <img src="../../assets/couple.jpg" alt="Photo du couple"
+           onerror="this.style.display='none'">
+      <div class="hero-overlay"></div>
+      <!-- Fairy lights -->
+      <div class="fairy-lights">
+        <div class="lights-row">
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="hero-content">
+      <div class="we-do-wrap">
+        <span class="we-do-text">We</span>
+        <div class="heart-neon">♡</div>
+        <span class="we-do-text do">Do</span>
+      </div>
+
+      <p class="together-text">Together with their families</p>
+
+      <div class="couple-names">
+        <span class="name-big">EMMA</span>
+        <span class="name-and">and</span>
+        <span class="name-big">LUCAS</span>
+      </div>
+
+      <p class="invite-text">invite you to their wedding celebration</p>
+
+      <div class="date-block">
+        <div class="date-row">
+          <div class="date-cell">
+            <span class="date-label">SATURDAY</span>
+          </div>
+          <div class="date-cell date-num">
+            <span>22</span>
+          </div>
+          <div class="date-cell">
+            <span class="date-label">AT 3:30 PM</span>
+          </div>
+        </div>
+        <div class="date-month">JULY · 2026</div>
+      </div>
+
+      <p class="venue-address">8221 Sunset Blvd, West Hollywood</p>
+
+      <!-- Music player -->
+      <div class="music-player">
+        <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+        <div class="music-bar">
+          <div class="music-progress"></div>
+        </div>
+        <span class="music-title">Our Song</span>
+      </div>
+
+      <div class="scroll-hint">
+        <span>↓</span>
+        <p>Scroll to discover</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 2: SAVE THE DATE ===================== -->
+  <section class="section save-section">
+    <div class="save-content">
+      <p class="save-the">the</p>
+      <div class="save-number">22</div>
+      <div class="save-month">JUNE</div>
+      <p class="save-label-cursive">Save the date</p>
+      <div class="save-divider"></div>
+      <p class="save-sub">Join us as we celebrate the beginning of our forever</p>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 3: THE DAY TIMELINE ===================== -->
+  <section class="section timeline-section">
+    <div class="section-inner">
+      <div class="section-title-wrap">
+        <span class="the-word">the</span>
+        <h2 class="section-heading">DAY</h2>
+        <div class="rings-icon">💍</div>
+      </div>
+
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">3:30 PM</div>
+          <div class="tl-content">
+            <span class="tl-icon">💍</span>
+            <p class="tl-title">WEDDING CEREMONY</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">4:30 PM</div>
+          <div class="tl-content">
+            <span class="tl-icon">🥂</span>
+            <p class="tl-title">COCKTAIL HOUR</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">5:00 PM</div>
+          <div class="tl-content">
+            <span class="tl-icon">📸</span>
+            <p class="tl-title">PHOTO SESSION</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">6:30 PM</div>
+          <div class="tl-content">
+            <span class="tl-icon">🍽️</span>
+            <p class="tl-title">DINNER RECEPTION</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">8:00 PM</div>
+          <div class="tl-content">
+            <span class="tl-icon">🎵</span>
+            <p class="tl-title">DANCE PARTY</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 4: THE DETAILS ===================== -->
+  <section class="section details-section">
+    <div class="section-inner">
+      <div class="section-title-wrap">
+        <span class="the-word">the</span>
+        <h2 class="section-heading">DETAILS</h2>
+      </div>
+
+      <div class="details-cards">
+
+        <div class="detail-card">
+          <h3 class="detail-card-title">DRESS CODE</h3>
+          <p class="detail-card-text">Semi-formal et élégant. Ajoutez une touche de couleur pastel pour correspondre à notre thème.</p>
+        </div>
+
+        <div class="detail-card">
+          <h3 class="detail-card-title">TRANSPORT</h3>
+          <p class="detail-card-text">Des navettes seront disponibles depuis la cérémonie jusqu'à la réception.</p>
+        </div>
+
+        <div class="detail-card">
+          <h3 class="detail-card-title">HÉBERGEMENT</h3>
+          <p class="detail-card-text">Hôtel "Perfect Night" à 5 minutes. Mentionnez "Wedding Names" lors de la réservation.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 5: COUNTDOWN ===================== -->
+  <section class="section countdown-section">
+    <div class="section-inner">
+      <div class="section-title-wrap">
+        <span class="the-word">the</span>
+        <h2 class="section-heading">COUNTDOWN</h2>
+        <p class="countdown-sub">to forever has begun</p>
+      </div>
+
+      <div class="countdown-display">
+        <div class="cd-block">
+          <span class="cd-num" id="cd-days">000</span>
+          <span class="cd-label">DAYS</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-hours">00</span>
+          <span class="cd-label">HOURS</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-mins">00</span>
+          <span class="cd-label">MINUTES</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-secs">00</span>
+          <span class="cd-label">SECONDS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 6: WE CAN'T WAIT ===================== -->
+  <section class="section final-section">
+    <div class="final-bg">
+      <img src="../../assets/venue.jpg" alt="Salle" onerror="this.style.display='none'">
+      <div class="final-overlay"></div>
+    </div>
+    <div class="final-content">
+      <p class="final-cursive">We can't wait</p>
+      <p class="final-sub">to celebrate with you</p>
+      <div class="final-divider"></div>
+      <p class="final-names">Emma & Lucas</p>
+      <p class="final-date">22.07.2026</p>
+    </div>
+  </section>
+
+  <script>
+    // ===== COUNTDOWN =====
+    const weddingDate = new Date('2026-07-22T15:30:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '000';
+        return;
+      }
+      const days  = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const mins  = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const secs  = Math.floor((diff % (1000*60)) / 1000);
+
+      document.getElementById('cd-days').textContent  = String(days).padStart(3,'0');
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+      document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ===== MUSIC TOGGLE =====
+    let playing = false;
+    function toggleMusic() {
+      playing = !playing;
+      const btn = document.getElementById('musicBtn');
+      btn.innerHTML = playing
+        ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`
+        : `<svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>`;
+      if (playing) {
+        document.querySelector('.music-progress').style.animationPlayState = 'running';
+      } else {
+        document.querySelector('.music-progress').style.animationPlayState = 'paused';
+      }
+    }
+
+    // ===== SCROLL REVEAL =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.tl-item, .detail-card, .cd-block').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

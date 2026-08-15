@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Josephine & Calendra - Élégance Blanche</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="intro-locked">
+  <main>
+    <section class="hero" id="top">
+      <div class="portrait-stage">
+        <video id="introVideo" class="hero-video" muted playsinline preload="auto">
+          <source src="../../assets/White%20Elegant.mp4" type="video/mp4" />
+        </video>
+
+        <button class="start-gate" id="startGate" type="button" aria-label="Démarrer l'invitation"></button>
+
+        <div class="hero-names" id="heroNames">
+          <p class="eyebrow">Vous êtes invités au</p>
+          <h1>
+            <span>Emna</span>
+            <em>&amp;</em>
+            <span>Aziz</span>
+          </h1>
+          <p class="wedding-label">Mariage</p>
+          <div class="hero-divider" aria-hidden="true">
+            <span></span>
+            <i></i>
+            <span></span>
+          </div>
+          <p class="date">23 mars 2027</p>
+        </div>
+
+        <a class="scroll-cue" href="#invitation" aria-label="Aller à l'invitation">
+          <span></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="panel invite-panel" id="invitation">
+      <h2 class="script-title reveal-on-scroll">Ensemble vers une nouvelle aventure</h2>
+      <p class="invite-copy reveal-on-scroll">
+        Avec une immense joie et beaucoup d'émotion,<br /><br />
+        nous vous invitons à partager l'un des plus beaux moments de notre vie.<br /><br />
+        Entourés de nos familles et de nos proches, nous célébrerons notre union
+        et serions honorés de votre présence à nos côtés pour rendre cette journée
+        encore plus spéciale.<br /><br />
+        Rejoignez-nous pour une journée remplie d'amour, de bonheur, de rires et
+        de souvenirs inoubliables.
+      </p>
+    </section>
+
+    <section class="panel countdown-panel" id="countdown">
+      <div class="section-heading reveal-on-scroll">
+        <span></span>
+        <p>Compte à rebours</p>
+        <span></span>
+      </div>
+      <h2 class="serif-title reveal-on-scroll">Compte à rebours</h2>
+      <p class="body-copy reveal-on-scroll">Nous avons hâte de vivre ce moment !</p>
+      <div class="countdown-grid reveal-on-scroll">
+        <div><strong id="days">000</strong><span>Jours</span></div>
+        <div><strong id="hours">00</strong><span>Heures</span></div>
+        <div><strong id="minutes">00</strong><span>Minutes</span></div>
+        <div><strong id="seconds">00</strong><span>Secondes</span></div>
+      </div>
+    </section>
+
+    <section class="panel schedule-panel" id="schedule">
+      <div class="section-heading reveal-on-scroll">
+        <span></span>
+        <p>Programme</p>
+        <span></span>
+      </div>
+      <img src="../../assets/floralcorner-top.png" class="schedule-flower reveal-on-scroll" alt="" />
+      <h2 class="serif-title reveal-on-scroll">Programme</h2>
+      <p class="body-copy reveal-on-scroll">Ce que nous avons prévu pour vous</p>
+      <div class="schedule-list">
+        <div class="plant-vine" aria-hidden="true">
+          <span class="vine-stem"></span>
+          <span class="leaf leaf-1"></span>
+          <span class="leaf leaf-2"></span>
+          <span class="leaf leaf-3"></span>
+          <span class="leaf leaf-4"></span>
+          <span class="leaf leaf-5"></span>
+          <span class="leaf leaf-6"></span>
+        </div>
+        <article class="list-row schedule-row right reveal-on-scroll">
+          <img src="../../assets/clock.png" class="schedule-art art-left" alt="" onerror="this.hidden=true" />
+          <span class="row-kicker">Début</span>
+          <h3>Début</h3>
+          <p>14:00</p>
+        </article>
+        <article class="list-row schedule-row left reveal-on-scroll">
+          <img src="../../assets/plate.png" class="schedule-art art-right" alt="" onerror="this.hidden=true" />
+          <span class="row-kicker">Déjeuner</span>
+          <h3>Déjeuner</h3>
+          <p>15:00</p>
+        </article>
+        <article class="list-row schedule-row right reveal-on-scroll">
+          <img src="../../assets/plate.png" class="schedule-art art-left" alt="" onerror="this.hidden=true" />
+          <span class="row-kicker">Déjeuner</span>
+          <h3>Déjeuner</h3>
+          <p>16:00</p>
+        </article>
+        <article class="list-row schedule-row left reveal-on-scroll">
+          <img src="../../assets/rings.png" class="schedule-art art-right" alt="" onerror="this.hidden=true" />
+          <span class="row-kicker">Cérémonie</span>
+          <h3>Cérémonie</h3>
+          <p>17:00</p>
+        </article>
+        <img src="../../assets/clock.png" class="schedule-bottom-clock" alt="" onerror="this.hidden=true" />
+      </div>
+    </section>
+
+    <section class="panel dress-panel">
+      <div class="dress-blueflowers" aria-hidden="true"></div>
+      <div class="section-heading reveal-on-scroll">
+        <span></span>
+        <p>Code vestimentaire</p>
+        <span></span>
+      </div>
+      <h2 class="serif-title reveal-on-scroll">Code vestimentaire</h2>
+      <p class="script-subtitle reveal-on-scroll">Semi-formel</p>
+      <div class="dress-grid reveal-on-scroll">
+        <div>
+          <h3>Femmes</h3>
+          <p>Robe cocktail</p>
+        </div>
+        <div>
+          <h3>Hommes</h3>
+          <p>Costume &amp; cravate</p>
+        </div>
+      </div>
+      <p class="small-caps reveal-on-scroll">Couleurs suggérées :</p>
+      <div class="swatches reveal-on-scroll" aria-hidden="true">
+        <span style="background:#fffaf0"></span>
+        <span style="background:#dbeaf1"></span>
+        <span style="background:#ead3cb"></span>
+        <span style="background:#c8a96b"></span>
+      </div>
+    </section>
+
+    <section class="panel venue-panel">
+      <div class="section-heading reveal-on-scroll">
+        <span></span>
+        <p>Lieu</p>
+        <span></span>
+      </div>
+      <h2 class="serif-title reveal-on-scroll">Lieux</h2>
+      <div class="venue-tabs reveal-on-scroll">
+        <button class="venue-tab active" type="button" data-venue="day1">Jour 1</button>
+        <button class="venue-tab" type="button" data-venue="day2">Jour 2</button>
+      </div>
+      <div class="venue-card reveal-on-scroll" id="day1">
+        <div class="map-preview" aria-hidden="true">
+          <span class="map-water"></span>
+          <span class="map-road road-main"></span>
+          <span class="map-road road-second"></span>
+          <span class="map-pin"></span>
+        </div>
+        <h3>Maison de plage face à l'océan</h3>
+        <p>South Dixie Highway, Homestead, Miami-Dade County, Florida, 33030, États-Unis</p>
+        <a href="#" class="text-link">Ouvrir dans Google Maps</a>
+      </div>
+      <div class="venue-card hidden reveal-on-scroll" id="day2">
+        <div class="map-preview" aria-hidden="true">
+          <span class="map-water"></span>
+          <span class="map-road road-main"></span>
+          <span class="map-road road-second"></span>
+          <span class="map-pin"></span>
+        </div>
+        <h3>Maison de plage face à l'océan</h3>
+        <p>South Dixie Highway, Homestead, Miami-Dade County, Florida, 33030, États-Unis</p>
+        <a href="#" class="text-link">Ouvrir dans Google Maps</a>
+      </div>
+    </section>
+
+    <section class="panel party-panel">
+      <h2 class="parents-title reveal-on-scroll">
+        <span class="parents-script">La joie de cette journée</span>
+        <span>sera encore plus grande</span>
+        <span>si nous pouvons la partager</span>
+        <span class="parents-script parents-final">avec vous.</span>
+      </h2>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

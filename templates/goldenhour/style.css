@@ -1,0 +1,839 @@
+/* ================================
+   GOLDEN HOUR — Elegant Wedding Template
+   Beige · Cream · Gold · Pampas
+   ================================ */
+
+:root {
+  --cream:     #f5eedf;
+  --beige:     #e8dcc8;
+  --beige-2:   #d4c4a0;
+  --gold:      #b8942a;
+  --gold-light:#d4ac44;
+  --gold-dim:  rgba(184,148,42,0.25);
+  --dark:      #2a2018;
+  --mid:       #6a5a3a;
+  --gray-warm: #9a8a70;
+  --white:     #fffdf8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* ================================
+   PAGE SYSTEM
+   ================================ */
+.page {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.4s ease;
+}
+
+.page.hidden  { display: none; }
+.page.active  { display: flex; animation: pageIn 0.7s ease forwards; }
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-inner {
+  width: 100%;
+  max-width: 480px;
+  padding: 60px 28px 80px;
+  margin: 0 auto;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.the-label {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+}
+
+.page-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1;
+}
+
+.rings-small { font-size: 1.2rem; margin-top: 6px; }
+
+/* Nav button */
+.nav-btn {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(184,148,42,0.4);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.nav-btn:hover { background: var(--gold-light); transform: translateX(-50%) scale(1.1); }
+.nav-btn.dark  { background: var(--dark); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+.nav-btn.back-top { border-radius: 30px; width: auto; padding: 10px 24px; font-size: 0.75rem; letter-spacing: 2px; }
+
+/* ================================
+   PAGE 1 — ENVELOPE
+   ================================ */
+#page-envelope { background: var(--beige); }
+
+.envelope-scene {
+  position: relative;
+  width: 280px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Kraft paper */
+.kraft-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(160,120,60,0.04) 2px,
+      rgba(160,120,60,0.04) 4px
+    ),
+    linear-gradient(135deg, #c8a870, #b89050, #c8a870);
+  border-radius: 8px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+}
+
+/* Black diagonal fold */
+.black-fold {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 100px 80px 0;
+  border-color: transparent #1a1510 transparent transparent;
+  border-radius: 0 8px 0 0;
+}
+
+/* Wax seal */
+.wax-seal {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #e8c84a, #c9a020, #8a6a10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(184,148,42,0.5), inset 0 2px 4px rgba(255,255,255,0.2);
+  transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+  z-index: 5;
+}
+
+.wax-seal:hover { transform: translateX(-50%) scale(1.08); }
+
+.seal-ring { font-size: 1.6rem; }
+
+.seal-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(184,148,42,0.4);
+  animation: sealPulse 2s ease-in-out infinite;
+}
+
+@keyframes sealPulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50%       { transform: scale(1.15); opacity: 0.2; }
+}
+
+.tap-hint {
+  position: absolute;
+  bottom: -36px;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray-warm);
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+/* ================================
+   PAGE 2 — HERO
+   ================================ */
+#page-hero { background: var(--dark); color: white; }
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: brightness(0.6) grayscale(0.2);
+}
+
+.photo-overlay-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 30%;
+  background: linear-gradient(to bottom, rgba(42,32,24,0.5), transparent);
+}
+
+.photo-overlay-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 55%;
+  background: linear-gradient(to top, rgba(42,32,24,0.95) 30%, transparent);
+}
+
+/* Pampas decorations */
+.pampas-left, .pampas-right {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0.15;
+  z-index: 2;
+  pointer-events: none;
+}
+.pampas-left  { bottom: 20%; left: -10px; transform: rotate(-20deg); }
+.pampas-right { bottom: 20%; right: -10px; transform: rotate(20deg) scaleX(-1); }
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 40px 28px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  width: 100%;
+}
+
+.our-wedding-label {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.6rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1;
+}
+
+.our-wedding-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 4rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  line-height: 1;
+  margin-top: -8px;
+}
+
+.together-label {
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 4px;
+}
+
+.couple-names-script {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.couple-names-script span {
+  color: var(--gold-light);
+  font-size: 2rem;
+}
+
+.invite-label {
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.55);
+  max-width: 260px;
+  line-height: 1.6;
+}
+
+/* Date strip */
+.date-strip {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  padding: 10px 24px;
+  margin-top: 6px;
+}
+
+.date-col { text-align: center; }
+
+.date-top {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+}
+
+.date-sub {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 2px;
+}
+
+.date-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.25);
+}
+
+.date-num {
+  font-family: 'Jost', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 200;
+  color: white;
+  line-height: 1;
+}
+
+/* ================================
+   PAGE 3 — SAVE THE DATE
+   ================================ */
+#page-savedate {
+  background: linear-gradient(160deg, var(--white), var(--cream), var(--beige));
+}
+
+.sd-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.rings-deco {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  font-size: 3.5rem;
+  opacity: 0.18;
+  transform: rotate(15deg);
+}
+
+.sd-pampas {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  font-size: 4rem;
+  opacity: 0.12;
+  transform: rotate(-15deg);
+}
+
+.sd-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 60px 28px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.sd-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--beige), var(--beige-2));
+  border: 2px solid var(--gold-dim);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 30px rgba(184,148,42,0.15);
+}
+
+.sd-num {
+  font-family: 'Jost', sans-serif;
+  font-size: 3.6rem;
+  font-weight: 200;
+  color: var(--dark);
+  line-height: 1;
+}
+
+.sd-month {
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: var(--mid);
+  font-weight: 400;
+}
+
+.sd-cursive {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.sd-line {
+  width: 50px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.sd-names {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  color: var(--gold);
+}
+
+.sd-sub {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--mid);
+}
+
+.sd-email {
+  font-size: 0.7rem;
+  color: var(--gray-warm);
+  letter-spacing: 1px;
+}
+
+/* ================================
+   PAGE 4 — TIMELINE
+   ================================ */
+#page-timeline {
+  background: linear-gradient(170deg, var(--white), var(--cream));
+  align-items: flex-start;
+}
+
+.tl-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 80% 20%, rgba(184,148,42,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(184,148,42,0.04) 0%, transparent 50%);
+}
+
+.timeline {
+  position: relative;
+  padding: 10px 0;
+}
+
+.tl-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 8px;
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: all 0.5s ease;
+}
+
+.tl-row.visible { opacity: 1; transform: translateX(0); }
+.tl-row:nth-child(1) { transition-delay: 0.1s; }
+.tl-row:nth-child(2) { transition-delay: 0.2s; }
+.tl-row:nth-child(3) { transition-delay: 0.3s; }
+.tl-row:nth-child(4) { transition-delay: 0.4s; }
+.tl-row:nth-child(5) { transition-delay: 0.5s; }
+
+.tl-left {
+  width: 72px;
+  text-align: right;
+  padding-right: 12px;
+  padding-top: 12px;
+}
+
+.tl-time {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.tl-dot-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20px;
+}
+
+.tl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--gold-dim);
+  flex-shrink: 0;
+  margin-top: 12px;
+}
+
+.tl-line {
+  width: 1px;
+  flex: 1;
+  min-height: 30px;
+  background: var(--gold-dim);
+  margin-top: 4px;
+}
+
+.tl-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-left: 10px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  border-left: 3px solid var(--gold-dim);
+}
+
+.tl-icon { font-size: 1rem; }
+
+.tl-event {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--dark);
+}
+
+/* ================================
+   PAGE 5 — DETAILS
+   ================================ */
+#page-details {
+  background: linear-gradient(160deg, var(--cream), var(--white));
+  align-items: flex-start;
+}
+
+.details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.detail-block {
+  padding: 20px 0;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.5s ease;
+}
+
+.detail-block.visible { opacity: 1; transform: translateY(0); }
+.detail-block:nth-child(1) { transition-delay: 0.1s; }
+.detail-block:nth-child(3) { transition-delay: 0.2s; }
+.detail-block:nth-child(5) { transition-delay: 0.3s; }
+
+.detail-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.detail-text {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: var(--mid);
+  font-weight: 300;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.detail-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+}
+
+/* ================================
+   PAGE 6 — RSVP
+   ================================ */
+#page-rsvp {
+  background: linear-gradient(160deg, var(--white), var(--beige));
+  align-items: center;
+}
+
+.rsvp-rings {
+  position: absolute;
+  top: 12%;
+  right: 8%;
+  font-size: 5rem;
+  opacity: 0.12;
+  transform: rotate(10deg);
+  pointer-events: none;
+}
+
+.rsvp-pampas {
+  position: absolute;
+  bottom: 8%;
+  left: 4%;
+  font-size: 4rem;
+  opacity: 0.1;
+  transform: rotate(-20deg);
+  pointer-events: none;
+}
+
+.rsvp-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 50px 28px 80px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.rsvp-letters {
+  display: flex;
+  gap: 4px;
+  line-height: 1;
+}
+
+.rsvp-r, .rsvp-s, .rsvp-v, .rsvp-p {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--beige-2);
+  line-height: 1;
+}
+
+.rsvp-date {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.4rem;
+  color: var(--gold);
+}
+
+.rsvp-email {
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  color: var(--gray-warm);
+}
+
+/* RSVP Form */
+.rsvp-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.rsvp-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--beige-2);
+  border-radius: 6px;
+  background: white;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  color: var(--dark);
+  outline: none;
+  transition: border 0.3s;
+}
+
+.rsvp-input:focus { border-color: var(--gold); }
+
+.rsvp-choices {
+  display: flex;
+  gap: 10px;
+}
+
+.rsvp-choice {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--beige-2);
+  border-radius: 6px;
+  background: white;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--mid);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.rsvp-choice.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: white;
+}
+
+.rsvp-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--beige-2);
+  border-radius: 6px;
+  background: white;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  color: var(--dark);
+  resize: none;
+  height: 80px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.rsvp-textarea:focus { border-color: var(--gold); }
+
+.rsvp-submit {
+  padding: 14px;
+  background: var(--dark);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.rsvp-submit:hover { background: var(--gold); }
+
+.rsvp-thanks {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin-top: 16px;
+}
+
+.hidden { display: none; }
+
+/* ================================
+   PAGE 7 — FINAL
+   ================================ */
+#page-final { background: var(--dark); }
+
+.final-photo {
+  position: absolute;
+  inset: 0;
+}
+
+.final-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5) saturate(0.8);
+}
+
+.final-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(42,32,24,0.4), rgba(42,32,24,0.7));
+}
+
+.final-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 60px 28px;
+}
+
+.final-cursive {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.final-sub {
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+
+.final-hearts {
+  display: flex;
+  gap: 8px;
+  color: var(--gold-light);
+  font-size: 1.2rem;
+  margin: 6px 0;
+}
+
+.final-names-script {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.4rem;
+  color: var(--gold-light);
+}
+
+.final-date-small {
+  font-size: 0.7rem;
+  letter-spacing: 5px;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ================================
+   ANIMATIONS
+   ================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+@media (max-width: 480px) {
+  .our-wedding-title  { font-size: 3.2rem; }
+  .couple-names-script { font-size: 2.2rem; }
+  .rsvp-r, .rsvp-s, .rsvp-v, .rsvp-p { font-size: 3rem; }
+  .sd-num { font-size: 2.8rem; }
+  .page-title { font-size: 2.6rem; }
+}

@@ -1,0 +1,2162 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitations Mariage</title>
+  <link rel="icon" type="image/jpeg" href="logo/logoLH.jpg">
+  <link rel="apple-touch-icon" href="logo/logoLH.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #FAF6F0;
+      --warm-white: #FFFDF9;
+      --gold: #C9A96E;
+      --gold-light: #E8D5A8;
+      --gold-dark: #8B6A2E;
+      --charcoal: #2A2420;
+      --muted: #8A7E74;
+      --rose: #D4A0A0;
+      --rose-light: #F5E6E6;
+    }
+
+    body.night {
+      --cream: #11100f;
+      --warm-white: #1a1816;
+      --gold: #d2b06f;
+      --gold-light: #ead7ad;
+      --gold-dark: #f1e1bd;
+      --charcoal: #f5efe7;
+      --muted: #b6aba0;
+      --rose: #8f6e6e;
+      --rose-light: #302522;
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* â”€â”€â”€ HERO â”€â”€â”€ */
+    .hero {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 40px 80px;
+      overflow: hidden;
+    }
+
+    .lang-toggle {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(201,169,110,0.28);
+      background: rgba(255,253,249,0.86);
+      color: var(--charcoal);
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .lang-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(139,106,46,0.08);
+      border-color: rgba(201,169,110,0.45);
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 68px;
+      right: 24px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(201,169,110,0.22);
+      background: rgba(255,253,249,0.74);
+      color: var(--charcoal);
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(139,106,46,0.08);
+      border-color: rgba(201,169,110,0.42);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,169,110,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(212,160,160,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 70%, rgba(212,160,160,0.10) 0%, transparent 60%);
+    }
+
+    .hero-ornament {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--gold));
+    }
+
+    .hero-line {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 24px;
+      animation: fadeIn 1.2s ease both;
+    }
+    .hero-line .rule {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .hero-line .rule.r {
+      background: linear-gradient(to left, transparent, var(--gold));
+    }
+    .hero-line span {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+    }
+
+    .hero-logo {
+      position: relative;
+      z-index: 1;
+      width: min(240px, 58vw);
+      margin: 12px auto 22px;
+      padding: 14px;
+      border-radius: 28px;
+      background: rgba(255, 253, 249, 0.72);
+      border: 1px solid rgba(201,169,110,0.28);
+      box-shadow: 0 18px 50px rgba(139,106,46,0.08);
+      backdrop-filter: blur(6px);
+      animation: fadeUp 1s ease 0.15s both;
+    }
+
+    .hero-logo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(48px, 9vw, 72px);
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      text-align: center;
+      color: var(--charcoal);
+      margin-bottom: 10px;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-dark);
+    }
+
+    .hero-sub {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 18px;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+
+    .hero-diamond {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      margin: 32px auto 0;
+      animation: fadeIn 1s ease 0.6s both;
+      opacity: 0.7;
+    }
+
+    /* â”€â”€â”€ FEATURED IMAGE â”€â”€â”€ */
+    .feature-section {
+      padding: 0 40px 84px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(201,169,110,0.22);
+      background: linear-gradient(135deg, rgba(250,246,240,0.92), rgba(255,253,249,0.98));
+      box-shadow: 0 28px 80px rgba(139,106,46,0.09);
+      padding: 18px;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(201,169,110,0.14), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(212,160,160,0.10), transparent 34%);
+      pointer-events: none;
+    }
+
+    .feature-image {
+      position: relative;
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 1px solid rgba(201,169,110,0.18);
+      background: #fff;
+    }
+
+    body.night .feature-image {
+      background: #171412;
+      border-color: rgba(210,176,111,0.24);
+    }
+
+    .feature-caption {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 6px;
+      text-align: center;
+      padding: 22px 18px 8px;
+    }
+
+    .feature-caption .eyebrow {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .feature-caption h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(28px, 4vw, 40px);
+      color: var(--charcoal);
+    }
+
+    .feature-caption p {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* â”€â”€â”€ GALLERY â”€â”€â”€ */
+    .gallery-section {
+      padding: 70px 40px 90px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-header .eyebrow {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .section-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 34px;
+      color: var(--charcoal);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--warm-white);
+      border: 1px solid rgba(201,169,110,0.25);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: fadeUp 0.8s ease both;
+    }
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.25s; }
+    .card:nth-child(3) { animation-delay: 0.4s; }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(139,106,46,0.12);
+    }
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      transition: border-color 0.3s ease;
+      pointer-events: none;
+    }
+    .card:hover::after {
+      border-color: rgba(201,169,110,0.5);
+    }
+
+    body.night .card,
+    body.night .service-item {
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.26);
+      border-color: rgba(210,176,111,0.18);
+    }
+
+    /* â”€â”€â”€ CARD PREVIEWS â”€â”€â”€ */
+    .card-preview {
+      height: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-preview.has-photo .preview-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      z-index: 0;
+    }
+
+    .card-preview.has-photo .preview-bg {
+      opacity: 0.34;
+      z-index: 1;
+    }
+
+    .card-preview.has-photo .preview-monogram {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      font-size: 11px;
+      font-style: normal;
+      letter-spacing: 0.28em;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,253,249,0.82);
+      border: 1px solid rgba(255,255,255,0.45);
+    }
+
+    .card-preview.has-photo .preview-tag {
+      z-index: 2;
+      backdrop-filter: blur(4px);
+    }
+
+    .preview-rose { background: #F8EFEF; }
+    .preview-rose .preview-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(212,160,160,0.55) 0%, transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(212,160,160,0.45) 0%, transparent 40%),
+        radial-gradient(circle at 60% 20%, rgba(245,230,230,0.8) 0%, transparent 35%);
+    }
+
+    .preview-gold { background: #1A1610; }
+    .preview-gold .preview-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(201,169,110,0.3) 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(201,169,110,0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(232,213,168,0.2) 0%, transparent 35%);
+    }
+
+    .preview-floral { background: #EEF3E8; }
+    .preview-floral .preview-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 30% 40%, rgba(120,160,100,0.35) 0%, transparent 45%),
+        radial-gradient(circle at 70% 60%, rgba(160,190,140,0.3) 0%, transparent 40%),
+        radial-gradient(circle at 50% 20%, rgba(200,220,180,0.5) 0%, transparent 30%);
+    }
+
+    .preview-monogram {
+      position: relative;
+      z-index: 1;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 54px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      text-align: center;
+      pointer-events: none;
+      user-select: none;
+    }
+    .preview-rose .preview-monogram { color: #8A4040; }
+    .preview-gold .preview-monogram { color: var(--gold-light); }
+    .preview-floral .preview-monogram { color: #3B6035; }
+
+    .preview-tag {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 1px solid;
+      z-index: 2;
+    }
+    .preview-rose .preview-tag {
+      color: rgba(138,64,64,0.75);
+      border-color: rgba(138,64,64,0.3);
+      background: rgba(248,239,239,0.85);
+    }
+    .preview-gold .preview-tag {
+      color: var(--gold-light);
+      border-color: rgba(201,169,110,0.5);
+      background: rgba(26,22,16,0.85);
+    }
+    .preview-floral .preview-tag {
+      color: rgba(59,96,53,0.85);
+      border-color: rgba(59,96,53,0.3);
+      background: rgba(238,243,232,0.85);
+    }
+
+    .theme-blacklove .preview-blacklove {
+      background: linear-gradient(135deg, #0e0d0c 0%, #221b18 55%, #3a2c25 100%);
+    }
+    .theme-blacklove .preview-blacklove .preview-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(232,213,168,0.18) 0%, transparent 38%),
+        radial-gradient(circle at 70% 70%, rgba(201,169,110,0.22) 0%, transparent 42%),
+        radial-gradient(circle at 50% 20%, rgba(255,255,255,0.06) 0%, transparent 32%);
+    }
+    .theme-blacklove .preview-blacklove .preview-monogram { color: #E8D5A8; }
+    .theme-blacklove .preview-blacklove .preview-tag {
+      color: #E8D5A8;
+      border-color: rgba(232,213,168,0.35);
+      background: rgba(14,13,12,0.82);
+    }
+
+    .theme-nightvow .preview-nightvow {
+      background: linear-gradient(135deg, #10131d 0%, #1d2433 55%, #31394a 100%);
+    }
+    .theme-nightvow .preview-nightvow .preview-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 25% 35%, rgba(255,255,255,0.10) 0%, transparent 34%),
+        radial-gradient(circle at 75% 65%, rgba(201,169,110,0.20) 0%, transparent 40%),
+        radial-gradient(circle at 50% 15%, rgba(232,213,168,0.12) 0%, transparent 28%);
+    }
+    .theme-nightvow .preview-nightvow .preview-monogram { color: #F3E6BC; }
+    .theme-nightvow .preview-nightvow .preview-tag {
+      color: #F3E6BC;
+      border-color: rgba(243,230,188,0.34);
+      background: rgba(16,19,29,0.82);
+    }
+
+    .theme-goldenhour .preview-goldenhour {
+      background: linear-gradient(135deg, #f4d58b 0%, #d2a14c 48%, #7f541f 100%);
+    }
+    .theme-goldenhour .preview-goldenhour .preview-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 24% 30%, rgba(255,248,220,0.45) 0%, transparent 34%),
+        radial-gradient(circle at 78% 68%, rgba(139,106,46,0.25) 0%, transparent 40%),
+        radial-gradient(circle at 50% 12%, rgba(255,255,255,0.28) 0%, transparent 26%);
+    }
+    .theme-goldenhour .preview-goldenhour .preview-monogram { color: #4A2E12; }
+    .theme-goldenhour .preview-goldenhour .preview-tag {
+      color: #4A2E12;
+      border-color: rgba(74,46,18,0.28);
+      background: rgba(255,233,179,0.86);
+    }
+
+    .theme-blacklove .card-label,
+    .theme-nightvow .card-label,
+    .theme-goldenhour .card-label {
+      letter-spacing: 0.4em;
+    }
+
+    .theme-blacklove .card-title { color: #2b211d; }
+    .theme-nightvow .card-title { color: #252d3c; }
+    .theme-goldenhour .card-title { color: #6f471b; }
+
+    .theme-blacklove .card-desc { color: #7d6d62; }
+    .theme-nightvow .card-desc { color: #6d7481; }
+    .theme-goldenhour .card-desc { color: #9a794f; }
+
+    /* â”€â”€â”€ CARD BODY â”€â”€â”€ */
+    .card-body {
+      padding: 26px 26px 30px;
+      border-top: 1px solid rgba(201,169,110,0.2);
+    }
+
+    .card-label {
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 24px;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 12.5px;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold-light);
+      padding-bottom: 3px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .card-btn:hover { color: var(--gold-dark); border-color: var(--gold); }
+    .card-btn::after {
+      content: 'â†’';
+      font-size: 13px;
+      transition: transform 0.3s;
+    }
+    .card-btn:hover::after { transform: translateX(4px); }
+
+    .templates-cta {
+      margin-top: 34px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .templates-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 34px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--charcoal), #4a3f37);
+      color: var(--warm-white);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border: 1px solid rgba(201,169,110,0.28);
+      box-shadow: 0 18px 40px rgba(42,36,32,0.16);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .templates-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 50px rgba(42,36,32,0.18);
+      border-color: rgba(201,169,110,0.55);
+    }
+
+    .templates-btn::after {
+      content: 'â†’';
+      font-size: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    .templates-btn:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* â”€â”€â”€ PRICING SHOWCASE â”€â”€â”€ */
+    .pricing-section {
+      padding: 84px 40px 92px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .pricing-header {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 34px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .pricing-header .eyebrow {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+    }
+
+    .pricing-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+      color: var(--charcoal);
+    }
+
+    .pricing-header p {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 13px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      padding: 26px;
+      border: 1px solid rgba(201,169,110,0.18);
+      box-shadow: 0 24px 60px rgba(139,106,46,0.10);
+      isolation: isolate;
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at top right, rgba(201,169,110,0.12), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(212,160,160,0.08), transparent 28%);
+      z-index: 0;
+    }
+
+    .pricing-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-card.paper {
+      background: linear-gradient(135deg, rgba(255,253,249,0.98), rgba(248,240,231,0.98));
+    }
+
+    .pricing-card.digital {
+      background: linear-gradient(135deg, rgba(18,24,35,0.98), rgba(39,48,64,0.98));
+      color: var(--warm-white);
+    }
+
+    .pricing-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .pricing-top h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1;
+      margin-top: 6px;
+    }
+
+    .pricing-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 9px;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      border: 1px solid rgba(201,169,110,0.25);
+      white-space: nowrap;
+    }
+
+    .pricing-card.paper .pricing-badge {
+      background: rgba(201,169,110,0.10);
+      color: var(--gold-dark);
+    }
+
+    .pricing-card.digital .pricing-badge {
+      background: rgba(232,213,168,0.10);
+      color: var(--gold-light);
+      border-color: rgba(232,213,168,0.22);
+    }
+
+    .pricing-subtitle {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    .pricing-card.paper .pricing-subtitle { color: var(--gold-dark); }
+    .pricing-card.digital .pricing-subtitle { color: rgba(232,213,168,0.88); }
+
+    .pricing-list {
+      display: grid;
+      gap: 12px;
+      margin: 20px 0 22px;
+    }
+
+    .pricing-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(201,169,110,0.14);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .pricing-card.digital .pricing-item {
+      border-bottom-color: rgba(232,213,168,0.18);
+    }
+
+    .pricing-item span:last-child {
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .pricing-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(201,169,110,0.20);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .pricing-card.digital .pricing-total {
+      border-top-color: rgba(232,213,168,0.20);
+    }
+
+    .pricing-total strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+    }
+
+    .pricing-note {
+      margin-top: 14px;
+      font-size: 12px;
+      line-height: 1.75;
+      opacity: 0.92;
+    }
+
+    .pricing-card.digital .pricing-note {
+      color: rgba(250,246,240,0.78);
+    }
+
+    .pricing-bullets {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .pricing-pill {
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 12px;
+      line-height: 1.5;
+      border: 1px solid rgba(201,169,110,0.16);
+    }
+
+    .pricing-card.paper .pricing-pill {
+      background: rgba(255,253,249,0.74);
+      color: var(--charcoal);
+    }
+
+    .pricing-card.digital .pricing-pill {
+      background: rgba(255,255,255,0.06);
+      color: var(--warm-white);
+      border-color: rgba(232,213,168,0.12);
+    }
+
+    .pricing-card.digital .pricing-pill strong,
+    .pricing-card.paper .pricing-pill strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+    }
+
+    /* â”€â”€â”€ ORNAMENTAL DIVIDER â”€â”€â”€ */
+    .ornamental-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 0 60px;
+      margin: 0 auto 80px;
+      max-width: 600px;
+    }
+    .ornamental-divider .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,169,110,0.5), transparent);
+    }
+    .ornamental-divider .ornament {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 6px;
+      opacity: 0.8;
+    }
+
+    /* â”€â”€â”€ CONTACT â”€â”€â”€ */
+    .contact-section {
+      background: var(--charcoal);
+      padding: 90px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,169,110,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-eyebrow {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 22px;
+    }
+
+    .contact-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 42px;
+      color: var(--warm-white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .contact-section h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .contact-desc {
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: rgba(250,246,240,0.5);
+      margin-bottom: 48px;
+      line-height: 1.9;
+    }
+
+    .contact-btns {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 36px;
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.35s ease;
+      cursor: pointer;
+    }
+
+    .btn-instagram {
+      background: transparent;
+      border: 1px solid rgba(201,169,110,0.6);
+      color: var(--gold-light);
+    }
+    .btn-instagram:hover {
+      background: rgba(201,169,110,0.1);
+      border-color: var(--gold);
+    }
+
+    .btn-whatsapp {
+      background: rgba(201,169,110,0.12);
+      border: 1px solid rgba(201,169,110,0.4);
+      color: var(--gold-light);
+    }
+    .btn-whatsapp:hover {
+      background: rgba(201,169,110,0.22);
+      border-color: var(--gold);
+    }
+
+    .btn-contact svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    body.rtl {
+      direction: rtl;
+      text-align: right;
+    }
+
+    body.rtl .lang-toggle {
+      right: auto;
+      left: 24px;
+    }
+
+    body.rtl .hero-line,
+    body.rtl .topbar,
+    body.rtl .pricing-top,
+    body.rtl .pricing-item,
+    body.rtl .pricing-total,
+    body.rtl .contact-btns,
+    body.rtl .card-btn,
+    body.rtl .templates-btn,
+    body.rtl .form-open-link {
+      flex-direction: row-reverse;
+    }
+
+    body.rtl .section-header,
+    body.rtl .pricing-header,
+    body.rtl .feature-caption,
+    body.rtl .contact-form-header,
+    body.rtl .contact-info,
+    body.rtl .coming,
+    body.rtl .services,
+    body.rtl .why-choose,
+    body.rtl .contact-split,
+    body.rtl .contact-section {
+      text-align: right;
+    }
+
+    body.rtl .cards-grid,
+    body.rtl .pricing-grid,
+    body.rtl .services .grid {
+      direction: rtl;
+    }
+
+    /* â”€â”€â”€ FOOTER â”€â”€â”€ */
+    footer {
+      background: #1C1815;
+      padding: 30px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    footer .footer-line {
+      width: 30px;
+      height: 1px;
+      background: rgba(201,169,110,0.3);
+    }
+    footer p {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(201,169,110,0.5);
+    }
+
+    /* â”€â”€â”€ ANIMATIONS â”€â”€â”€ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* â”€â”€â”€ RESPONSIVE â”€â”€â”€ */
+    @media (max-width: 768px) {
+      .cards-grid { grid-template-columns: 1fr; gap: 22px; }
+      .hero { padding: 80px 24px 60px; }
+      .lang-toggle { top: 18px; right: 18px; }
+      .hero-logo { width: min(210px, 70vw); padding: 12px; }
+      .feature-section { padding: 0 24px 64px; }
+      .pricing-section { padding: 64px 24px 72px; }
+      .gallery-section { padding: 50px 24px 70px; }
+      .contact-section { padding: 70px 24px; }
+      .contact-btns { flex-direction: column; align-items: center; }
+      .btn-contact { width: 100%; max-width: 280px; justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 42px; }
+      .contact-section h2 { font-size: 34px; }
+      .pricing-top { flex-direction: column; }
+      .pricing-bullets { grid-template-columns: 1fr; }
+      .lang-toggle { width: calc(100% - 36px); justify-content: center; }
+    }
+
+    /* New sections: services, why-choose, coming, contact-split */
+    .services {
+      padding: 64px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .services .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      margin-top: 28px;
+    }
+    .service-item {
+      background: var(--warm-white);
+      border-radius: 12px;
+      padding: 22px;
+      text-align: center;
+      border: 1px solid rgba(201,169,110,0.12);
+      box-shadow: 0 10px 30px rgba(139,106,46,0.04);
+    }
+    .service-item h4 { font-size: 16px; margin-bottom: 8px; font-weight: 600; }
+    .service-item p { color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+    .why-choose {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+      padding: 64px 40px;
+      background: linear-gradient(180deg, rgba(26,22,16,0.96), rgba(26,22,16,0.96));
+      color: var(--warm-white);
+    }
+    .why-choose .why-body { flex: 1; max-width: 640px; }
+    .why-choose h3 { color: var(--warm-white); font-family: 'Cormorant Garamond', serif; font-size: 28px; }
+    .why-choose p { color: rgba(250,246,240,0.85); line-height: 1.9; }
+    .why-choose .why-img { width: 360px; flex-shrink: 0; border-radius: 12px; overflow: hidden; }
+    .why-choose .why-img img { width: 100%; height: auto; display: block; }
+
+    .coming {
+      padding: 56px 40px;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto 30px;
+    }
+    .coming h2 { font-family: 'Cormorant Garamond', serif; font-size: 34px; margin-bottom: 12px; }
+    .coming p { color: var(--muted); max-width: 760px; margin: 0 auto; }
+
+    .contact-split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: start;
+      padding: 64px 40px 90px;
+      background: var(--cream);
+    }
+    .contact-panel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(42,36,32,0.96), rgba(74,63,55,0.96));
+      padding: 24px;
+      box-shadow: 0 28px 70px rgba(42,36,32,0.18);
+    }
+    .contact-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(201,169,110,0.16), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(212,160,160,0.10), transparent 30%);
+      pointer-events: none;
+    }
+    .contact-form {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 16px;
+    }
+    .contact-form-header {
+      display: grid;
+      gap: 8px;
+      color: var(--warm-white);
+    }
+    .contact-form-header .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+    .contact-form-header h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .contact-form-header p {
+      color: rgba(250,246,240,0.72);
+      font-size: 13px;
+      line-height: 1.75;
+      max-width: 460px;
+    }
+    .form-frame-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(232,213,168,0.25);
+      background: rgba(255,253,249,0.96);
+      min-height: 720px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+    }
+    .form-frame-wrap iframe {
+      width: 100%;
+      height: 720px;
+      border: 0;
+      display: block;
+      background: #fff;
+    }
+    .form-open-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      justify-self: start;
+      margin-top: 4px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--charcoal);
+      background: linear-gradient(135deg, var(--gold-light), #fff7e8);
+      border: 1px solid rgba(201,169,110,0.32);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 10px 24px rgba(139,106,46,0.12);
+    }
+    .form-open-link:hover { transform: translateY(-2px); }
+    .contact-info { padding: 22px; }
+    .contact-info h4 { font-size: 18px; margin-bottom: 8px; }
+    .contact-info p, .contact-info a { color: var(--muted); font-size: 13px; display:block; margin-bottom:8px; }
+
+    /* Cinematic scroll invitation */
+    .cinematic-scroll {
+      position: relative;
+      height: 500vh;
+      background: #faf8f5;
+      color: #2a2420;
+      isolation: isolate;
+    }
+
+    #animation-canvas {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #faf8f5;
+    }
+
+    .cinematic-layer,
+    .garden-stage,
+    .paper-stage {
+      position: absolute;
+      inset: 0;
+    }
+
+    .garden-stage {
+      transform-origin: 50% 75%;
+      will-change: transform, filter, opacity;
+    }
+
+    .garden-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #couples-group {
+      transform-origin: center bottom;
+      will-change: transform;
+    }
+
+    .couples-image {
+      position: absolute;
+      left: 50%;
+      bottom: 5%;
+      z-index: 2;
+      width: min(48vw, 560px);
+      max-height: 58vh;
+      object-fit: contain;
+      translate: -50% 0;
+      filter: drop-shadow(0 24px 28px rgba(42, 36, 32, 0.24));
+      pointer-events: none;
+    }
+
+    .white-veil {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.88);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .lucioles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .luciole {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fff7b8;
+      box-shadow: 0 0 16px rgba(255, 247, 184, 0.95);
+      animation: luciole 3s ease-in-out infinite;
+    }
+
+    .luciole:nth-child(1) { left: 18%; top: 37%; }
+    .luciole:nth-child(2) { left: 30%; top: 56%; animation-delay: 0.8s; }
+    .luciole:nth-child(3) { left: 68%; top: 42%; animation-delay: 1.6s; }
+    .luciole:nth-child(4) { left: 78%; top: 63%; animation-delay: 2.2s; }
+    .luciole:nth-child(5) { left: 46%; top: 30%; animation-delay: 1.1s; }
+
+    @keyframes luciole {
+      0%, 100% { opacity: 0; transform: translate(0, 0) scale(0.8); }
+      50% { opacity: 0.85; transform: translate(6px, -10px) scale(1); }
+    }
+
+    .paper-stage {
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      background: #faf8f5;
+      perspective: 900px;
+    }
+
+    .envelope-svg {
+      width: min(72vw, 420px);
+      height: auto;
+      overflow: visible;
+    }
+
+    #envelope {
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center center;
+    }
+
+    #env-flap-top {
+      transform-box: fill-box;
+      transform-origin: center top;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+
+    #letter {
+      transform-box: fill-box;
+      transform-origin: center center;
+    }
+
+    .invite-reveal {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      display: grid;
+      place-items: center;
+      padding: 26px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .invite-card-cinematic {
+      width: min(88vw, 560px);
+      min-height: min(78vh, 690px);
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: 18px;
+      padding: clamp(34px, 6vw, 64px);
+      border: 1.5px solid rgba(201, 169, 110, 0.78);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(201,169,110,0.1), transparent 28%),
+        radial-gradient(circle at 82% 90%, rgba(212,160,160,0.12), transparent 26%),
+        #fffdf9;
+      box-shadow: 0 28px 80px rgba(139, 106, 46, 0.16);
+      text-align: center;
+    }
+
+    #invite-content > * {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: none;
+    }
+
+    .invite-kicker {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 1.45rem);
+      color: var(--gold-dark);
+    }
+
+    .invite-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.1rem, 10vw, 5.25rem);
+      font-weight: 300;
+      line-height: 0.95;
+      color: #5b2024;
+    }
+
+    .invite-date {
+      font-size: 0.78rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: #8b6a2e;
+    }
+
+    .invite-place {
+      max-width: 360px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .invite-rsvp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #c9a96e, #f3dfae);
+      color: #2a2420;
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border: 1px solid rgba(139,106,46,0.28);
+      box-shadow: 0 14px 32px rgba(139,106,46,0.16);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      pointer-events: auto;
+    }
+
+    .invite-rsvp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(139,106,46,0.2);
+    }
+
+    .floral-separator {
+      width: 138px;
+      height: 34px;
+      color: var(--gold);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 24px;
+      z-index: 5;
+      transform: translateX(-50%);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(42,36,32,0.62);
+    }
+
+    @media (max-width: 980px) {
+      .services .grid { grid-template-columns: repeat(2,1fr); }
+      .why-choose { flex-direction: column; padding: 40px 24px; }
+      .why-choose .why-img { width: 100%; }
+      .contact-split { grid-template-columns: 1fr; }
+      .contact-panel { padding: 20px; }
+      .form-frame-wrap { min-height: 760px; }
+      .form-frame-wrap iframe { height: 760px; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="cinematic-scroll" id="cinematicIntro" aria-label="Animation d'invitation au scroll">
+    <div id="animation-canvas">
+      <div class="garden-stage" id="garden-scene">
+        <img class="garden-image" src="assets/garden.png" alt="">
+        <img class="couples-image" id="couples-group" src="assets/3dcouple.png" alt="">
+        <div class="lucioles" aria-hidden="true">
+          <span class="luciole"></span>
+          <span class="luciole"></span>
+          <span class="luciole"></span>
+          <span class="luciole"></span>
+          <span class="luciole"></span>
+        </div>
+      </div>
+
+      <div class="white-veil" id="white-veil"></div>
+
+      <div class="paper-stage" id="paper-stage" aria-hidden="true">
+        <svg class="envelope-svg" viewBox="0 0 420 330" aria-hidden="true">
+          <g id="letter">
+            <rect x="100" y="24" width="220" height="172" rx="8" fill="#fffdf9" stroke="#c9a96e" stroke-width="1.5" />
+            <line x1="132" y1="70" x2="288" y2="70" stroke="#c9a96e" stroke-width="2" opacity="0.55" />
+            <line x1="132" y1="102" x2="286" y2="102" stroke="#c9a96e" stroke-width="2" opacity="0.35" />
+            <line x1="132" y1="128" x2="250" y2="128" stroke="#c9a96e" stroke-width="2" opacity="0.35" />
+          </g>
+          <g id="envelope">
+            <rect id="env-body" x="30" y="90" width="360" height="240" rx="10" fill="#f5ede0" stroke="#c9a96e" stroke-width="1.5" />
+            <polygon id="env-flap-bottom" points="30,330 210,190 390,330" fill="#efe3d1" stroke="#c9a96e" stroke-width="1.5" />
+            <polygon id="env-flap-left" points="30,90 210,220 30,330" fill="#f8f0e4" stroke="#c9a96e" stroke-width="1.5" />
+            <polygon id="env-flap-right" points="390,90 210,220 390,330" fill="#f8f0e4" stroke="#c9a96e" stroke-width="1.5" />
+            <polygon id="env-flap-top" points="30,90 210,222 390,90" fill="#f5ede0" stroke="#c9a96e" stroke-width="1.5" />
+            <circle id="env-seal" cx="210" cy="206" r="18" fill="#c9a96e" />
+            <text id="env-seal-text" x="210" y="212" text-anchor="middle" font-size="18" fill="#fffdf9">â™¥</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="invite-reveal" id="invite-reveal">
+        <div class="invite-card-cinematic" id="invite-content">
+          <p class="invite-kicker">Vous Ãªtes cordialement invitÃ©s</p>
+          <h2 class="invite-names">Sofia &amp; Rayan</h2>
+          <svg class="floral-separator" viewBox="0 0 160 40" aria-hidden="true">
+            <path d="M14 20 H56 M104 20 H146" stroke="currentColor" stroke-width="1.5" />
+            <path d="M80 20 C62 4 54 8 60 20 C54 32 62 36 80 20 C98 4 106 8 100 20 C106 32 98 36 80 20 Z" fill="none" stroke="currentColor" stroke-width="1.5" />
+            <circle cx="80" cy="20" r="3.5" fill="currentColor" />
+          </svg>
+          <p class="invite-date">Samedi 14 Juin 2026</p>
+          <p class="invite-place">18h30 â€” Domaine Les Oliviers, Tunis</p>
+          <a class="invite-rsvp" href="#contact">RSVP</a>
+        </div>
+      </div>
+
+      <div class="scroll-hint">Scrollez</div>
+    </div>
+  </section>
+
+  <button class="lang-toggle" id="langToggle" type="button" aria-label="Changer la langue">FR / AR</button>
+
+  <!-- â•â•â• HERO â•â•â• -->
+  <header class="hero">
+    <div class="hero-ornament"></div>
+    <div class="hero-line">
+      <span class="rule"></span>
+      <span id="heroLineText">Atelier de papeterie</span>
+      <span class="rule r"></span>
+    </div>
+    <div class="hero-logo">
+      <img src="logo/logoLH.jpg" alt="Logo L'heure blanche">
+    </div>
+    <h1 id="heroTitle">Invitations<br><em>Mariage</em></h1>
+    <p class="hero-sub" id="heroSub">CrÃ©ations sur mesure Â· Fait avec soin</p>
+    <div class="hero-diamond"></div>
+  </header>
+
+  <!-- â•â•â• FEATURED IMAGE â•â•â• -->
+  <section class="feature-section">
+    <div class="feature-card">
+      <img class="feature-image" src="logo/image1.jpg" alt="AperÃ§u d'une invitation de mariage L'heure blanche">
+      <div class="feature-caption">
+        <span class="eyebrow">Signature visuelle</span>
+        <h2>Lâ€™Ã©lÃ©gance du logo et de lâ€™invitation en un seul regard</h2>
+        <p>Le logo est prÃ©sentÃ© comme une signature raffinÃ©e, puis lâ€™image 1 met en scÃ¨ne lâ€™univers complet de la collection avec une finition plus immersive.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â• GALLERY â•â•â• -->
+  <section class="gallery-section">
+    <div class="section-header">
+      <span class="eyebrow">Nos crÃ©ations</span>
+      <h2>Choisissez votre design</h2>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- Carte Rose -->
+      <div class="card">
+        <div class="card-preview preview-rose has-photo">
+          <img class="preview-photo" src="logo/RoseElegant.jpg" alt="Invitation Rose Ã‰lÃ©gant">
+          <div class="preview-bg"></div>
+          <div class="preview-monogram">A&amp;L</div>
+          <span class="preview-tag">Rose Ã‰lÃ©gant</span>
+        </div>
+        <div class="card-body">
+          <p class="card-label">Collection I</p>
+          <h3 class="card-title">Rose Ã‰lÃ©gant</h3>
+          <p class="card-desc">Doux, romantique et intemporel.<br>Une palette rosÃ©e toute en grÃ¢ce.</p>
+          <a href="templates/rose/" class="card-btn">Voir le design</a>
+        </div>
+      </div>
+
+      <!-- Carte Gold -->
+      <div class="card">
+        <div class="card-preview preview-gold has-photo">
+          <img class="preview-photo" src="logo/GoldLuxe.jpg" alt="Invitation Gold Luxe">
+          <div class="preview-bg"></div>
+          <div class="preview-monogram">A&amp;L</div>
+          <span class="preview-tag">Gold Luxe</span>
+        </div>
+        <div class="card-body">
+          <p class="card-label">Collection II</p>
+          <h3 class="card-title">Gold Luxe</h3>
+          <p class="card-desc">Nuit profonde et or scintillant.<br>Le prestige Ã  l'Ã©tat pur.</p>
+          <a href="templates/gold/" class="card-btn">Voir le design</a>
+        </div>
+      </div>
+
+      <!-- Carte Floral -->
+      <div class="card">
+        <div class="card-preview preview-floral has-photo">
+          <img class="preview-photo" src="logo/FloralNature.jpg" alt="Invitation Floral Nature">
+          <div class="preview-bg"></div>
+          <div class="preview-monogram">A&amp;L</div>
+          <span class="preview-tag">Floral Nature</span>
+        </div>
+        <div class="card-body">
+          <p class="card-label">Collection III</p>
+          <h3 class="card-title">Floral Nature</h3>
+          <p class="card-desc">Botaniques et verdoyant.<br>La poÃ©sie du jardin en fleurs.</p>
+          <a href="templates/floral/" class="card-btn">Voir le design</a>
+        </div>
+      </div>
+
+      <!-- Carte BlackLove -->
+      <div class="card theme-blacklove">
+        <div class="card-preview preview-blacklove has-photo">
+          <img class="preview-photo" src="logo/BlackLove.jpg" alt="Invitation Black Love">
+          <div class="preview-bg"></div>
+          <div class="preview-monogram">A&amp;L</div>
+          <span class="preview-tag">Black Love</span>
+        </div>
+        <div class="card-body">
+          <p class="card-label">Collection III</p>
+          <h3 class="card-title">Black Love</h3>
+          <p class="card-desc">Ã‰lÃ©gant et intemporel.<br>La passion dans une palette de noir et d'or.</p>
+          <a href="templates/blacklove/" class="card-btn">Voir le design</a>
+        </div>
+      </div>
+
+      <!-- Carte NightVow -->
+      <div class="card theme-nightvow">
+        <div class="card-preview preview-nightvow has-photo">
+          <img class="preview-photo" src="logo/NightVow.jpg" alt="Invitation Night Vow">
+          <div class="preview-bg"></div>
+          <div class="preview-monogram">A&amp;L</div>
+          <span class="preview-tag">Night Vow</span>
+        </div>
+        <div class="card-body">
+          <p class="card-label">Collection III</p>
+          <h3 class="card-title">Night Vow</h3>
+          <p class="card-desc">Ã‰lÃ©gant et intemporel.<br>La passion dans une palette de noir et d'or.</p>
+          <a href="templates/NightVow/" class="card-btn">Voir le design</a>
+        </div>
+      </div>
+
+      <!-- Carte Golden Hour -->
+      <div class="card theme-goldenhour">
+        <div class="card-preview preview-goldenhour has-photo">
+          <img class="preview-photo" src="logo/GoldenHour.jpg" alt="Invitation Golden Hour">
+          <div class="preview-bg"></div>
+          <div class="preview-monogram">A&amp;L</div>
+          <span class="preview-tag">Golden Hour</span>
+        </div>
+        <div class="card-body">
+          <p class="card-label">Collection III</p>
+          <h3 class="card-title">Golden Hour</h3>
+          <p class="card-desc">Ã‰lÃ©gant et intemporel.<br>La passion dans une palette de noir et d'or.</p>
+          <a href="templates/goldenhour/" class="card-btn">Voir le design</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="templates-cta">
+      <a href="templates.html" class="templates-btn">Voir les templates</a>
+    </div>
+
+
+  </section>
+
+  <!-- â•â•â• PRICING SHOWCASE â•â•â• -->
+  <section class="pricing-section" aria-label="Tarifs des invitations">
+    <div class="pricing-header">
+      <span class="eyebrow">Tarification Ã©lÃ©gante</span>
+      <h2>Deux faÃ§ons de cÃ©lÃ©brer votre invitation</h2>
+      <p>Une version papier pour le charme et la matiÃ¨re, une version numÃ©rique pour la rapiditÃ© et la simplicitÃ©. Les deux options sont pensÃ©es avec le mÃªme souci du dÃ©tail.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <article class="pricing-card paper">
+        <div class="pricing-top">
+          <div>
+            <span class="pricing-badge">Invitation Papier</span>
+            <h3>Prix approx. 120 invitÃ©s</h3>
+            <div class="pricing-subtitle">Classique & prestigieux</div>
+          </div>
+        </div>
+
+        <div class="pricing-list">
+          <div class="pricing-item"><span>Design</span><span>150 TND</span></div>
+          <div class="pricing-item"><span>Printing (130 pcs)</span><span>260 TND</span></div>
+          <div class="pricing-item"><span>Enveloppes + sealing</span><span>104 TND</span></div>
+          <div class="pricing-item"><span>Postal shipping</span><span>120 TND</span></div>
+        </div>
+
+        <div class="pricing-total">
+          <span>CoÃ»t total</span>
+          <strong>~634 TND</strong>
+        </div>
+
+        <p class="pricing-note">Une expÃ©rience tangible, raffinÃ©e et mÃ©morable, idÃ©ale pour une remise traditionnelle Ã  vos invitÃ©s.</p>
+      </article>
+
+      <article class="pricing-card digital">
+        <div class="pricing-top">
+          <div>
+            <span class="pricing-badge">Invitation NumÃ©rique</span>
+            <h3>Le meilleur choix</h3>
+            <div class="pricing-subtitle">Rapide & moderne</div>
+          </div>
+        </div>
+
+        <div class="pricing-list">
+          <div class="pricing-item"><span>Save</span><span>+400 TND</span></div>
+          <div class="pricing-item"><span>No printing or shipping costs</span><span>Inclus</span></div>
+        </div>
+
+        <div class="pricing-bullets">
+          <div class="pricing-pill"><strong>Guest panel</strong>Gestion simple des invitÃ©s et des rÃ©ponses.</div>
+          <div class="pricing-pill"><strong>Real-time confirmations</strong>Suivi instantanÃ© des confirmations.</div>
+          <div class="pricing-pill"><strong>Always accessible</strong>Consultable Ã  tout moment sur tÃ©lÃ©phone.</div>
+          <div class="pricing-pill"><strong>Instant delivery</strong>PrÃªt en 48â€“72h avec tout inclus.</div>
+        </div>
+
+        <div class="pricing-total">
+          <span>Ã€ partir de</span>
+          <strong>40 TND</strong>
+        </div>
+
+        <p class="pricing-note">Une solution pratique, Ã©lÃ©gante et immÃ©diatement partageable, pensÃ©e pour vos invitÃ©s et votre budget.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- â•â•â• DIVIDER â•â•â• -->
+  <div class="ornamental-divider">
+    <div class="line"></div>
+    <div class="ornament">âœ¦ âœ¦ âœ¦</div>
+    <div class="line"></div>
+  </div>
+  <!-- â•â•â• SERVICES â•â•â• -->
+  <section class="services" aria-label="Nos services">
+    <div class="section-header">
+      <span class="eyebrow">A few of the things we offer</span>
+      <h2>Ce que nous proposons</h2>
+    </div>
+    <div class="grid">
+      <div class="service-item">
+        <h4>Full Customization</h4>
+        <p>Choisissez couleurs, typographie et finitions â€” nous adaptons tout au style souhaitÃ©.</p>
+      </div>
+      <div class="service-item">
+        <h4>Easy Sharing</h4>
+        <p>Partagez vos invitations via WhatsApp ou rÃ©seaux; version web et PDF optimisÃ©s.</p>
+      </div>
+      <div class="service-item">
+        <h4>First Impression</h4>
+        <p>Des designs soignÃ©s pour une annonce qui laisse une impression mÃ©morable.</p>
+      </div>
+      <div class="service-item">
+        <h4>Eco-Friendly</h4>
+        <p>Options durables et matÃ©riaux responsables pour un choix moderne et intelligent.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â• WHY CHOOSE US (dark band) â•â•â• -->
+  <section class="why-choose">
+    <div class="why-body">
+      <h3>Why choose us</h3>
+      <p>Nous crÃ©ons des invitations Ã©lÃ©gantes, personnalisÃ©es et remplies de dÃ©tails soignÃ©s.
+      Avec un savoir-faire artisanal, chaque crÃ©ation devient un souvenir intemporel.</p>
+    </div>
+    <div class="why-img">
+      <img src="logo/image2.jpg" alt="Packaging and invitation">
+    </div>
+  </section>
+
+  <!-- â•â•â• COMING SOON / TESTIMONIAL â•â•â• -->
+  <section class="coming">
+    <h2>Something Beautiful Is Coming...</h2>
+    <p>Nous Ã©tendons notre univers avec de nouveaux produits crÃ©atifs. Attendez-vous Ã  des finitions inÃ©dites et des designs exclusifs trÃ¨s bientÃ´t.</p>
+  </section>
+
+  <!-- â•â•â• CONTACT (expanded with form) â•â•â• -->
+  <section class="contact-split" id="contact">
+    <div>
+      <div class="contact-info">
+        <h4>Let's work together. Get in touch!</h4>
+        <p>PHONE: 01 23 45 67 89</p>
+        <p>EMAIL: contact@atelier.example</p>
+        <p>Social: @votrecompte</p>
+      </div>
+      <div style="margin-top:24px;">
+        <img src="logo/image3.png" alt="Sample" style="width:100%;border-radius:10px;">
+      </div>
+    </div>
+    <div class="contact-panel">
+      <form class="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLSeWHrnmW2g-QJY2WQGtrqeEn1ZieB-ykF0llnk6uSJWhnXnIQ/formResponse" method="post" target="_blank">
+        <div class="contact-form-header">
+          <span class="eyebrow">Formulaire sur mesure</span>
+          <h4>RÃ©servez votre crÃ©ation avec Ã©lÃ©gance</h4>
+          <p>Remplissez le formulaire pour nous transmettre votre projet. Le design reprend lâ€™esthÃ©tique luxe du site, avec un accÃ¨s direct et fluide vers le formulaire Google.</p>
+        </div>
+        <div class="form-frame-wrap">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWHrnmW2g-QJY2WQGtrqeEn1ZieB-ykF0llnk6uSJWhnXnIQ/viewform?embedded=true" title="Formulaire de contact Google"></iframe>
+        </div>
+        <a class="form-open-link" href="https://docs.google.com/forms/d/e/1FAIpQLSeWHrnmW2g-QJY2WQGtrqeEn1ZieB-ykF0llnk6uSJWhnXnIQ/viewform?usp=preview" target="_blank" rel="noopener noreferrer">Ouvrir le formulaire</a>
+      </form>
+    </div>
+  </section>
+
+  <!-- â•â•â• CONTACT (legacy section kept for small screens) â•â•â• -->
+  <section class="contact-section">
+    <span class="contact-eyebrow">Passez commande</span>
+    <h2>Votre invitation,<br><em>personnalisÃ©e</em></h2>
+    <p class="contact-desc">
+      Vous avez choisi votre design ? Contactez-nous<br>
+      pour crÃ©er votre invitation sur mesure.
+    </p>
+    <div class="contact-btns">
+      <a href="https://instagram.com/TON_COMPTE" class="btn-contact btn-instagram" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+        </svg>
+        Instagram
+      </a>
+      <a href="https://wa.me/TONNUMERO" class="btn-contact btn-whatsapp" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
+          <path d="M9 10c.2.6.5 1.2 1 1.5l1.5 1.5c.3.5.9.8 1.5 1"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      if (!window.gsap || !window.ScrollTrigger) {
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.set('#letter', { opacity: 0, y: 30 });
+      gsap.set('#invite-reveal', { opacity: 0 });
+      gsap.set('#invite-content > *', { opacity: 0, y: 30 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#cinematicIntro',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 1.5
+        }
+      });
+
+      tl.to('#garden-scene', {
+          scale: 3,
+          filter: 'blur(6px)',
+          transformOrigin: '50% 75%',
+          ease: 'none',
+          duration: 1
+        }, 1)
+        .to('#couples-group', {
+          scale: 1.4,
+          y: -40,
+          ease: 'none',
+          duration: 1
+        }, 1)
+        .to('#white-veil', { opacity: 0.85, ease: 'none', duration: 1 }, 1)
+        .to('#garden-scene', { opacity: 0, ease: 'none', duration: 0.7 }, 2)
+        .to('#white-veil', { opacity: 0, ease: 'none', duration: 0.35 }, 2)
+        .to('#paper-stage', { opacity: 1, ease: 'none', duration: 0.2 }, 2)
+        .fromTo('#envelope',
+          { opacity: 0, scale: 0.7, y: 60 },
+          { opacity: 1, scale: 1, y: 0, duration: 1, ease: 'back.out(1.4)' },
+          2.05
+        )
+        .to('#env-seal, #env-seal-text', { opacity: 0, scale: 0, duration: 0.3 }, 2.45)
+        .to('#env-flap-top', {
+          rotateX: -180,
+          transformOrigin: 'center top',
+          ease: 'power2.inOut',
+          duration: 1
+        }, 2.55)
+        .fromTo('#letter',
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: -80, duration: 1, ease: 'power2.out' },
+          3
+        )
+        .to('#letter', {
+          scale: 8,
+          y: -40,
+          opacity: 0,
+          transformOrigin: 'center center',
+          duration: 0.85,
+          ease: 'power2.inOut'
+        }, 3.75)
+        .to('#envelope', { opacity: 0, scale: 1.15, duration: 0.6, ease: 'none' }, 3.8)
+        .to('#invite-reveal', { opacity: 1, duration: 0.35, ease: 'none' }, 3.92)
+        .to('#invite-content > *', {
+          opacity: 1,
+          y: 0,
+          stagger: 0.25,
+          ease: 'power2.out',
+          duration: 0.6
+        }, 4.05)
+        .to('.scroll-hint', { opacity: 0, duration: 0.3, ease: 'none' }, 0.25);
+    })();
+
+    (function () {
+      const translations = {
+        fr: {
+          heroLine: 'Atelier de papeterie',
+          heroTitle: 'Invitations<br><em>Mariage</em>',
+          heroSub: 'CrÃ©ations sur mesure Â· Fait avec soin',
+          featureEyebrow: 'Signature visuelle',
+          featureTitle: 'Lâ€™Ã©lÃ©gance du logo et de lâ€™invitation en un seul regard',
+          featureText: 'Le logo est prÃ©sentÃ© comme une signature raffinÃ©e, puis lâ€™image 1 met en scÃ¨ne lâ€™univers complet de la collection avec une finition plus immersive.',
+          galleryEyebrow: 'Nos crÃ©ations',
+          galleryTitle: 'Choisissez votre design',
+          galleryCta: 'Voir les templates',
+          pricingEyebrow: 'Tarification Ã©lÃ©gante',
+          pricingTitle: 'Deux faÃ§ons de cÃ©lÃ©brer votre invitation',
+          pricingText: 'Une version papier pour le charme et la matiÃ¨re, une version numÃ©rique pour la rapiditÃ© et la simplicitÃ©. Les deux options sont pensÃ©es avec le mÃªme souci du dÃ©tail.',
+          servicesEyebrow: 'A few of the things we offer',
+          servicesTitle: 'Ce que nous proposons',
+          services: [
+            ['Full Customization', 'Choisissez couleurs, typographie et finitions â€” nous adaptons tout au style souhaitÃ©.'],
+            ['Easy Sharing', 'Partagez vos invitations via WhatsApp ou rÃ©seaux; version web et PDF optimisÃ©s.'],
+            ['First Impression', 'Des designs soignÃ©s pour une annonce qui laisse une impression mÃ©morable.'],
+            ['Eco-Friendly', 'Options durables et matÃ©riaux responsables pour un choix moderne et intelligent.']
+          ],
+          whyTitle: 'Why choose us',
+          whyText: 'Nous crÃ©ons des invitations Ã©lÃ©gantes, personnalisÃ©es et remplies de dÃ©tails soignÃ©s. Avec un savoir-faire artisanal, chaque crÃ©ation devient un souvenir intemporel.',
+          comingTitle: 'Something Beautiful Is Coming...',
+          comingText: 'Nous Ã©tendons notre univers avec de nouveaux produits crÃ©atifs. Attendez-vous Ã  des finitions inÃ©dites et des designs exclusifs trÃ¨s bientÃ´t.',
+          contactTitle: 'Let\'s work together. Get in touch!',
+          contactPhone: 'PHONE: 01 23 45 67 89',
+          contactEmail: 'EMAIL: contact@atelier.example',
+          contactSocial: 'Social: @votrecompte',
+          formEyebrow: 'Formulaire sur mesure',
+          formTitle: 'RÃ©servez votre crÃ©ation avec Ã©lÃ©gance',
+          formText: 'Remplissez le formulaire pour nous transmettre votre projet. Le design reprend lâ€™esthÃ©tique luxe du site, avec un accÃ¨s direct et fluide vers le formulaire Google.',
+          formOpen: 'Ouvrir le formulaire',
+          legacyEyebrow: 'Passez commande',
+          legacyTitle: 'Votre invitation,<br><em>personnalisÃ©e</em>',
+          legacyDesc: 'Vous avez choisi votre design ? Contactez-nous<br>pour crÃ©er votre invitation sur mesure.',
+          instagram: 'Instagram',
+          whatsapp: 'WhatsApp',
+          footer: 'Â© 2025 Invitations Mariage â€” Tous droits rÃ©servÃ©s',
+          cards: [
+            ['Collection I', 'Rose Ã‰lÃ©gant', 'Doux, romantique et intemporel.<br>Une palette rosÃ©e toute en grÃ¢ce.', 'Voir le design'],
+            ['Collection II', 'Gold Luxe', 'Nuit profonde et or scintillant.<br>Le prestige Ã  lâ€™Ã©tat pur.', 'Voir le design'],
+            ['Collection III', 'Floral Nature', 'Botaniques et verdoyant.<br>La poÃ©sie du jardin en fleurs.', 'Voir le design'],
+            ['Collection III', 'Black Love', 'Ã‰lÃ©gant et intemporel.<br>La passion dans une palette de noir et dâ€™or.', 'Voir le design'],
+            ['Collection III', 'Night Vow', 'Ã‰lÃ©gant et intemporel.<br>La passion dans une palette de noir et dâ€™or.', 'Voir le design'],
+            ['Collection III', 'Golden Hour', 'Ã‰lÃ©gant et intemporel.<br>La passion dans une palette de noir et dâ€™or.', 'Voir le design']
+          ]
+        },
+        ar: {
+          heroLine: 'Ø§Ø³ØªÙˆØ¯ÙŠÙˆ Ø§Ù„Ù‚Ø±Ø·Ø§Ø³ÙŠØ©',
+          heroTitle: 'Ø¯Ø¹ÙˆØ§Øª<br><em>Ø§Ù„Ø²ÙØ§Ù</em>',
+          heroSub: 'ØªØµØ§Ù…ÙŠÙ… Ù…Ø®ØµØµØ© Â· Ø¨Ø¥ØªÙ‚Ø§Ù† ÙˆØ¹Ù†Ø§ÙŠØ©',
+          featureEyebrow: 'Ù„Ù…Ø³Ø© Ø¨ØµØ±ÙŠØ©',
+          featureTitle: 'Ø£Ù†Ø§Ù‚Ø© Ø§Ù„Ø´Ø¹Ø§Ø± ÙˆØ§Ù„Ø¯Ø¹ÙˆØ© ÙÙŠ Ù†Ø¸Ø±Ø© ÙˆØ§Ø­Ø¯Ø©',
+          featureText: 'ÙŠØ¸Ù‡Ø± Ø§Ù„Ø´Ø¹Ø§Ø± ÙƒØªÙˆÙ‚ÙŠØ¹ Ø£Ù†ÙŠÙ‚ØŒ Ø«Ù… ØªØ¹Ø±Ø¶ Ø§Ù„ØµÙˆØ±Ø© Ø§Ù„Ø£ÙˆÙ„Ù‰ Ø¹Ø§Ù„Ù… Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø© Ø§Ù„ÙƒØ§Ù…Ù„ Ø¨Ù„Ù…Ø³Ø© Ø£ÙƒØ«Ø± ÙØ®Ø§Ù…Ø© ÙˆØºÙ†Ù‰.',
+          galleryEyebrow: 'Ø¥Ø¨Ø¯Ø§Ø¹Ø§ØªÙ†Ø§',
+          galleryTitle: 'Ø§Ø®ØªØ± ØªØµÙ…ÙŠÙ…Ùƒ',
+          galleryCta: 'Ø¹Ø±Ø¶ Ø§Ù„Ù‚ÙˆØ§Ù„Ø¨',
+          pricingEyebrow: 'ØªØ³Ø¹ÙŠØ± Ø£Ù†ÙŠÙ‚',
+          pricingTitle: 'Ø·Ø±ÙŠÙ‚ØªØ§Ù† Ù„Ù„Ø§Ø­ØªÙØ§Ù„ Ø¨Ø¯Ø¹ÙˆØªÙƒ',
+          pricingText: 'Ù†Ø³Ø®Ø© ÙˆØ±Ù‚ÙŠØ© Ù„Ø³Ø­Ø± Ø§Ù„Ù…Ù„Ù…Ø³ØŒ ÙˆÙ†Ø³Ø®Ø© Ø±Ù‚Ù…ÙŠØ© Ù„Ù„Ø³Ø±Ø¹Ø© ÙˆØ§Ù„Ø¨Ø³Ø§Ø·Ø©. ÙƒÙ„Ø§ Ø§Ù„Ø®ÙŠØ§Ø±ÙŠÙ† Ù…ØµÙ…Ù… Ø¨Ø¹Ù†Ø§ÙŠØ© ÙÙŠ ÙƒÙ„ Ø§Ù„ØªÙØ§ØµÙŠÙ„.',
+          servicesEyebrow: 'Ø¨Ø¹Ø¶ Ù…Ø§ Ù†Ù‚Ø¯Ù…Ù‡',
+          servicesTitle: 'Ù…Ø§ Ø§Ù„Ø°ÙŠ Ù†Ù‚Ø¯Ù…Ù‡',
+          services: [
+            ['ØªØ®ØµÙŠØµ ÙƒØ§Ù…Ù„', 'Ø§Ø®ØªØ± Ø§Ù„Ø£Ù„ÙˆØ§Ù† ÙˆØ§Ù„Ø®Ø·ÙˆØ· ÙˆØ§Ù„ØªØ´Ø·ÙŠØ¨Ø§Øª â€” ÙˆÙ†Ø­Ù† Ù†ÙƒÙŠÙ‘Ù ÙƒÙ„ Ø´ÙŠØ¡ Ù…Ø¹ Ø£Ø³Ù„ÙˆØ¨Ùƒ.'],
+            ['Ù…Ø´Ø§Ø±ÙƒØ© Ø³Ù‡Ù„Ø©', 'Ø´Ø§Ø±Ùƒ Ø§Ù„Ø¯Ø¹ÙˆØ§Øª Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨ Ø£Ùˆ Ø§Ù„Ø´Ø¨ÙƒØ§ØªØ› Ù†Ø³Ø®Ø© ÙˆÙŠØ¨ ÙˆPDF Ù…Ø­Ø³Ù‘Ù†Ø©.'],
+            ['Ø§Ù†Ø·Ø¨Ø§Ø¹ Ø£ÙˆÙ„', 'ØªØµØ§Ù…ÙŠÙ… Ø£Ù†ÙŠÙ‚Ø© ØªØªØ±Ùƒ Ø¥Ø¹Ù„Ø§Ù†Ø§Ù‹ Ù„Ø§ ÙŠÙÙ†Ø³Ù‰.'],
+            ['ØµØ¯ÙŠÙ‚ Ù„Ù„Ø¨ÙŠØ¦Ø©', 'Ø®ÙŠØ§Ø±Ø§Øª Ù…Ø³ØªØ¯Ø§Ù…Ø© ÙˆÙ…ÙˆØ§Ø¯ Ù…Ø³Ø¤ÙˆÙ„Ø© Ù„Ù‚Ø±Ø§Ø± Ø­Ø¯ÙŠØ« ÙˆØ°ÙƒÙŠ.']
+          ],
+          whyTitle: 'Ù„Ù…Ø§Ø°Ø§ Ù†Ø­Ù†',
+          whyText: 'Ù†ØµÙ…Ù… Ø¯Ø¹ÙˆØ§Øª Ø£Ù†ÙŠÙ‚Ø© ÙˆÙ…Ø®ØµØµØ© ÙˆÙ…Ù„ÙŠØ¦Ø© Ø¨Ø§Ù„ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ø±Ø§Ù‚ÙŠØ©. ÙˆØ¨Ø­Ø±ÙÙŠØ© ÙŠØ¯ÙˆÙŠØ©ØŒ ØªØµØ¨Ø­ ÙƒÙ„ Ù‚Ø·Ø¹Ø© Ø°ÙƒØ±Ù‰ Ø®Ø§Ù„Ø¯Ø©.',
+          comingTitle: 'Ø´ÙŠØ¡ Ø¬Ù…ÙŠÙ„ Ù‚Ø§Ø¯Ù…...',
+          comingText: 'Ù†ÙˆØ³Ù‘Ø¹ Ø¹Ø§Ù„Ù…Ù†Ø§ Ø¨Ù…Ù†ØªØ¬Ø§Øª Ø¥Ø¨Ø¯Ø§Ø¹ÙŠØ© Ø¬Ø¯ÙŠØ¯Ø©. ØªØ±Ù‚Ø¨ÙˆØ§ ØªØ´Ø·ÙŠØ¨Ø§Øª Ù…Ø¨ØªÙƒØ±Ø© ÙˆØªØµØ§Ù…ÙŠÙ… Ø­ØµØ±ÙŠØ© Ù‚Ø±ÙŠØ¨Ø§Ù‹ Ø¬Ø¯Ø§Ù‹.',
+          contactTitle: 'Ù„Ù†ØµÙ†Ø¹Ù‡Ø§ Ù…Ø¹Ø§Ù‹. ØªÙˆØ§ØµÙ„ Ù…Ø¹Ù†Ø§!',
+          contactPhone: 'Ù‡Ø§ØªÙ: 01 23 45 67 89',
+          contactEmail: 'Ø§Ù„Ø¨Ø±ÙŠØ¯: contact@atelier.example',
+          contactSocial: 'Ø§Ù„Ø³ÙˆØ´ÙŠØ§Ù„: @votrecompte',
+          formEyebrow: 'Ù†Ù…ÙˆØ°Ø¬ Ù…Ø®ØµØµ',
+          formTitle: 'Ø§Ø­Ø¬Ø² ØªØµÙ…ÙŠÙ…Ùƒ Ø¨Ø£Ù†Ø§Ù‚Ø©',
+          formText: 'Ø§Ù…Ù„Ø£ Ø§Ù„Ù†Ù…ÙˆØ°Ø¬ Ù„Ø¥Ø±Ø³Ø§Ù„ Ù…Ø´Ø±ÙˆØ¹Ùƒ Ø¥Ù„ÙŠÙ†Ø§. Ø§Ù„ØªØµÙ…ÙŠÙ… ÙŠØ­Ø§ÙØ¸ Ø¹Ù„Ù‰ Ø±ÙˆØ­ Ø§Ù„ÙØ®Ø§Ù…Ø© ÙÙŠ Ø§Ù„Ù…ÙˆÙ‚Ø¹ Ù…Ø¹ ÙˆØµÙˆÙ„ Ù…Ø¨Ø§Ø´Ø± ÙˆØ³Ù„Ø³ Ø¥Ù„Ù‰ Ù†Ù…ÙˆØ°Ø¬ Google.',
+          formOpen: 'ÙØªØ­ Ø§Ù„Ù†Ù…ÙˆØ°Ø¬',
+          legacyEyebrow: 'Ø§Ø·Ù„Ø¨ Ø§Ù„Ø¢Ù†',
+          legacyTitle: 'Ø¯Ø¹ÙˆØªÙƒØŒ<br><em>Ù…Ø®ØµØµØ©</em>',
+          legacyDesc: 'Ø§Ø®ØªØ±Øª ØªØµÙ…ÙŠÙ…ÙƒØŸ ØªÙˆØ§ØµÙ„ Ù…Ø¹Ù†Ø§<br>Ù„Ù†Ù†Ø´Ø¦ Ø¯Ø¹ÙˆØªÙƒ Ø­Ø³Ø¨ Ø§Ù„Ø·Ù„Ø¨.',
+          instagram: 'Ø¥Ù†Ø³ØªØºØ±Ø§Ù…',
+          whatsapp: 'ÙˆØ§ØªØ³Ø§Ø¨',
+          footer: 'Â© 2025 Invitations Mariage â€” Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø­Ù‚ÙˆÙ‚ Ù…Ø­ÙÙˆØ¸Ø©',
+          cards: [
+            ['Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø© Ø§Ù„Ø£ÙˆÙ„Ù‰', 'ÙˆØ±Ø¯ÙŠ Ø£Ù†ÙŠÙ‚', 'Ù†Ø§Ø¹Ù… ÙˆØ±ÙˆÙ…Ø§Ù†Ø³ÙŠ ÙˆØ®Ø§Ù„Ø¯.<br>Ø¯Ø±Ø¬Ø§Øª ÙˆØ±Ø¯ÙŠØ© Ø¨Ø±Ù‚ÙŠÙ‘.', 'Ø¹Ø±Ø¶ Ø§Ù„ØªØµÙ…ÙŠÙ…'],
+            ['Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø© Ø§Ù„Ø«Ø§Ù†ÙŠØ©', 'ØªØ±Ù Ø°Ù‡Ø¨ÙŠ', 'Ù„ÙŠÙ„ Ø¹Ù…ÙŠÙ‚ ÙˆØ°Ù‡Ø¨ Ù…ØªÙ„Ø£Ù„Ø¦.<br>Ø§Ù„ÙØ®Ø§Ù…Ø© ÙÙŠ Ø£Ø¨Ù‡Ù‰ ØµÙˆØ±Ø©.', 'Ø¹Ø±Ø¶ Ø§Ù„ØªØµÙ…ÙŠÙ…'],
+            ['Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø© Ø§Ù„Ø«Ø§Ù„Ø«Ø©', 'Ø·Ø¨ÙŠØ¹Ø© Ø²Ù‡Ø±ÙŠØ©', 'Ø²Ù‡ÙˆØ± ÙˆÙ†Ø¨Ø§ØªØ§Øª Ù†Ø§Ø¨Ø¶Ø© Ø¨Ø§Ù„Ø­ÙŠØ§Ø©.<br>Ø´Ø¹Ø± Ø§Ù„Ø­Ø¯ÙŠÙ‚Ø© Ø§Ù„Ù…ØªÙØªØ­Ø©.', 'Ø¹Ø±Ø¶ Ø§Ù„ØªØµÙ…ÙŠÙ…'],
+            ['Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø© Ø§Ù„Ø«Ø§Ù„Ø«Ø©', 'Ø­Ø¨ Ø£Ø³ÙˆØ¯', 'Ø£Ù†ÙŠÙ‚ ÙˆØ®Ø§Ù„Ø¯.<br>Ø´ØºÙ ÙÙŠ Ù„ÙˆØ­Ø© Ù…Ù† Ø§Ù„Ø£Ø³ÙˆØ¯ ÙˆØ§Ù„Ø°Ù‡Ø¨.', 'Ø¹Ø±Ø¶ Ø§Ù„ØªØµÙ…ÙŠÙ…'],
+            ['Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø© Ø§Ù„Ø«Ø§Ù„Ø«Ø©', 'ÙˆØ¹Ø¯ Ø§Ù„Ù„ÙŠÙ„', 'Ø£Ù†ÙŠÙ‚ ÙˆØ®Ø§Ù„Ø¯.<br>Ø´ØºÙ ÙÙŠ Ù„ÙˆØ­Ø© Ù…Ù† Ø§Ù„Ø£Ø³ÙˆØ¯ ÙˆØ§Ù„Ø°Ù‡Ø¨.', 'Ø¹Ø±Ø¶ Ø§Ù„ØªØµÙ…ÙŠÙ…'],
+            ['Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø© Ø§Ù„Ø«Ø§Ù„Ø«Ø©', 'Ø§Ù„Ø³Ø§Ø¹Ø© Ø§Ù„Ø°Ù‡Ø¨ÙŠØ©', 'Ø£Ù†ÙŠÙ‚ ÙˆØ®Ø§Ù„Ø¯.<br>Ø´ØºÙ ÙÙŠ Ù„ÙˆØ­Ø© Ù…Ù† Ø§Ù„Ø£Ø³ÙˆØ¯ ÙˆØ§Ù„Ø°Ù‡Ø¨.', 'Ø¹Ø±Ø¶ Ø§Ù„ØªØµÙ…ÙŠÙ…']
+          ]
+        }
+      };
+
+      const toggle = document.getElementById('langToggle');
+      const heroLineText = document.getElementById('heroLineText');
+      const heroTitle = document.getElementById('heroTitle');
+      const heroSub = document.getElementById('heroSub');
+      const featureCaption = document.querySelector('.feature-caption');
+      const galleryHeader = document.querySelector('.gallery-section .section-header');
+      const galleryCards = Array.from(document.querySelectorAll('.cards-grid .card'));
+      const pricingHeader = document.querySelector('.pricing-header');
+      const servicesHeader = document.querySelector('.services .section-header');
+      const serviceItems = Array.from(document.querySelectorAll('.services .service-item'));
+      const whyBody = document.querySelector('.why-body');
+      const comingSection = document.querySelector('.coming');
+      const contactInfo = document.querySelector('.contact-info');
+      const formHeader = document.querySelector('.contact-form-header');
+      const formOpenLink = document.querySelector('.form-open-link');
+      const legacySection = document.querySelector('.contact-section');
+      const footerText = document.querySelector('footer p');
+      const templatesCta = document.querySelector('.templates-btn');
+
+      function readSavedLanguage() {
+        try {
+          return localStorage.getItem('homeLang');
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function saveLanguage(lang) {
+        try {
+          localStorage.setItem('homeLang', lang);
+        } catch (error) {
+          // Ignore storage errors in file:// or restricted contexts.
+        }
+      }
+
+      function setText(selectorOrElement, value, root = document) {
+        const element = typeof selectorOrElement === 'string'
+          ? root.querySelector(selectorOrElement)
+          : selectorOrElement;
+        if (element) {
+          element.textContent = value;
+        }
+      }
+
+      function setHTML(selectorOrElement, value, root = document) {
+        const element = typeof selectorOrElement === 'string'
+          ? root.querySelector(selectorOrElement)
+          : selectorOrElement;
+        if (element) {
+          element.innerHTML = value;
+        }
+      }
+
+      function setInlineButtonLabel(buttonSelector, value) {
+        const button = document.querySelector(buttonSelector);
+        if (!button) {
+          return;
+        }
+        const textNode = Array.from(button.childNodes).find((node) => node.nodeType === Node.TEXT_NODE);
+        if (textNode) {
+          textNode.textContent = ` ${value}`;
+        } else {
+          button.appendChild(document.createTextNode(` ${value}`));
+        }
+      }
+
+      function applyLanguage(lang) {
+        const dictionary = translations[lang] || translations.fr;
+
+        try {
+          document.documentElement.lang = lang === 'ar' ? 'ar' : 'fr';
+          document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+          document.body.classList.toggle('rtl', lang === 'ar');
+
+          setText(heroLineText, dictionary.heroLine);
+          setHTML(heroTitle, dictionary.heroTitle);
+          setText(heroSub, dictionary.heroSub);
+
+          setText('.feature-caption .eyebrow', dictionary.featureEyebrow);
+          setText('.feature-caption h2', dictionary.featureTitle);
+          setText('.feature-caption p', dictionary.featureText);
+
+          setText('.gallery-section .section-header .eyebrow', dictionary.galleryEyebrow);
+          setText('.gallery-section .section-header h2', dictionary.galleryTitle);
+          setText(templatesCta, dictionary.galleryCta);
+
+          setText('.pricing-header .eyebrow', dictionary.pricingEyebrow);
+          setText('.pricing-header h2', dictionary.pricingTitle);
+          setText('.pricing-header p', dictionary.pricingText);
+
+          setText('.services .section-header .eyebrow', dictionary.servicesEyebrow);
+          setText('.services .section-header h2', dictionary.servicesTitle);
+          serviceItems.forEach((item, index) => {
+            if (!dictionary.services[index]) {
+              return;
+            }
+            setText(item.querySelector('h4'), dictionary.services[index][0]);
+            setText(item.querySelector('p'), dictionary.services[index][1]);
+          });
+
+          setText('.why-body h3', dictionary.whyTitle);
+          setText('.why-body p', dictionary.whyText);
+          setText('.coming h2', dictionary.comingTitle);
+          setText('.coming p', dictionary.comingText);
+
+          setText('.contact-info h4', dictionary.contactTitle);
+          setText('.contact-info p:nth-of-type(1)', dictionary.contactPhone);
+          setText('.contact-info p:nth-of-type(2)', dictionary.contactEmail);
+          setText('.contact-info p:nth-of-type(3)', dictionary.contactSocial);
+
+          setText('.contact-form-header .eyebrow', dictionary.formEyebrow);
+          setText('.contact-form-header h4', dictionary.formTitle);
+          setText('.contact-form-header p', dictionary.formText);
+          setText(formOpenLink, dictionary.formOpen);
+
+          setText('.contact-section .contact-eyebrow', dictionary.legacyEyebrow);
+          setHTML('.contact-section h2', dictionary.legacyTitle);
+          setHTML('.contact-section .contact-desc', dictionary.legacyDesc);
+          setInlineButtonLabel('.btn-instagram', dictionary.instagram);
+          setInlineButtonLabel('.btn-whatsapp', dictionary.whatsapp);
+
+          galleryCards.forEach((card, index) => {
+            const data = dictionary.cards[index];
+            if (!data) {
+              return;
+            }
+            setText(card.querySelector('.card-label'), data[0]);
+            setText(card.querySelector('.card-title'), data[1]);
+            setHTML(card.querySelector('.card-desc'), data[2]);
+            setText(card.querySelector('.card-btn'), data[3]);
+          });
+
+          setText(footerText, dictionary.footer);
+          toggle.textContent = lang === 'ar' ? 'AR / FR' : 'FR / AR';
+          toggle.setAttribute('aria-label', lang === 'ar' ? 'Passer en franÃ§ais' : 'Ø§Ù„ØªØ¨Ø¯ÙŠÙ„ Ø¥Ù„Ù‰ Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©');
+          saveLanguage(lang);
+        } catch (error) {
+          console.error('Language toggle failed:', error);
+        }
+      }
+
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          applyLanguage(document.documentElement.lang === 'ar' ? 'fr' : 'ar');
+        });
+      }
+
+      applyLanguage(readSavedLanguage() || 'fr');
+    })();
+  </script>
+
+  <!-- â•â•â• FOOTER â•â•â• -->
+  <footer>
+    <div class="footer-line"></div>
+    <p>Â© 2025 Invitations Mariage â€” Tous droits rÃ©servÃ©s</p>
+    <div class="footer-line"></div>
+  </footer>
+
+</body>
+</html>
+

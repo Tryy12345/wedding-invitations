@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Hour — Rachelle & Joy</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;600;700&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===================== PAGE 1: ENVELOPE ===================== -->
+  <div class="page active" id="page-envelope">
+    <div class="envelope-scene">
+
+      <!-- Kraft paper texture -->
+      <div class="kraft-bg"></div>
+
+      <!-- Black diagonal fold -->
+      <div class="black-fold"></div>
+
+      <!-- Gold wax seal -->
+      <div class="wax-seal" id="waxSeal" onclick="openEnvelope()">
+        <div class="seal-ring">💍</div>
+        <div class="seal-pulse"></div>
+      </div>
+
+      <p class="tap-hint">Tap to open</p>
+    </div>
+  </div>
+
+  <!-- ===================== PAGE 2: HERO ===================== -->
+  <div class="page hidden" id="page-hero">
+
+    <!-- Couple photo -->
+    <div class="hero-photo">
+      <img src="../../assets/couple.jpg" alt="Photo couple"
+           onerror="this.style.display='none'">
+      <div class="photo-overlay-top"></div>
+      <div class="photo-overlay-bottom"></div>
+    </div>
+
+    <!-- Pampas watermark -->
+    <div class="pampas-left">🌾</div>
+    <div class="pampas-right">🌾</div>
+
+    <div class="hero-content">
+      <p class="our-wedding-label">our</p>
+      <h1 class="our-wedding-title">Wedding</h1>
+
+      <p class="together-label">TOGETHER WITH THEIR FAMILIES</p>
+
+      <div class="couple-names-script">Rachelle <span>&</span> Joy</div>
+
+      <p class="invite-label">INVITE YOU TO JOIN THEM IN CELEBRATING THEIR LOVE</p>
+
+      <div class="date-strip">
+        <div class="date-col">
+          <span class="date-top">SATURDAY</span>
+          <span class="date-sub">2026</span>
+        </div>
+        <div class="date-divider"></div>
+        <div class="date-num">22</div>
+        <div class="date-divider"></div>
+        <div class="date-col">
+          <span class="date-top">JULY</span>
+          <span class="date-sub">AT 3:30 PM</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="nav-btn" onclick="goTo('page-savedate')">↓</button>
+  </div>
+
+  <!-- ===================== PAGE 3: SAVE THE DATE ===================== -->
+  <div class="page hidden" id="page-savedate">
+    <div class="sd-bg">
+      <!-- Rings decoration -->
+      <div class="rings-deco">💍</div>
+      <!-- Pampas -->
+      <div class="sd-pampas">🌾</div>
+    </div>
+
+    <div class="sd-content">
+      <div class="sd-circle">
+        <p class="sd-num">22</p>
+        <p class="sd-month">JUNE</p>
+      </div>
+      <p class="sd-cursive">Save the date</p>
+      <div class="sd-line"></div>
+      <p class="sd-names">Rachelle & Joy</p>
+      <p class="sd-sub">June 15th, 2026</p>
+      <p class="sd-email">rachelle@gmail.com</p>
+    </div>
+
+    <button class="nav-btn" onclick="goTo('page-timeline')">↓</button>
+  </div>
+
+  <!-- ===================== PAGE 4: THE DAY TIMELINE ===================== -->
+  <div class="page hidden" id="page-timeline">
+    <div class="tl-bg"></div>
+
+    <div class="page-inner">
+      <div class="page-header">
+        <p class="the-label">the</p>
+        <h2 class="page-title">day</h2>
+        <div class="rings-small">💍</div>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-left">
+            <span class="tl-time">3:30 PM</span>
+          </div>
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-right">
+            <span class="tl-icon">💍</span>
+            <span class="tl-event">WEDDING CEREMONY</span>
+          </div>
+        </div>
+
+        <div class="tl-row">
+          <div class="tl-left">
+            <span class="tl-time">4:30 PM</span>
+          </div>
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-right">
+            <span class="tl-icon">🍸</span>
+            <span class="tl-event">COCKTAIL HOUR</span>
+          </div>
+        </div>
+
+        <div class="tl-row">
+          <div class="tl-left">
+            <span class="tl-time">5:00 PM</span>
+          </div>
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-right">
+            <span class="tl-icon">📸</span>
+            <span class="tl-event">PHOTO SESSION</span>
+          </div>
+        </div>
+
+        <div class="tl-row">
+          <div class="tl-left">
+            <span class="tl-time">6:30 PM</span>
+          </div>
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-right">
+            <span class="tl-icon">🍽️</span>
+            <span class="tl-event">DINNER RECEPTION</span>
+          </div>
+        </div>
+
+        <div class="tl-row">
+          <div class="tl-left">
+            <span class="tl-time">8:00 PM</span>
+          </div>
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"></div>
+          </div>
+          <div class="tl-right">
+            <span class="tl-icon">🎵</span>
+            <span class="tl-event">DANCE PARTY</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="nav-btn dark" onclick="goTo('page-details')">↓</button>
+  </div>
+
+  <!-- ===================== PAGE 5: ALL THE DETAILS ===================== -->
+  <div class="page hidden" id="page-details">
+    <div class="page-inner">
+      <div class="page-header">
+        <p class="the-label">All the</p>
+        <h2 class="page-title">details</h2>
+      </div>
+
+      <div class="details-list">
+        <div class="detail-block">
+          <h3 class="detail-title">DRESS CODE</h3>
+          <p class="detail-text">Semi-formal et élégant. N'hésitez pas à ajouter une touche pastel pour correspondre à notre thème.</p>
+        </div>
+
+        <div class="detail-divider"></div>
+
+        <div class="detail-block">
+          <h3 class="detail-title">TRANSPORT</h3>
+          <p class="detail-text">Des navettes seront disponibles depuis la cérémonie jusqu'à la réception, au départ de celle-ci.</p>
+        </div>
+
+        <div class="detail-divider"></div>
+
+        <div class="detail-block">
+          <h3 class="detail-title">HÉBERGEMENT</h3>
+          <p class="detail-text">Pour réserver à l'hôtel, contactez-nous directement. Mentionnez "Wedding Names" lors de la réservation.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="nav-btn dark" onclick="goTo('page-rsvp')">↓</button>
+  </div>
+
+  <!-- ===================== PAGE 6: RSVP ===================== -->
+  <div class="page hidden" id="page-rsvp">
+
+    <!-- Rings watermark -->
+    <div class="rsvp-rings">💍</div>
+    <!-- Pampas -->
+    <div class="rsvp-pampas">🌾</div>
+
+    <div class="rsvp-content">
+      <div class="rsvp-letters">
+        <span class="rsvp-r">R</span>
+        <span class="rsvp-s">S</span>
+        <span class="rsvp-v">V</span>
+        <span class="rsvp-p">P</span>
+      </div>
+
+      <p class="rsvp-date">June 15th, 2026</p>
+      <p class="rsvp-email">rachelle@gmail.com</p>
+
+      <div class="rsvp-form">
+        <input type="text" placeholder="Votre prénom et nom" class="rsvp-input">
+        <div class="rsvp-choices">
+          <button class="rsvp-choice active" onclick="selectRSVP(this, 'yes')">✓ Avec plaisir !</button>
+          <button class="rsvp-choice" onclick="selectRSVP(this, 'no')">✗ Avec regrets</button>
+        </div>
+        <input type="number" placeholder="Nombre de personnes" class="rsvp-input" min="1" max="10">
+        <textarea placeholder="Message pour les mariés (optionnel)" class="rsvp-textarea"></textarea>
+        <button class="rsvp-submit" onclick="submitRSVP()">Confirmer</button>
+      </div>
+
+      <p class="rsvp-thanks hidden" id="rsvp-thanks">
+        Merci ! Votre réponse a été enregistrée 💍
+      </p>
+    </div>
+
+    <button class="nav-btn dark" onclick="goTo('page-final')">↓</button>
+  </div>
+
+  <!-- ===================== PAGE 7: FINAL ===================== -->
+  <div class="page hidden" id="page-final">
+    <div class="final-photo">
+      <img src="../../assets/couple2.jpg" alt="Couple"
+           onerror="this.style.display='none'">
+      <div class="final-overlay"></div>
+    </div>
+
+    <div class="final-content">
+      <p class="final-cursive">We can't wait</p>
+      <p class="final-sub">to celebrate with you</p>
+      <div class="final-hearts">
+        <span>♡</span><span>♡</span><span>♡</span>
+      </div>
+      <p class="final-names-script">Rachelle & Joy</p>
+      <p class="final-date-small">22 · 07 · 2026</p>
+    </div>
+
+    <button class="nav-btn back-top" onclick="goTo('page-envelope')">↑ Retour au début</button>
+  </div>
+
+  <script>
+    // Navigation
+    function goTo(pageId) {
+      document.querySelectorAll('.page').forEach(p => {
+        p.classList.remove('active');
+        p.classList.add('hidden');
+      });
+      const target = document.getElementById(pageId);
+      target.classList.remove('hidden');
+      target.classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    // Envelope open
+    function openEnvelope() {
+      const seal = document.getElementById('waxSeal');
+      seal.style.transform = 'scale(0) rotate(180deg)';
+      seal.style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('page-envelope').style.opacity = '0';
+        setTimeout(() => goTo('page-hero'), 400);
+      }, 500);
+    }
+
+    // RSVP choice
+    function selectRSVP(btn, choice) {
+      document.querySelectorAll('.rsvp-choice').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function submitRSVP() {
+      document.querySelector('.rsvp-form').style.display = 'none';
+      document.getElementById('rsvp-thanks').classList.remove('hidden');
+    }
+
+    // Scroll reveal on timeline
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.tl-row, .detail-block').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitation — Black Love</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- GOLD PARTICLES -->
+  <div class="particles" id="particles"></div>
+
+  <!-- SCREEN 1: ENVELOPE LANDING -->
+  <div class="screen" id="screen-landing">
+
+    <div class="landing-content">
+      <div class="envelope-wrapper" id="envelopeWrapper" role="button" tabindex="0" aria-label="Ouvrir l'invitation">
+        <div class="envelope" id="envelope">
+          <div class="envelope-paper"></div>
+          <div class="envelope-fold fold-left"></div>
+          <div class="envelope-fold fold-right"></div>
+          <div class="envelope-fold fold-bottom"></div>
+          <div class="envelope-flap" id="envelopeFlap"></div>
+          <div class="envelope-seal" aria-hidden="true">
+            <span class="seal-ring"></span>
+          </div>
+        </div>
+      </div>
+
+      <p class="click-hint">Toucher pour ouvrir</p>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: INVITATION CARD -->
+  <div class="screen hidden" id="screen-invitation">
+
+    <div class="card">
+
+      <!-- BOW DECORATION -->
+      <div class="bow-top">
+        <div class="bow-left"></div>
+        <div class="bow-knot"></div>
+        <div class="bow-right"></div>
+        <div class="bow-tail-left"></div>
+        <div class="bow-tail-right"></div>
+      </div>
+
+      <p class="you-are-invited">you are invited to</p>
+
+      <!-- PHOTO STACK -->
+      <div class="photo-stack">
+        <div class="photo photo-back"></div>
+        <div class="photo photo-mid"></div>
+        <div class="photo photo-front">
+          <img src="../../assets/couple.jpg" alt="Photo du couple" onerror="this.style.display='none'; this.parentElement.classList.add('no-photo')">
+        </div>
+      </div>
+
+      <!-- NAMES -->
+      <div class="names-section">
+        <h1 class="bride-name">Yasmine</h1>
+        <div class="ampersand-wrap">
+          <div class="gold-line"></div>
+          <span class="ampersand">&</span>
+          <div class="gold-line"></div>
+        </div>
+        <h1 class="groom-name">Karim</h1>
+      </div>
+
+      <p class="wedding-label">— Mariage —</p>
+
+      <!-- DETAILS -->
+      <div class="details-grid">
+        <div class="detail-item">
+          <span class="detail-icon">📅</span>
+          <div>
+            <p class="detail-label">DATE</p>
+            <p class="detail-value">Samedi 14 Juin 2026</p>
+          </div>
+        </div>
+        <div class="detail-item">
+          <span class="detail-icon">🕖</span>
+          <div>
+            <p class="detail-label">HEURE</p>
+            <p class="detail-value">18h00</p>
+          </div>
+        </div>
+        <div class="detail-item">
+          <span class="detail-icon">📍</span>
+          <div>
+            <p class="detail-label">LIEU</p>
+            <p class="detail-value">Palais des Roses, Tunis</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MESSAGE -->
+      <p class="message">❝ Votre présence sera notre plus beau cadeau ❞</p>
+
+      <!-- BOW BOTTOM -->
+      <div class="bow-bottom">
+        <div class="bow-left"></div>
+        <div class="bow-knot"></div>
+        <div class="bow-right"></div>
+        <div class="bow-tail-left"></div>
+        <div class="bow-tail-right"></div>
+      </div>
+
+      <button class="back-btn" onclick="goBack()">↩ Retour à l'enveloppe</button>
+
+    </div>
+
+  </div>
+
+  <script>
+    // Particles
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 40; i++) {
+      const p = document.createElement('span');
+      p.textContent = ['✦','◆','✧','·'][Math.floor(Math.random()*4)];
+      p.style.cssText = `
+        left:${Math.random()*100}%;
+        top:${Math.random()*100}%;
+        animation-duration:${6+Math.random()*10}s;
+        animation-delay:${Math.random()*8}s;
+        font-size:${0.5+Math.random()*1}rem;
+        opacity:${0.1+Math.random()*0.3};
+      `;
+      container.appendChild(p);
+    }
+
+    // Envelope click
+    const envelopeWrapper = document.getElementById('envelopeWrapper');
+
+    function openEnvelope() {
+      if (envelopeWrapper.classList.contains('opening')) return;
+
+      const flap = document.getElementById('envelopeFlap');
+      envelopeWrapper.classList.add('opening');
+      flap.classList.add('open');
+      setTimeout(() => {
+        document.getElementById('screen-landing').classList.add('fade-out');
+        setTimeout(() => {
+          document.getElementById('screen-landing').classList.add('hidden');
+          const inv = document.getElementById('screen-invitation');
+          inv.classList.remove('hidden');
+          inv.classList.add('fade-in');
+        }, 600);
+      }, 1150);
+    }
+
+    envelopeWrapper.addEventListener('click', openEnvelope);
+    envelopeWrapper.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openEnvelope();
+      }
+    });
+
+    function goBack() {
+      const invitation = document.getElementById('screen-invitation');
+      invitation.classList.add('hidden');
+      invitation.classList.remove('fade-in');
+      const landing = document.getElementById('screen-landing');
+      landing.classList.remove('hidden', 'fade-out');
+      envelopeWrapper.classList.remove('opening');
+      document.getElementById('envelopeFlap').classList.remove('open');
+    }
+  </script>
+
+</body>
+</html>

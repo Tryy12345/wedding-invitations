@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luso-Brésilien — Fernanda & Gustavo</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Lato:wght@200;300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ========== HERO: ENVELOPE COVER ========== -->
+  <section class="section s-hero">
+    <div class="hero-envelope">
+      <div class="hero-env-body">
+        <div class="hero-env-flap" id="heroFlap"></div>
+        <div class="hero-env-inner">
+          <h1 class="hero-name">Fernanda</h1>
+          <span class="hero-amp">&</span>
+          <h1 class="hero-name">Gustavo</h1>
+          <p class="hero-date">14.11.2025</p>
+        </div>
+      </div>
+    </div>
+    <button class="start-btn" onclick="document.getElementById('s-invite').scrollIntoView({behavior:'smooth'})">
+      Iniciar convite musical ▶
+    </button>
+  </section>
+
+  <!-- ========== SECTION: MAIN INVITATION ========== -->
+  <section class="section s-cream" id="s-invite">
+    <div class="sec-inner">
+
+      <!-- Couple photo -->
+      <div class="photo-frame tall">
+        <img src="../../assets/couple.jpg" alt="Fernanda & Gustavo"
+             onerror="this.parentElement.classList.add('no-img')">
+      </div>
+
+      <p class="invite-small-text">
+        De cada acto solo de ti Mamá que justifican su enorme paciencia y dedicación a toda la vida
+      </p>
+
+      <!-- Music player -->
+      <div class="music-bar">
+        <button class="music-prev">⏮</button>
+        <button class="music-play" id="playBtn" onclick="togglePlay()">▶</button>
+        <button class="music-next">⏭</button>
+        <div class="music-progress-wrap"><div class="music-prog" id="musicProg"></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== SECTION: SAVE THE DATE + COUNTDOWN ========== -->
+  <section class="section s-olive">
+    <div class="sec-inner">
+
+      <div class="std-block">
+        <p class="std-label">NOVIEMBRE</p>
+        <div class="std-date-row">
+          <span class="std-day-label">VIERNES</span>
+          <span class="std-day-num">14</span>
+          <span class="std-year">2025</span>
+        </div>
+      </div>
+
+      <p class="faltan-label">FALTAN</p>
+      <div class="countdown-row">
+        <div class="cd-unit"><span class="cd-n" id="cd-d">00</span><span class="cd-l">Días</span></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-unit"><span class="cd-n" id="cd-h">00</span><span class="cd-l">Horas</span></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-unit"><span class="cd-n" id="cd-m">00</span><span class="cd-l">Min</span></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-unit"><span class="cd-n" id="cd-s">00</span><span class="cd-l">Seg</span></div>
+      </div>
+
+      <!-- Calendar -->
+      <div class="calendar-block">
+        <p class="cal-month-label">EL GRAN DÍA · NOVIEMBRE 2025</p>
+        <div class="calendar-grid">
+          <div class="cal-header">DO</div><div class="cal-header">LU</div>
+          <div class="cal-header">MA</div><div class="cal-header">MI</div>
+          <div class="cal-header">JU</div><div class="cal-header">VI</div>
+          <div class="cal-header">SÁ</div>
+          <!-- Nov 2025 starts Saturday -->
+          <div class="cal-day empty"></div><div class="cal-day empty"></div>
+          <div class="cal-day empty"></div><div class="cal-day empty"></div>
+          <div class="cal-day empty"></div><div class="cal-day empty"></div>
+          <div class="cal-day">1</div>
+          <div class="cal-day">2</div><div class="cal-day">3</div>
+          <div class="cal-day">4</div><div class="cal-day">5</div>
+          <div class="cal-day">6</div><div class="cal-day">7</div>
+          <div class="cal-day">8</div>
+          <div class="cal-day">9</div><div class="cal-day">10</div>
+          <div class="cal-day">11</div><div class="cal-day">12</div>
+          <div class="cal-day">13</div><div class="cal-day active">14</div>
+          <div class="cal-day">15</div>
+          <div class="cal-day">16</div><div class="cal-day">17</div>
+          <div class="cal-day">18</div><div class="cal-day">19</div>
+          <div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day">22</div>
+          <div class="cal-day">23</div><div class="cal-day">24</div>
+          <div class="cal-day">25</div><div class="cal-day">26</div>
+          <div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-day">29</div>
+          <div class="cal-day">30</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== SECTION: CEREMONY & RECEPTION ========== -->
+  <section class="section s-cream">
+    <div class="sec-inner">
+
+      <div class="event-block">
+        <div class="event-icon">⛪</div>
+        <h3 class="event-title">Ceremonia Religiosa</h3>
+        <p class="event-time">6:30 pm</p>
+        <p class="event-place">IGLESIA SAN FRANCISCO</p>
+        <p class="event-address">Santa Cruz de la Sierra</p>
+        <button class="olive-btn small">Ver ubicación</button>
+      </div>
+
+      <div class="event-divider"></div>
+
+      <div class="event-block">
+        <div class="event-icon">🥂</div>
+        <h3 class="event-title">Recepción</h3>
+        <p class="event-time">12:30 pm</p>
+        <p class="event-place">SALÓN VENDIMIA</p>
+        <p class="event-address">Nuevo Oriente de la Sierra</p>
+        <button class="olive-btn small">Ver ubicación</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== SECTION: ITINERARY ========== -->
+  <section class="section s-cream">
+    <div class="sec-inner">
+      <h2 class="sec-title-script">Itinerario de actividades</h2>
+
+      <div class="itinerary">
+
+        <div class="it-row">
+          <div class="it-time">6:30p</div>
+          <div class="it-dot-col"><div class="it-dot"></div><div class="it-line"></div></div>
+          <div class="it-info">
+            <span class="it-icon">⛪</span>
+            <div>
+              <p class="it-name">CEREMONIA RELIGIOSA</p>
+              <p class="it-place">Iglesia San Francisco</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="it-row">
+          <div class="it-time">7:30p</div>
+          <div class="it-dot-col"><div class="it-dot"></div><div class="it-line"></div></div>
+          <div class="it-info">
+            <span class="it-icon">📸</span>
+            <div>
+              <p class="it-name">SESIÓN DE FOTOS</p>
+              <p class="it-place">Jardines del Salón</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="it-row">
+          <div class="it-time">8:00p</div>
+          <div class="it-dot-col"><div class="it-dot"></div><div class="it-line"></div></div>
+          <div class="it-info">
+            <span class="it-icon">🍽️</span>
+            <div>
+              <p class="it-name">CENA DE GALA</p>
+              <p class="it-place">Salón Vendimia</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="it-row">
+          <div class="it-time">9:30p</div>
+          <div class="it-dot-col"><div class="it-dot"></div><div class="it-line"></div></div>
+          <div class="it-info">
+            <span class="it-icon">🎂</span>
+            <div>
+              <p class="it-name">PASTEL DE BODAS</p>
+              <p class="it-place">Momento especial</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="it-row last">
+          <div class="it-time">10:00p</div>
+          <div class="it-dot-col"><div class="it-dot"></div></div>
+          <div class="it-info">
+            <span class="it-icon">🎵</span>
+            <div>
+              <p class="it-name">BAILE & FIESTA</p>
+              <p class="it-place">Hasta el amanecer</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION: COUPLE PHOTO 2 ========== -->
+  <section class="section s-photo-break">
+    <div class="photo-frame wide">
+      <img src="../../assets/couple2.jpg" alt="Couple"
+           onerror="this.parentElement.classList.add('no-img')">
+    </div>
+  </section>
+
+  <!-- ========== SECTION: DRESS CODE ========== -->
+  <section class="section s-cream">
+    <div class="sec-inner">
+      <h2 class="sec-title-script">Código de vestimenta</h2>
+      <p class="dress-sub">Elegante</p>
+
+      <div class="dress-icons">
+        <div class="dress-person">
+          <div class="dress-silhouette woman">👗</div>
+          <p class="dress-label">Dama</p>
+        </div>
+        <div class="dress-person">
+          <div class="dress-silhouette man">🤵</div>
+          <p class="dress-label">Caballero</p>
+        </div>
+      </div>
+
+      <div class="dress-colors">
+        <div class="color-swatch" style="background:#4a6741;"></div>
+        <div class="color-swatch" style="background:#8fad88;"></div>
+        <div class="color-swatch" style="background:#d4c8a8;"></div>
+        <div class="color-swatch" style="background:#f5f0e8;"></div>
+        <div class="color-swatch" style="background:#2a3020;"></div>
+      </div>
+      <p class="dress-note">Con la paleta de colores verdes pálidos en seda o satén u otros tejidos elegantes</p>
+    </div>
+  </section>
+
+  <!-- ========== SECTION: CONFIRMATION ========== -->
+  <section class="section s-olive">
+    <div class="sec-inner">
+      <div class="confirm-icon">📋</div>
+      <h2 class="confirm-title">Confirmación</h2>
+      <p class="confirm-text">Agradecemos que nos confirmes tu asistencia antes del 01 de noviembre de 2025</p>
+
+      <div class="confirm-form">
+        <input type="text" placeholder="Tu nombre completo" class="conf-input">
+        <div class="conf-choices">
+          <button class="conf-choice active" onclick="selConf(this)">✓ Asistiré</button>
+          <button class="conf-choice" onclick="selConf(this)">✗ No podré ir</button>
+        </div>
+        <input type="number" placeholder="Número de personas" class="conf-input" min="1" max="10">
+        <button class="olive-btn confirm-btn" onclick="sendConfirm()">Confirmar asistencia</button>
+      </div>
+      <p class="confirm-thanks hidden" id="confirmThanks">¡Gracias! Nos vemos pronto 💚</p>
+
+      <div class="recomendaciones">
+        <h3 class="rec-title">RECOMENDACIONES</h3>
+        <p class="rec-text">Para que la celebración sea perfecta para la novia. Te pedimos por favor que llegues 15 min antes.</p>
+        <p class="rec-title" style="margin-top:14px;">SIN NIÑOS</p>
+        <p class="rec-text">Un evento para adultos en el que les pedimos que dejen a los pequeños en casa. ¡Les garantizamos que se divertirán más!</p>
+        <p class="rec-title" style="margin-top:14px;">ESTAMOS CONTENTOS CON TU PRESENCIA</p>
+        <p class="rec-text" style="font-style:italic;">Muchas Gracias!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION: GIFT REGISTRY + QR ========== -->
+  <section class="section s-cream">
+    <div class="sec-inner">
+      <h2 class="sec-title-script">Sugerencias de regalo</h2>
+      <p class="gift-text">El mejor regalo es tu presencia, pero si deseas hacernos un obsequio, tu aportación económica nos ayudará a construir nuestros sueños juntos.</p>
+
+      <!-- QR Code placeholder -->
+      <div class="qr-container">
+        <div class="qr-box" id="qrBox">
+          <canvas id="qrCanvas" width="160" height="160"></canvas>
+        </div>
+        <p class="qr-label">Escanea para transferencia</p>
+      </div>
+
+      <!-- Couple photo final -->
+      <div class="photo-frame tall" style="margin-top:24px;">
+        <img src="../../assets/couple3.jpg" alt="Couple"
+             onerror="this.parentElement.classList.add('no-img')">
+      </div>
+
+      <div class="final-message-box">
+        <h2 class="final-names-script">Fernanda & Gustavo</h2>
+        <p class="final-date-text">14 · 11 · 2025</p>
+        <p class="final-quote">❝ Notre amour, votre joie ❞</p>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // ===== COUNTDOWN =====
+    const wDate = new Date('2025-11-14T18:30:00');
+    function tick() {
+      const now = new Date();
+      const diff = wDate - now;
+      if (diff <= 0) return;
+      const d = Math.floor(diff/86400000);
+      const h = Math.floor((diff%86400000)/3600000);
+      const m = Math.floor((diff%3600000)/60000);
+      const s = Math.floor((diff%60000)/1000);
+      document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+      document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+      document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+      document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+    }
+    tick(); setInterval(tick, 1000);
+
+    // ===== MUSIC PLAYER =====
+    let playing = false;
+    function togglePlay() {
+      playing = !playing;
+      document.getElementById('playBtn').textContent = playing ? '⏸' : '▶';
+      const prog = document.getElementById('musicProg');
+      prog.style.animationPlayState = playing ? 'running' : 'paused';
+    }
+
+    // ===== RSVP =====
+    function selConf(btn) {
+      document.querySelectorAll('.conf-choice').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+    function sendConfirm() {
+      document.querySelector('.confirm-form').style.display = 'none';
+      document.getElementById('confirmThanks').classList.remove('hidden');
+    }
+
+    // ===== QR CODE (simple canvas) =====
+    function drawQR() {
+      const canvas = document.getElementById('qrCanvas');
+      const ctx = canvas.getContext('2d');
+      const size = 160;
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0, 0, size, size);
+      ctx.fillStyle = '#2a3020';
+      // Simple QR pattern simulation
+      const cells = 21;
+      const cellSize = size / cells;
+      // Corner squares
+      function cornerSquare(x, y) {
+        ctx.fillRect(x*cellSize, y*cellSize, 7*cellSize, 7*cellSize);
+        ctx.fillStyle = '#fff';
+        ctx.fillRect((x+1)*cellSize, (y+1)*cellSize, 5*cellSize, 5*cellSize);
+        ctx.fillStyle = '#2a3020';
+        ctx.fillRect((x+2)*cellSize, (y+2)*cellSize, 3*cellSize, 3*cellSize);
+      }
+      cornerSquare(0, 0);
+      cornerSquare(14, 0);
+      cornerSquare(0, 14);
+      // Random data pattern
+      for (let r = 0; r < cells; r++) {
+        for (let c = 0; c < cells; c++) {
+          if ((r < 9 && c < 9) || (r < 9 && c > 11) || (r > 11 && c < 9)) continue;
+          if (Math.random() > 0.55) {
+            ctx.fillStyle = '#2a3020';
+            ctx.fillRect(c*cellSize, r*cellSize, cellSize-0.5, cellSize-0.5);
+          }
+        }
+      }
+    }
+    drawQR();
+
+    // ===== SCROLL REVEAL =====
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.it-row, .event-block, .cd-unit').forEach(el => obs.observe(el));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>دعوة زفاف | يوسف وأميرة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════
+       VIDEO LAYER (initial screen)
+  ════════════════════════════════════════ -->
+  <div class="video-layer" id="videoLayer">
+    <div class="video-container" id="videoContainer">
+      <video id="heroVideo" playsinline muted preload="auto">
+        <source src="../../assets/WhisperingRoses.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="click-overlay" id="clickOverlay">
+      <div class="click-instruction">
+        <span class="click-icon">▶</span>
+        <p>اضغط لبدء الدعوة</p>
+      </div>
+    </div>
+    
+    <!-- Names that appear after 2 seconds of video -->
+    <div class="video-names" id="videoNames">
+      <span class="video-groom">يوسف</span>
+      <span class="video-amp">❁</span>
+      <span class="video-bride">أميرة</span>
+    </div>
+    
+    <!-- Loading/instruction -->
+    <div class="video-instruction" id="videoInstruction">
+      <span>🎬</span>
+      <p>باقة ورد هامسة</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       MAIN CONTENT (hidden until video ends)
+  ════════════════════════════════════════ -->
+  <div class="main-wrapper" id="mainWrapper">
+
+    <!-- SCREEN 1: HERO — WATERCOLOR COUPLE -->
+    <section class="screen-hero">
+      <div class="hero-bg"></div>
+
+      <!-- Full watercolor scene SVG -->
+      <div class="watercolor-scene">
+        <svg class="scene-svg" viewBox="0 0 400 750" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="skyGrad" cx="50%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#bfd6f0"/>
+              <stop offset="40%" stop-color="#c8dff5"/>
+              <stop offset="70%" stop-color="#d8ebf8"/>
+              <stop offset="100%" stop-color="#e8f4fc"/>
+            </radialGradient>
+            <radialGradient id="floorGrad" cx="50%" cy="100%" r="60%">
+              <stop offset="0%" stop-color="#c8d8e8"/>
+              <stop offset="100%" stop-color="#b8cce0" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="blur1"><feGaussianBlur stdDeviation="8"/></filter>
+            <filter id="blur2"><feGaussianBlur stdDeviation="4"/></filter>
+            <filter id="blur3"><feGaussianBlur stdDeviation="2"/></filter>
+          </defs>
+
+          <!-- Sky -->
+          <rect width="400" height="750" fill="url(#skyGrad)"/>
+
+          <!-- Clouds -->
+          <ellipse cx="80" cy="80" rx="60" ry="22" fill="rgba(255,255,255,0.5)" filter="url(#blur1)"/>
+          <ellipse cx="200" cy="60" rx="80" ry="18" fill="rgba(255,255,255,0.4)" filter="url(#blur1)"/>
+          <ellipse cx="320" cy="90" rx="55" ry="20" fill="rgba(255,255,255,0.45)" filter="url(#blur1)"/>
+          <ellipse cx="350" cy="50" rx="40" ry="15" fill="rgba(255,255,255,0.3)" filter="url(#blur2)"/>
+
+          <!-- Left flower branches -->
+          <path d="M -10,750 Q 20,550 60,400 Q 80,300 50,200 Q 40,150 70,100" stroke="#8B7355" stroke-width="6" fill="none" opacity="0.7"/>
+          <path d="M 60,400 Q 90,350 120,320" stroke="#8B7355" stroke-width="4" fill="none" opacity="0.6"/>
+          <path d="M 50,500 Q 80,460 110,440" stroke="#8B7355" stroke-width="3" fill="none" opacity="0.5"/>
+          <path d="M 60,300 Q 100,280 130,260" stroke="#8B7355" stroke-width="3" fill="none" opacity="0.5"/>
+
+          <!-- Left pink flowers -->
+          <g filter="url(#blur2)" opacity="0.85">
+            <circle cx="55" cy="180" r="22" fill="#e8a8b0"/>
+            <circle cx="75" cy="165" r="18" fill="#dfa0aa"/>
+            <circle cx="40" cy="175" r="16" fill="#e0aabc"/>
+            <circle cx="65" cy="195" r="14" fill="#d498a8"/>
+            <circle cx="85" cy="175" r="13" fill="#e8b4be"/>
+            <circle cx="110" cy="290" r="20" fill="#e8a8b0"/>
+            <circle cx="130" cy="275" r="16" fill="#dfaab4"/>
+            <circle cx="95" cy="285" r="14" fill="#e0aabc"/>
+            <circle cx="120" cy="310" r="13" fill="#d498a8"/>
+            <circle cx="90" cy="430" r="22" fill="#e8a8b0"/>
+            <circle cx="115" cy="415" r="17" fill="#dfa0aa"/>
+            <circle cx="75" cy="425" r="15" fill="#e0aabc"/>
+            <circle cx="110" cy="445" r="14" fill="#d498a8"/>
+            <circle cx="140" cy="440" r="19" fill="#e8b4be"/>
+          </g>
+
+          <!-- Right flower branches -->
+          <path d="M 410,750 Q 380,550 340,400 Q 320,300 350,200 Q 360,150 330,100" stroke="#8B7355" stroke-width="6" fill="none" opacity="0.7"/>
+          <path d="M 340,400 Q 310,350 280,320" stroke="#8B7355" stroke-width="4" fill="none" opacity="0.6"/>
+          <path d="M 350,500 Q 320,460 290,440" stroke="#8B7355" stroke-width="3" fill="none" opacity="0.5"/>
+          <path d="M 340,300 Q 300,280 270,260" stroke="#8B7355" stroke-width="3" fill="none" opacity="0.5"/>
+
+          <!-- Right pink flowers -->
+          <g filter="url(#blur2)" opacity="0.85">
+            <circle cx="345" cy="180" r="22" fill="#e8a8b0"/>
+            <circle cx="325" cy="165" r="18" fill="#dfa0aa"/>
+            <circle cx="360" cy="175" r="16" fill="#e0aabc"/>
+            <circle cx="335" cy="195" r="14" fill="#d498a8"/>
+            <circle cx="315" cy="175" r="13" fill="#e8b4be"/>
+            <circle cx="290" cy="290" r="20" fill="#e8a8b0"/>
+            <circle cx="270" cy="275" r="16" fill="#dfaab4"/>
+            <circle cx="305" cy="285" r="14" fill="#e0aabc"/>
+            <circle cx="280" cy="310" r="13" fill="#d498a8"/>
+            <circle cx="310" cy="430" r="22" fill="#e8a8b0"/>
+            <circle cx="285" cy="415" r="17" fill="#dfa0aa"/>
+            <circle cx="325" cy="425" r="15" fill="#e0aabc"/>
+            <circle cx="290" cy="445" r="14" fill="#d498a8"/>
+            <circle cx="260" cy="440" r="19" fill="#e8b4be"/>
+          </g>
+
+          <!-- Balcony railing -->
+          <rect x="100" y="590" width="200" height="8" rx="4" fill="#8a9eb5" opacity="0.6"/>
+          <line x1="110" y1="530" x2="110" y2="598" stroke="#8a9eb5" stroke-width="3" opacity="0.5"/>
+          <line x1="130" y1="530" x2="130" y2="598" stroke="#8a9eb5" stroke-width="2" opacity="0.4"/>
+          <line x1="150" y1="530" x2="150" y2="598" stroke="#8a9eb5" stroke-width="2" opacity="0.4"/>
+          <line x1="170" y1="530" x2="170" y2="598" stroke="#8a9eb5" stroke-width="2" opacity="0.4"/>
+          <line x1="190" y1="530" x2="190" y2="598" stroke="#8a9eb5" stroke-width="2" opacity="0.4"/>
+          <line x1="210" y1="530" x2="210" y2="598" stroke="#8a9eb5" stroke-width="2" opacity="0.4"/>
+          <line x1="230" y1="530" x2="230" y2="598" stroke="#8a9eb5" stroke-width="2" opacity="0.4"/>
+          <line x1="250" y1="530" x2="250" y2="598" stroke="#8a9eb5" stroke-width="2" opacity="0.4"/>
+          <line x1="270" y1="530" x2="270" y2="598" stroke="#8a9eb5" stroke-width="2" opacity="0.4"/>
+          <line x1="290" y1="530" x2="290" y2="598" stroke="#8a9eb5" stroke-width="3" opacity="0.5"/>
+
+          <!-- Blue door -->
+          <rect x="160" y="440" width="80" height="150" rx="40" fill="#4a8ab5" opacity="0.75"/>
+          <rect x="165" y="445" width="70" height="140" rx="35" fill="#5599c8" opacity="0.6"/>
+          <ellipse cx="200" cy="530" rx="3" ry="3" fill="#c9a86c"/>
+          <rect x="158" y="438" width="84" height="6" rx="3" fill="#3d7299" opacity="0.7"/>
+          <line x1="200" y1="444" x2="200" y2="590" stroke="#3d7299" stroke-width="2" opacity="0.4"/>
+
+          <!-- Wall -->
+          <rect x="95" y="440" width="65" height="155" fill="#d8cfc0" opacity="0.5"/>
+          <rect x="240" y="440" width="65" height="155" fill="#d8cfc0" opacity="0.5"/>
+
+          <!-- Bride silhouette -->
+          <g opacity="0.85">
+            <ellipse cx="185" cy="560" rx="20" ry="30" fill="#fff" opacity="0.9"/>
+            <path d="M165,560 Q175,595 168,595 Q185,600 202,595 Q195,560 185,560Z" fill="#f8f8f8"/>
+            <rect x="179" y="510" width="12" height="32" rx="5" fill="#f4d0c0"/>
+            <ellipse cx="185" cy="502" rx="10" ry="12" fill="#f4d0c0"/>
+            <path d="M175,500 Q180,480 185,495 Q190,480 195,500" fill="#8B6040" opacity="0.8"/>
+            <path d="M195,500 Q205,510 210,540 Q200,545 198,560" fill="rgba(255,255,255,0.5)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          </g>
+
+          <!-- Groom silhouette -->
+          <g opacity="0.85">
+            <rect x="202" y="548" width="10" height="45" rx="4" fill="#2c2828"/>
+            <rect x="214" y="548" width="10" height="45" rx="4" fill="#2c2828"/>
+            <rect x="199" y="510" width="28" height="42" rx="6" fill="#3a3535"/>
+            <rect x="207" y="512" width="10" height="20" rx="2" fill="#f0f0f0"/>
+            <ellipse cx="215" cy="500" rx="11" ry="12" fill="#d4a880"/>
+            <path d="M204,496 Q208,486 215,490 Q222,486 226,496" fill="#2c1810"/>
+          </g>
+
+          <!-- Holding hands -->
+          <path d="M197,535 Q200,537 203,535" stroke="#d4a880" stroke-width="2.5" fill="none" opacity="0.7"/>
+
+          <!-- Butterflies -->
+          <g opacity="0.6" filter="url(#blur3)">
+            <path d="M130,250 Q145,240 140,255 Q145,265 130,255Z" fill="#f0d4e0"/>
+            <path d="M130,250 Q115,240 120,255 Q115,265 130,255Z" fill="#e8c8d8"/>
+            <path d="M320,220 Q335,210 330,225 Q335,235 320,225Z" fill="#f0d4e0"/>
+            <path d="M320,220 Q305,210 310,225 Q305,235 320,225Z" fill="#e8c8d8"/>
+          </g>
+
+          <!-- Watercolor wash bottom -->
+          <rect x="0" y="630" width="400" height="120" fill="url(#floorGrad)" opacity="0.4"/>
+        </svg>
+      </div>
+
+      <!-- Birds -->
+      <div class="birds">
+        <span class="bird">🕊️</span>
+        <span class="bird">🕊️</span>
+        <span class="bird">🕊️</span>
+        <span class="bird">🕊️</span>
+      </div>
+
+      <!-- Names overlay -->
+      <div class="hero-names">
+        <span class="groom-name-hero">يوسف</span>
+        <span class="amp-hero">❁</span>
+        <span class="bride-name-hero">أميرة</span>
+      </div>
+
+      <!-- Bottom invitation text -->
+      <div class="hero-bottom-text">
+        <p class="hero-invite-line">نتشرف بدعوتكم لحضور حفل زفافهما</p>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-down">
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+
+    <!-- SCREEN 2: NAMES / INVITATION -->
+    <section class="screen-names">
+      <p class="blessing-text reveal">
+        والصلاة والسلام على أشرف المرسلين<br/>
+        بعد إهدائكم عاطر المحبة و أزكى السلام تشرف عائلتنا
+      </p>
+
+      <div class="thin-divider reveal reveal-delay-1"></div>
+
+      <div class="names-block reveal reveal-delay-2">
+        <p class="person-label">السيد محمد بن علي</p>
+        <span class="wa-connector">و</span>
+        <p class="person-label">السيدة كريم بن عمر</p>
+      </div>
+
+      <div class="invite-pill reveal reveal-delay-3">
+        بدعوتكم لحضور حفل زفاف أبنهما
+      </div>
+
+      <div class="thin-divider reveal reveal-delay-3"></div>
+
+      <div class="big-names-bottom reveal reveal-delay-4">
+        <div class="big-name-text">
+          يوسف <span class="gold-w">و</span> أميرة
+        </div>
+        <p class="footer-small">حفل الزفاف المبارك</p>
+      </div>
+    </section>
+
+
+    <!-- SCREEN 3: DATE / TIME / COUNTDOWN -->
+    <section class="screen-date">
+      <div class="date-block reveal">
+        <p class="date-tiny-label">التاريخ</p>
+        <p class="date-main">الأحد 01 جويلية 2025</p>
+      </div>
+
+      <div class="date-separator-line reveal reveal-delay-1"></div>
+
+      <div class="time-block reveal reveal-delay-2">
+        <p class="time-tiny-label">الساعة</p>
+        <p class="time-main">التاسعة والنصف ليلا</p>
+      </div>
+
+      <div class="countdown-label-line reveal reveal-delay-3">
+        <div class="countdown-line-hr"></div>
+        <span class="countdown-label-text">باقي على الفرح</span>
+        <div class="countdown-line-hr right"></div>
+      </div>
+
+      <div class="countdown-arches reveal reveal-delay-4">
+        <div class="arch-block">
+          <div class="arch-shape">
+            <span class="arch-number" id="cnt-hours">00</span>
+            <span class="arch-unit">ساعات</span>
+          </div>
+        </div>
+        <div class="arch-block">
+          <div class="arch-shape">
+            <span class="arch-number" id="cnt-days">00</span>
+            <span class="arch-unit">يوماً</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SCREEN 4: VENUE + MAP -->
+    <section class="screen-venue">
+      <div class="section-ornament reveal">
+        <span>✧</span><span>✦</span><span>✧</span>
+      </div>
+
+      <div class="venue-card reveal reveal-delay-1">
+        <div class="venue-icon-wrap">📍</div>
+        <h3 class="venue-name-big">قصر الأفراح - قاعة الأندلس</h3>
+        <p class="venue-address-small">طريق قابس، المرسى، تونس</p>
+      </div>
+
+      <div class="map-iframe-wrap reveal reveal-delay-2">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3194.456789012345!2d10.280371!3d36.866509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd2c5b9b7b7b7b%3A0x9b9b9b9b9b9b9b9b!2sLa%20Marsa%2C%20Tunis!5e0!3m2!1sfr!2stn!4v1700000000000!5m2!1sfr!2stn"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <a href="https://maps.google.com/?q=La+Marsa+Tunis" target="_blank" class="map-btn reveal reveal-delay-3">
+        🗺️ فتح الخريطة في جوجل
+      </a>
+    </section>
+
+
+    <!-- SCREEN 5: BLESSING + RSVP -->
+    <section class="screen-blessing">
+      <div class="big-quote reveal">❝</div>
+
+      <p class="blessing-arab reveal reveal-delay-1">
+        اللهم بارك لهما وبارك عليهما واجمع بينهما في خير<br/>
+        وجعل الله دعوتكم فرحة وسروراً
+      </p>
+
+      <div class="thin-divider reveal reveal-delay-2"></div>
+
+      <p class="closing-arab reveal reveal-delay-2">
+        تشرفنا بحضوركم ومشاركتكم فرحتنا
+      </p>
+
+      <div class="roses-row reveal reveal-delay-3">🌹 🌷 🌹</div>
+
+      <div class="rsvp-card reveal reveal-delay-4">
+        <p class="rsvp-heading">تأكيد الحضور</p>
+        <div class="rsvp-btn-row">
+          <a href="tel:+21612345678" class="btn-call">📞 اتصل بنا</a>
+          <a href="https://wa.me/21612345678" class="btn-wa" target="_blank">💬 واتساب</a>
+        </div>
+        <p class="rsvp-deadline">يرجى تأكيد حضوركم قبل: <strong>25 جوان 2025</strong></p>
+      </div>
+
+      <footer class="site-footer reveal reveal-delay-5">
+        <div class="footer-flowers">✿ ❀ ✿</div>
+        <p class="footer-msg">
+          مع أطيب التمنيات بدوام المحبة والسعادة<br/>
+          باقة ورد هامسة تدعوكم لفرحة لا تُنسى
+        </p>
+      </footer>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
