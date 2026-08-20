@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dali &amp; Anastasia — Blossom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Playfair+Display:ital,wght@0,500;1,500&family=Pinyon+Script&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="blossom">
+
+  <div class="bl-intro" id="blIntro" role="button" tabindex="0" aria-label="Appuyez pour ouvrir">
+    <div class="bl-curtain left"><img class="bl-lace" src="assets/lace-l.webp" alt="" aria-hidden="true" /></div>
+    <div class="bl-curtain right"><img class="bl-lace" src="assets/lace-r.webp" alt="" aria-hidden="true" /></div>
+    <div class="bl-intro-title"><span class="bl-intro-hint">Appuyez pour ouvrir</span></div>
+  </div>
+
+  <main class="bl-stage">
+
+    <header class="bl-hero">
+      <video class="bl-hero-video" src="assets/hero.mp4" poster="assets/hero-poster.webp" autoplay muted loop playsinline preload="auto"></video>
+      <div class="bl-hero-overlay">
+        <span class="bl-kicker">Invitation de mariage</span>
+        <h1 class="bl-names">
+          <span class="nm">Dali</span>
+          <span class="nm">Anastasia</span>
+        </h1>
+        <span class="bl-date">24 juillet 2026 · 19:00</span>
+      </div>
+      <div class="bl-cue" aria-hidden="true"><span class="bl-chev"></span></div>
+    </header>
+
+    <section class="bl-panel" data-reveal>
+      <div class="bl-celebrate" id="blCelebrate">
+        <div class="bl-under">
+          <span class="bl-u-label">Nous sommes amoureux</span>
+          <span class="bl-u-big">Elle a dit oui !</span>
+        </div>
+        <button type="button" class="bl-foil" id="blFoil" aria-label="Appuyez pour célébrer">
+          <span class="bl-foil-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12 21s-6.7-4.35-9.3-8.4C1.1 10 1.7 6.8 4.3 5.6c1.9-.9 4 .1 5 1.7l.7 1 .7-1c1-1.6 3.1-2.6 5-1.7 2.6 1.2 3.2 4.4 1.6 7-2.6 4.05-9.3 8.4-9.3 8.4z"></path></svg>
+          </span>
+          <span class="bl-foil-cap">Appuyez pour célébrer</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="bl-count" data-reveal>
+      <img class="bl-count-bg" src="assets/countdown.webp" alt="" aria-hidden="true" />
+      <div class="bl-count-inner">
+        <span class="bl-count-until">Jusqu'au 24 juillet 2026</span>
+        <div class="bl-count-cell"><span class="bl-count-num big" id="cDays">00</span><span class="bl-count-lbl">Jours</span></div>
+        <div class="bl-count-row">
+          <div class="bl-count-cell"><span class="bl-count-num" id="cHours">00</span><span class="bl-count-lbl">Heures</span></div>
+          <span class="bl-count-sep" aria-hidden="true">:</span>
+          <div class="bl-count-cell"><span class="bl-count-num" id="cMinutes">00</span><span class="bl-count-lbl">Minutes</span></div>
+          <span class="bl-count-sep" aria-hidden="true">:</span>
+          <div class="bl-count-cell"><span class="bl-count-num" id="cSeconds">00</span><span class="bl-count-lbl">Secondes</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bl-timeline" data-reveal>
+      <img class="bl-tl-bg" src="assets/timeline.webp" alt="" aria-hidden="true" />
+      <h2 class="bl-tl-head">Programme</h2>
+      <ol class="bl-tl-list">
+        <li class="bl-tl-row"><span class="bl-tl-time">18:00</span><span class="bl-tl-title">Arrivée des invités</span></li>
+        <li class="bl-tl-row"><span class="bl-tl-time">19:00</span><span class="bl-tl-title">Cérémonie</span></li>
+        <li class="bl-tl-row"><span class="bl-tl-time">20:30</span><span class="bl-tl-title">Dîner</span></li>
+        <li class="bl-tl-row"><span class="bl-tl-time">22:00</span><span class="bl-tl-title">Pièce montée &amp; toasts</span></li>
+        <li class="bl-tl-row"><span class="bl-tl-time">23:00</span><span class="bl-tl-title">Danse toute la nuit</span></li>
+      </ol>
+    </section>
+
+    <section class="bl-place" data-reveal>
+      <img class="bl-place-bg" src="assets/place.webp" alt="" aria-hidden="true" />
+      <div class="bl-place-pill">
+        <span>Dali &amp; Anastasia</span>
+        <span>2026</span>
+        <span>Jour J</span>
+      </div>
+      <div class="bl-place-head">
+        <h2 class="bl-place-script">Lieu du mariage</h2>
+        <span class="bl-place-name">La Corniche</span>
+        <span class="bl-place-addr">La Corniche, Bizerte, Tunisie</span>
+      </div>
+      <div class="bl-place-media">
+        <iframe title="Map to La Corniche, Bizerte, Tunisie" src="https://maps.google.com/maps?q=La%20Corniche%2C%20Bizerte%2C%20Tunisie&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <section class="bl-rsvp" data-reveal>
+      <span class="bl-rsvp-eyebrow">Serez-vous des nôtres&#160;?</span>
+      <h2 class="bl-rsvp-head">Merci de répondre</h2>
+      <div class="bl-rsvp-card">
+        <form class="bl-rsvp-form" novalidate>
+          <p class="bl-field-label">Serez-vous présent&#160;? <span class="req">*</span></p>
+          <div class="bl-choice-row">
+            <button type="button" class="bl-choice" data-choice="yes"><span class="dot"></span><span>Oui, je serai là</span></button>
+            <button type="button" class="bl-choice" data-choice="no"><span class="dot"></span><span>Désolé, je ne pourrai pas</span></button>
+          </div>
+          <label class="bl-field-label" for="rsvp-name">Nom complet <span class="req">*</span></label>
+          <input id="rsvp-name" type="text" placeholder="Votre nom complet" required />
+          <button type="submit" class="bl-submit"><span>Confirmer</span></button>
+        </form>
+      </div>
+    </section>
+
+    <div class="bl-sign">
+      <p class="bl-tag">Fait avec amour</p>
+    </div>
+  </main>
+
+  <canvas class="bl-hearts" id="blHearts" aria-hidden="true"></canvas>
+  <audio id="blAudio" src="assets/music.mp3" loop preload="auto"></audio>
+  <button type="button" class="bl-music" id="blMusic" aria-pressed="false" aria-label="Jouer la musique">
+    <span class="ring"></span>
+    <span aria-hidden="true">►</span>
+  </button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

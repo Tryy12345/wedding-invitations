@@ -226,7 +226,12 @@ body {
 
 .template-card.has-photo.theme-rose .template-kicker,
 .template-card.has-photo.theme-floral .template-kicker,
-.template-card.has-photo.theme-swanlove .template-kicker {
+.template-card.has-photo.theme-swanlove .template-kicker,
+.template-card.has-photo.theme-balconyview .template-kicker,
+.template-card.has-photo.theme-blossom .template-kicker,
+.template-card.has-photo.theme-rosewax .template-kicker,
+.template-card.has-photo.theme-royalsage .template-kicker,
+.template-card.has-photo.theme-terracottarose .template-kicker {
 	background: rgba(255,255,255,0.8);
 	color: var(--charcoal);
 }
@@ -236,7 +241,10 @@ body {
 .template-card.has-photo.theme-nightvow .template-kicker,
 .template-card.has-photo.theme-goldenhour .template-kicker,
 .template-card.has-photo.theme-crimson .template-kicker,
-.template-card.has-photo.theme-lusobresilien .template-kicker {
+.template-card.has-photo.theme-lusobresilien .template-kicker,
+.template-card.has-photo.theme-coastalnavy .template-kicker,
+.template-card.has-photo.theme-inviteness .template-kicker,
+.template-card.has-photo.theme-lellablue .template-kicker {
 	background: rgba(14,13,12,0.72);
 	color: var(--warm-white);
 }

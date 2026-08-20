@@ -102,32 +102,40 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ─────────────────────────────────────────────────
-     COUNTDOWN — days & hours until wedding
+     COUNTDOWN — days, hours, minutes & seconds until wedding
      Change the date here to match the real wedding date
   ───────────────────────────────────────────────── */
-  const weddingDate = new Date(2025, 6, 1, 21, 30, 0); // 1 July 2025 at 21:30
+  const weddingDate = new Date(2027, 2, 23, 14, 0, 0); // 23 March 2027 at 14:00
   const daysEl      = document.getElementById('cnt-days');
   const hoursEl     = document.getElementById('cnt-hours');
+  const minutesEl   = document.getElementById('cnt-minutes');
+  const secondsEl   = document.getElementById('cnt-seconds');
 
   function updateCountdown() {
-    if (!daysEl || !hoursEl) return;
+    if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
     const diff = weddingDate - new Date();
 
     if (diff <= 0) {
-      daysEl.textContent  = '00';
+      daysEl.textContent  = '000';
       hoursEl.textContent = '00';
+      minutesEl.textContent = '00';
+      secondsEl.textContent = '00';
       return;
     }
 
     const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    daysEl.textContent  = days.toString().padStart(2, '0');
+    daysEl.textContent  = days.toString().padStart(3, '0');
     hoursEl.textContent = hours.toString().padStart(2, '0');
+    minutesEl.textContent = minutes.toString().padStart(2, '0');
+    secondsEl.textContent = seconds.toString().padStart(2, '0');
   }
 
   updateCountdown();
-  setInterval(updateCountdown, 60_000);
+  setInterval(updateCountdown, 1_000);
 
   /* ─────────────────────────────────────────────────
      INVITATION CARD — subtle entrance shimmer
