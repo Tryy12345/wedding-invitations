@@ -1439,7 +1439,7 @@ body.scroll-enabled {
   top: 8%;
   left: 50%;
   transform: translateX(-50%);
-  width: min(60%, 400px);
+  width: min(40%, 260px);
   height: auto;
   z-index: 4;
   display: block;
