@@ -313,6 +313,21 @@ body.scroll-enabled {
     rgba(236, 230, 220, 0) 100%
   );
 }
+.card-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    var(--page-background) 0%,
+    rgba(236, 230, 220, 0) 100%
+  );
+}
 
 .card-section .card-outer-frame {
   display: none;
@@ -1417,4 +1432,16 @@ body.scroll-enabled {
     height: 180px;
   }
 
+}
+
+.basmala-top {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(60%, 400px);
+  height: auto;
+  z-index: 4;
+  display: block;
+  mix-blend-mode: multiply;
 }
