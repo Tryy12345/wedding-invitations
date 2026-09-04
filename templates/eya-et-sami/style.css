@@ -1477,19 +1477,21 @@ body.scroll-enabled {
 }
 
 /* fondu haut/bas pour raccorder avec la page, comme la carte */
-.calendar-overlay {
-  position: absolute;
-  top: 72%;                    /* ← descend le calendrier */
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(75%, 420px);      /* ← taille */
-  overflow: hidden;
-  z-index: 4;
+.calendar-section {
+  background: var(--page-background);
+  padding: 1rem 0 3rem;
+  display: flex;
+  justify-content: center;
 }
 
-.calendar-overlay img {
+.calendar-frame {
+  width: min(85%, 420px);   /* ← taille du calendrier */
+  overflow: hidden;
+}
+
+.calendar-frame img {
   display: block;
   width: 100%;
   height: auto;
-  margin-top: -38%;            /* ← coupe la bande florale du haut */
+  margin-top: -18%;         /* ← coupe les fleurs du haut */
 }
