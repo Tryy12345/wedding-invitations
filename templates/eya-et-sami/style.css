@@ -1477,15 +1477,18 @@ body.scroll-enabled {
 }
 
 /* fondu haut/bas pour raccorder avec la page, comme la carte */
+/* ═══════════════════════════════════════════════
+   CALENDRIER
+═══════════════════════════════════════════════ */
 .calendar-section {
-  background: var(--page-background);
+  background: #ece6dc;
   padding: 1rem 0 3rem;
   display: flex;
   justify-content: center;
 }
 
 .calendar-frame {
-  width: min(85%, 420px);   /* ← taille du calendrier */
+  width: min(85%, 420px);
   overflow: hidden;
 }
 
@@ -1493,5 +1496,5 @@ body.scroll-enabled {
   display: block;
   width: 100%;
   height: auto;
-  margin-top: -18%;         /* ← coupe les fleurs du haut */
+  margin-top: -18%;
 }
