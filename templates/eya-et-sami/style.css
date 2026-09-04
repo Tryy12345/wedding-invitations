@@ -1451,7 +1451,7 @@ body.scroll-enabled {
   top: 22%;
   left: 50%;
   transform: translateX(-50%);
-  width: min(62%, 420px);
+  width: min(48%, 320px);
   z-index: 4;
   margin: 0;
   font-weight: 400;
