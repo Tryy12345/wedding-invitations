@@ -1477,21 +1477,15 @@ body.scroll-enabled {
 }
 
 /* fondu haut/bas pour raccorder avec la page, comme la carte */
-.calendar-section::before,
-.calendar-section::after {
-  content: "";
+.calendar-overlay {
   position: absolute;
-  left: 0;
-  right: 0;
-  height: 100px;
-  z-index: 3;
-  pointer-events: none;
-}
-.calendar-section::before {
-  top: 0;
-  background: linear-gradient(to bottom, var(--page-background) 0%, rgba(236,230,220,0) 100%);
-}
-.calendar-section::after {
-  bottom: 0;
-  background: linear-gradient(to top, var(--page-background) 0%, rgba(236,230,220,0) 100%);
+  top: 58%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(60%, 380px);
+  aspect-ratio: 3 / 3.2;
+  object-fit: cover;
+  object-position: center bottom;
+  z-index: 4;
+  display: block;
 }
