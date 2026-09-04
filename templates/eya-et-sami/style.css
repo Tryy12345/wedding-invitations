@@ -2,7 +2,7 @@
    VARIABLES & RESET — WHISPERING ROSES + CLASSIC
 ═══════════════════════════════════════════════ */
 @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;500;600;700&family=Great+Vibes&family=Scheherazade+New:wght@400;500;600;700&display=swap');
 :root {
   --page-background: #ece6dc;
 --cream:          #f5f0e8;
@@ -1454,9 +1454,10 @@ body.scroll-enabled {
   width: min(62%, 420px);
   z-index: 4;
   margin: 0;
-  font-family: var(--font-display);  /* Scheherazade New — plus ample */  font-size: clamp(0.72rem, 2.2vw, 0.95rem);
   font-weight: 400;
-  line-height: 2;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.1rem, 3.2vw, 1.5rem);
+  line-height: 1.8;
   text-align: center;
   color: var(--text);
 }
