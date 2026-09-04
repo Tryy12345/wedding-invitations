@@ -1458,3 +1458,40 @@ body.scroll-enabled {
   text-align: center;
   color: var(--text);
 }
+/* ═══════════════════════════════════════════════
+   CALENDRIER
+═══════════════════════════════════════════════ */
+.calendar-section {
+  position: relative;
+  background: var(--page-background);
+  padding: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.calendar-image {
+  display: block;      /* évite le petit espace blanc sous l'image */
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+/* fondu haut/bas pour raccorder avec la page, comme la carte */
+.calendar-section::before,
+.calendar-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100px;
+  z-index: 3;
+  pointer-events: none;
+}
+.calendar-section::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--page-background) 0%, rgba(236,230,220,0) 100%);
+}
+.calendar-section::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--page-background) 0%, rgba(236,230,220,0) 100%);
+}
