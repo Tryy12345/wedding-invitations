@@ -902,15 +902,12 @@ body.scroll-enabled {
 .countdown-frame-card {
   position: relative;
   width: min(100%, 760px);
-  aspect-ratio: 1056 / 1489;
-  background: url("countdown-floral-frame.png") center / cover no-repeat;
+  background: none;
+  padding: 3rem 1.5rem;
 }
 
 .countdown-frame-content {
-  position: absolute;
-  top: 27%;
-  left: 13.5%;
-  right: 13.5%;
+  position: static;
   color: #442c2d;
   text-align: center;
 }
