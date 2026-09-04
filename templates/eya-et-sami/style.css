@@ -298,6 +298,21 @@ body.scroll-enabled {
   margin: 0;
   box-shadow: none;        /* était var(--shadow-card) */
 }
+.card-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--page-background) 0%,
+    rgba(236, 230, 220, 0) 100%
+  );
+}
 
 .card-section .card-outer-frame {
   display: none;
