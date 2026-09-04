@@ -1480,21 +1480,24 @@ body.scroll-enabled {
 /* ═══════════════════════════════════════════════
    CALENDRIER
 ═══════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════
+   CALENDRIER
+═══════════════════════════════════════════════ */
 .calendar-section {
   background: #ece6dc;
-  padding: 1rem 0 3rem;
+  padding: 2rem 0 3rem;
   display: flex;
   justify-content: center;
 }
 
 .calendar-frame {
-  width: min(85%, 420px);
-  overflow: hidden;
+  width: min(70%, 330px);
 }
 
 .calendar-frame img {
   display: block;
   width: 100%;
   height: auto;
-  margin-top: -18%;
+  mix-blend-mode: multiply;
 }
+
