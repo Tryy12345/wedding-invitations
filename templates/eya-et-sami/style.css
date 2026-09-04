@@ -1479,13 +1479,17 @@ body.scroll-enabled {
 /* fondu haut/bas pour raccorder avec la page, comme la carte */
 .calendar-overlay {
   position: absolute;
-  top: 58%;
+  top: 72%;                    /* ← descend le calendrier */
   left: 50%;
   transform: translateX(-50%);
-  width: min(60%, 380px);
-  aspect-ratio: 3 / 3.2;
-  object-fit: cover;
-  object-position: center bottom;
+  width: min(75%, 420px);      /* ← taille */
+  overflow: hidden;
   z-index: 4;
+}
+
+.calendar-overlay img {
   display: block;
+  width: 100%;
+  height: auto;
+  margin-top: -38%;            /* ← coupe la bande florale du haut */
 }
