@@ -1454,8 +1454,7 @@ body.scroll-enabled {
   width: min(62%, 420px);
   z-index: 4;
   margin: 0;
-  font-family: var(--font-fine);
-  font-size: clamp(0.72rem, 2.2vw, 0.95rem);
+  font-family: var(--font-display);  /* Scheherazade New — plus ample */  font-size: clamp(0.72rem, 2.2vw, 0.95rem);
   font-weight: 400;
   line-height: 2;
   text-align: center;
