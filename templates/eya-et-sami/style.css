@@ -1476,28 +1476,44 @@ body.scroll-enabled {
   margin: 0;
 }
 
-/* fondu haut/bas pour raccorder avec la page, comme la carte */
-/* ═══════════════════════════════════════════════
-   CALENDRIER
-═══════════════════════════════════════════════ */
 /* ═══════════════════════════════════════════════
    CALENDRIER
 ═══════════════════════════════════════════════ */
 .calendar-section {
   background: #ece6dc;
-  padding: 2rem 0 3rem;
+  padding: 3rem 0 4rem;
   display: flex;
   justify-content: center;
 }
 
 .calendar-frame {
+  position: relative;
   width: min(70%, 330px);
 }
 
-.calendar-frame img {
+.calendar-frame .calendar-image {
   display: block;
   width: 100%;
   height: auto;
   mix-blend-mode: multiply;
+  position: relative;
+  z-index: 1;
 }
+
+/* Perles éparpillées autour du calendrier */
+.pearl {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 5px rgba(90,78,60,0.25));
+}
+
+.pearl-1 { width: 8%;   top: -4%;   left: 2%; }
+.pearl-2 { width: 4.5%; top: 3%;    left: 14%; }
+.pearl-3 { width: 5%;   top: 28%;   right: -3%; }
+.pearl-4 { width: 3.5%; top: 48%;   right: 5%; }
+.pearl-5 { width: 10%;  bottom: -5%; left: -4%; }
+.pearl-6 { width: 5%;   bottom: 8%;  left: 9%; }
+.pearl-7 { width: 9%;   bottom: -6%; right: -3%; }
+.pearl-8 { width: 4%;   bottom: 16%; right: 13%; }
 
