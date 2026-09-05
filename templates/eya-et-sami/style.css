@@ -1768,6 +1768,19 @@ body.scroll-enabled {
 
 .countdown-frame-section {
   padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.countdown-frame-card {
+  padding-bottom: 0.5rem;
+}
+
+.countdown-photo {
+  margin-bottom: 0;
+}
+
+.site-footer {
+  padding-top: 1rem;
 }
 
 .countdown-photo {
