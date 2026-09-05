@@ -1365,9 +1365,9 @@ body.scroll-enabled {
 .footer-monogram {
   font-family: 'sloop-script-pro', 'Sloop Script Pro', 'Sloop Script', 'Great Vibes', cursive;
   font-weight: 300;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   color: var(--gold-deep);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-shadow: 0 2px 18px rgba(255,255,255,0.9);
 }
 .footer-note {
