@@ -1769,3 +1769,12 @@ body.scroll-enabled {
 .countdown-frame-section {
   padding-top: 0.5rem;
 }
+
+.countdown-photo {
+  display: block;
+  max-width: 100%;
+  width: 320px;
+  height: auto;
+  margin: 32px auto 0;
+  border-radius: 12px;
+}
