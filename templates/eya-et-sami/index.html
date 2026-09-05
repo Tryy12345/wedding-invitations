@@ -16,11 +16,20 @@
   ═══════════════════════════════════════════ -->
   <section class="hero" id="hero">
 
-    <div class="click-overlay" id="clickOverlay" aria-label="Commencer l’invitation"></div>
+    <div class="click-overlay" id="clickOverlay" role="button" tabindex="0"
+         aria-label="Ouvrir l'invitation">
+      <div class="click-play-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+      <p class="click-overlay-text">Cliquez pour ouvrir</p>
+    </div>
 
     <div class="video-wrap">
-      <video id="heroVideo" muted playsinline preload="metadata">
-        <source src="../../assets/vd1.mp4" type="video/mp4" />
+      <video id="heroVideo" muted playsinline preload="auto"
+             poster="enveloppe.jpg">
+        <source src="../../assets/vd1.mp4#t=0.1" type="video/mp4" />
       </video>
       <div class="video-overlay"></div>
     </div>

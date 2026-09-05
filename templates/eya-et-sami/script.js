@@ -40,9 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollHint.classList.add('visible');
     }, 4000);
   }
-
   if (clickOverlay) {
     clickOverlay.addEventListener('click', startExperience);
+
+    clickOverlay.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        startExperience();
+      }
+    });
   }
 
   /* ─────────────────────────────────────────────────
