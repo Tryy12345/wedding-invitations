@@ -1756,3 +1756,16 @@ body.scroll-enabled {
   color: var(--text);
   margin-bottom: 1rem;
 }
+
+/* Réduire l'espace entre la carte Google Maps et le compte à rebours */
+.map-section {
+  padding-bottom: 1.5rem;
+}
+
+.map-section .gold-rule {
+  margin: 1rem auto 0;
+}
+
+.countdown-frame-section {
+  padding-top: 0.5rem;
+}
