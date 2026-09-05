@@ -1722,4 +1722,14 @@ body.scroll-enabled {
 }
 .program-icon.art-left  { grid-column: 1; justify-self: center; }
 .program-icon.art-right { grid-column: 3; justify-self: center; }}
+/* Label "Programme" — style calligraphié comme le texte d'intro de la carte */
+.program-header .label-small {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
 
