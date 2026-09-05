@@ -1705,6 +1705,21 @@ body.scroll-enabled {
 @media (max-width: 480px) {
   .program-timeline { grid-template-columns: minmax(0,1fr) 60px minmax(0,1fr); }
   .program-step { grid-template-columns: minmax(0,1fr) 60px minmax(0,1fr); }
-  .program-icon { width: 40px; height: 40px; }
+.program-icon {
+  width: 52px;
+  height: 52px;
+  color: var(--gold-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.program-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(90,78,60,0.15));
+}
+.program-icon.art-left  { grid-column: 1; justify-self: center; }
+.program-icon.art-right { grid-column: 3; justify-self: center; }}
 
