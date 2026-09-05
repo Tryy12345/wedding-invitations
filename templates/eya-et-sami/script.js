@@ -105,8 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
      COUNTDOWN — days, hours, minutes & seconds until wedding
      Change the date here to match the real wedding date
   ───────────────────────────────────────────────── */
-  const weddingDate = new Date(2027, 2, 23, 14, 0, 0); // 23 March 2027 at 14:00
-  const daysEl      = document.getElementById('cnt-days');
+  const weddingDate = new Date(2026, 9, 11, 18, 30, 0); // 11 October 2026 at 18:30  const daysEl      = document.getElementById('cnt-days');
   const hoursEl     = document.getElementById('cnt-hours');
   const minutesEl   = document.getElementById('cnt-minutes');
   const secondsEl   = document.getElementById('cnt-seconds');

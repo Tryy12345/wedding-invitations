@@ -908,7 +908,7 @@ body.scroll-enabled {
 
 .countdown-frame-content {
   position: static;
-  color: #442c2d;
+  color: var(--text);
   text-align: center;
 }
 
@@ -947,7 +947,7 @@ body.scroll-enabled {
   margin-top: 2rem;
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: clamp(0.9rem, 2.7vw, 1.35rem);
-  color: rgba(68, 44, 45, 0.84);
+  color: var(--text-light);
 }
 
 .countdown-frame-grid {
@@ -967,7 +967,7 @@ body.scroll-enabled {
   font-size: clamp(1.8rem, 5.8vw, 3.5rem);
   font-weight: 500;
   line-height: 1;
-  color: #7c3038;
+  color: var(--gold-deep);
 }
 
 .countdown-frame-grid span {
@@ -977,7 +977,7 @@ body.scroll-enabled {
   font-size: clamp(0.52rem, 1.6vw, 0.78rem);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(68, 44, 45, 0.86);
+  color: var(--text-light);
 }
 
 @media (max-width: 600px) {
