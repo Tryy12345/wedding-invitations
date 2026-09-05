@@ -1517,3 +1517,194 @@ body.scroll-enabled {
 .pearl-7 { width: 9%;   bottom: -6%; right: -3%; }
 .pearl-8 { width: 4%;   bottom: 16%; right: 13%; }
 
+
+/* ═══════════════════════════════════════════════
+   PROGRAMME — RUBAN DE PROGRAMME (timeline)
+═══════════════════════════════════════════════ */
+.program-section {
+  isolation: isolate;
+  background: var(--page-background);
+  padding: 4rem 1.5rem 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.program-inner {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+}
+
+.program-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.program-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 82px minmax(0, 1fr);
+  row-gap: 34px;
+  padding: 12px 0 8px;
+}
+
+/* ── Liane centrale (dorée) ── */
+.program-timeline.is-visible .vine-stem {
+  animation: growVineGold 2.4s ease forwards;
+}
+.program-timeline.is-visible .leaf {
+  animation: leafBloomGold 0.55s ease forwards;
+}
+.program-timeline.is-visible .plant-vine::after {
+  animation: vineBudGold 2.4s ease forwards;
+}
+
+.plant-vine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 78px;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.plant-vine::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--gold);
+  opacity: 0;
+  transform: translate(-50%, 0) rotate(-45deg);
+  box-shadow: 0 0 0 4px var(--page-background);
+}
+
+.vine-stem {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 38px;
+  height: 100%;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;
+  border-left: 3px solid var(--gold);
+  border-radius: 50%;
+  filter: drop-shadow(0 2px 0 rgba(255,255,255,0.4));
+}
+
+.vine-stem::before,
+.vine-stem::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  width: 38px;
+  height: 48%;
+  border-right: 2px solid var(--gold-deep);
+  border-radius: 50%;
+}
+.vine-stem::before { top: 5%; }
+.vine-stem::after   { bottom: 3%; transform: scaleX(-1); }
+
+.leaf {
+  position: absolute;
+  width: 32px;
+  height: 16px;
+  opacity: 0;
+  transform: scale(0.2) rotate(var(--leaf-rotate));
+  transform-origin: center left;
+}
+.leaf::before,
+.leaf::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 8px;
+  border: 1.6px solid var(--gold);
+  border-left: 0;
+  border-bottom: 0;
+  border-radius: 100% 0;
+}
+.leaf::before { left: 0;  top: 0; transform: rotate(26deg); }
+.leaf::after  { left: 12px; top: 5px; transform: rotate(-22deg); }
+
+.leaf-1 { --leaf-rotate: -8deg;  top: 15%; left: 41px; animation-delay: 0.5s !important; }
+.leaf-2 { --leaf-rotate: 188deg; top: 50%; left: 5px;  animation-delay: 1.0s !important; }
+.leaf-3 { --leaf-rotate: -12deg; top: 82%; left: 42px; animation-delay: 1.5s !important; }
+
+@keyframes growVineGold {
+  0%   { transform: translateX(-50%) scaleY(0); }
+  100% { transform: translateX(-50%) scaleY(1); }
+}
+@keyframes leafBloomGold {
+  0%   { opacity: 0; transform: scale(0.2) rotate(var(--leaf-rotate)); }
+  100% { opacity: 1; transform: scale(1) rotate(var(--leaf-rotate)); }
+}
+@keyframes vineBudGold {
+  0%   { opacity: 1; transform: translate(-50%, 0) rotate(-45deg) scale(0.7); }
+  88%  { opacity: 1; transform: translate(-50%, calc(100% - 12px)) rotate(-45deg) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, calc(100% - 12px)) rotate(-45deg) scale(0.7); }
+}
+
+/* ── Étapes du programme ── */
+.program-step {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / -1;
+  min-height: 96px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 82px minmax(0, 1fr);
+  align-items: center;
+}
+
+.program-step.right .program-step-text { grid-column: 3; justify-self: start; text-align: left; }
+.program-step.left  .program-step-text { grid-column: 1; justify-self: end;   text-align: right; }
+
+.program-icon {
+  width: 52px;
+  height: 52px;
+  color: var(--gold-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.program-icon svg { width: 100%; height: 100%; }
+.program-icon.art-left  { grid-column: 1; justify-self: center; }
+.program-icon.art-right { grid-column: 3; justify-self: center; }
+
+.program-time {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 5vw, 1.6rem);
+  color: var(--charcoal);
+  margin-bottom: 4px;
+}
+.program-label {
+  font-family: var(--font-fine);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Reveal (masqué par défaut seulement si JS actif) */
+.js-timeline-ready .reveal-step {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.js-timeline-ready .reveal-step.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .program-timeline { grid-template-columns: minmax(0,1fr) 60px minmax(0,1fr); }
+  .program-step { grid-template-columns: minmax(0,1fr) 60px minmax(0,1fr); }
+  .program-icon { width: 40px; height: 40px; }
+}
+

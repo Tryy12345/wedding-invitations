@@ -328,4 +328,48 @@ document.addEventListener('DOMContentLoaded', () => {
     cardObserver.observe(cardSection);
   }
 
+
+    /* ─────────────────────────────────────────────────
+     PROGRAMME — reveal + liane animée
+  ───────────────────────────────────────────────── */
+  (function () {
+    const revealEls = document.querySelectorAll('.reveal-step');
+    const timeline  = document.getElementById('programTimeline');
+    if (!revealEls.length && !timeline) return;
+
+    if (!('IntersectionObserver' in window)) {
+      revealEls.forEach(el => el.classList.add('is-visible'));
+      if (timeline) timeline.classList.add('is-visible');
+      return;
+    }
+
+    document.body.classList.add('js-timeline-ready');
+
+    if (revealEls.length) {
+      const stepObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          stepObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -48px 0px' });
+
+      revealEls.forEach((item, i) => {
+        item.style.transitionDelay = `${Math.min(i * 90, 360)}ms`;
+        stepObserver.observe(item);
+      });
+    }
+
+    if (timeline) {
+      const vineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          timeline.classList.add('is-visible');
+          vineObserver.unobserve(timeline);
+        });
+      }, { threshold: 0.25, rootMargin: '0px 0px -80px 0px' });
+
+      vineObserver.observe(timeline);
+    }
+  })();
 });
