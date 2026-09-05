@@ -1485,7 +1485,14 @@ body.scroll-enabled {
   background: #ece6dc;
   padding: 3rem 0 4rem;
   display: flex;
+  flex-direction: column;   /* ← ajouté */
+  align-items: center;      /* ← ajouté */
   justify-content: center;
+}
+
+.calendar-header {
+  text-align: center;
+  margin-bottom: 1.2rem;
 }
 
 .calendar-frame {
@@ -1727,6 +1734,7 @@ body.scroll-enabled {
 .program-icon.art-left  { grid-column: 1; justify-self: center; }
 .program-icon.art-right { grid-column: 3; justify-self: center; }}
 /* Label "Programme" — style calligraphié comme le texte d'intro de la carte */
+.calendar-header .label-small,
 .program-header .label-small {
   font-family: 'Great Vibes', cursive;
   font-weight: 400;
@@ -1736,7 +1744,6 @@ body.scroll-enabled {
   color: var(--text);
   margin-bottom: 1rem;
 }
-
 /* Label "Le lieu" — même style calligraphié que "Programme" */
 .venue-section .label-small {
   font-family: 'Great Vibes', cursive;
