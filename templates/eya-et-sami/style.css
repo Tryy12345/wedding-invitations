@@ -1735,3 +1735,24 @@ body.scroll-enabled {
   margin-bottom: 1rem;
 }
 
+/* Label "Le lieu" — même style calligraphié que "Programme" */
+.venue-section .label-small {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+/* Label "Localisation" — même style calligraphié que "Programme" */
+.map-section .label-small {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
