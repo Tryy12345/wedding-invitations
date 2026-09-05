@@ -1677,17 +1677,19 @@ body.scroll-enabled {
 .program-icon.art-right { grid-column: 3; justify-self: center; }
 
 .program-time {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.3rem, 5vw, 1.6rem);
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 6vw, 2.1rem);
+  letter-spacing: 0;
   color: var(--charcoal);
   margin-bottom: 4px;
 }
 .program-label {
-  font-family: var(--font-fine);
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--gold);
 }
 
