@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const scrollHint   = document.getElementById('scrollHint');
   const clickOverlay = document.getElementById('clickOverlay');
   const videoWrap    = document.querySelector('.video-wrap');
+  const bgMusic     = document.getElementById('bgMusic');
+  const musicToggle = document.getElementById('musicToggle');
 
   /* ─────────────────────────────────────────────────
      STEP 1 — CLICK TO START
@@ -30,6 +32,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     }
+        // Musique de fond avec fondu d'entrée
+    if (bgMusic) {
+      bgMusic.volume = 0;
+      bgMusic.play().then(() => {
+        if (musicToggle) musicToggle.classList.add('visible');
+        let v = 0;
+        const fadeIn = setInterval(() => {
+          v += 0.02;
+          if (v >= 0.4) { v = 0.4; clearInterval(fadeIn); }
+          bgMusic.volume = v;
+        }, 100);
+      }).catch(() => {
+        // Lecture bloquée par le navigateur
+      });
+    }
 
     /* ─────────────────────────────────────────────
        STEP 2 — after 4 seconds: show names + unlock scroll
@@ -50,6 +67,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  if (musicToggle && bgMusic) {
+    musicToggle.addEventListener('click', () => {
+      bgMusic.muted = !bgMusic.muted;
+      musicToggle.classList.toggle('muted', bgMusic.muted);
+      musicToggle.setAttribute('aria-label',
+        bgMusic.muted ? 'Activer la musique' : 'Couper la musique');
+    });
+  }
+
 
   /* ─────────────────────────────────────────────────
      HIDE SCROLL HINT WHEN USER SCROLLS
